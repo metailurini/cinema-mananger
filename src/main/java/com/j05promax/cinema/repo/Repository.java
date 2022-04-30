@@ -6,29 +6,30 @@ import java.sql.PreparedStatement;
 
 import com.j05promax.cinema.util.db.DBConnection;
 
-public class Repository {
-    protected DBConnection conn;
-    protected PreparedStatement statement;
-    protected ResultSet result;
+interface ParamSetter {
+    void func(PreparedStatement statement) throws SQLException;
+}
 
-    public Repository(DBConnection conn) {
-        this.conn = conn;
+public class Repository {
+    private DBConnection conn;
+    private PreparedStatement statement;
+    private ResultSet result;
+
+    public Repository(DBConnection connection) {
+        conn = connection;
     }
 
-    public void Query(String queryStatement, WrapStatementParams wFunc) throws SQLException {
-        this.statement = this.conn.Connection().prepareStatement(queryStatement);
-        wFunc.func(statement);
-        this.result = statement.executeQuery();
+    public ResultSet Query(String queryStatement, ParamSetter paramSetter) throws SQLException {
+        statement = conn.Connection().prepareStatement(queryStatement);
+        paramSetter.func(statement);
+        result = statement.executeQuery();
+
+        return result;
     }
 
     public void Close() throws SQLException {
-        this.statement.close();
-        this.result.close();
+        statement.close();
+        result.close();
     }
 
-}
-
-
-interface WrapStatementParams {
-    void func(PreparedStatement statement) throws SQLException;
 }

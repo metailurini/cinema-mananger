@@ -24,19 +24,20 @@ public class Location extends Entity {
         return "locations";
     };
 
-    public Location(ResultSet result) throws SQLException {
-        this.LocationId = result.getString("location_id");
-        this.Name = result.getString("name");
-        this.CreatedAt = result.getTimestamp("created_at");
-        this.UpdatedAt = result.getTimestamp("updated_at");
-        this.DeletedAt = result.getTimestamp("deleted_at");
-        this.ResourcePath = result.getString("resource_path");
-        this.LocationType = result.getString("location_type");
-        this.PartnerInternalId = result.getString("partner_internal_id");
-        this.PartnerInternalParentId = result.getString("partner_internal_parent_id");
-        this.ParentLocationId = result.getString("parent_location_id");
-        this.IsArchived = result.getBoolean("is_archived");
-        this.AccessPath = result.getString("access_path");
+    public Location FromResultSet(ResultSet result) throws SQLException {
+        LocationId = result.getString("location_id");
+        Name = result.getString("name");
+        CreatedAt = result.getTimestamp("created_at");
+        UpdatedAt = result.getTimestamp("updated_at");
+        DeletedAt = result.getTimestamp("deleted_at");
+        ResourcePath = result.getString("resource_path");
+        LocationType = result.getString("location_type");
+        PartnerInternalId = result.getString("partner_internal_id");
+        PartnerInternalParentId = result.getString("partner_internal_parent_id");
+        ParentLocationId = result.getString("parent_location_id");
+        IsArchived = result.getBoolean("is_archived");
+        AccessPath = result.getString("access_path");
+        return this;
     }
 
     @Override
