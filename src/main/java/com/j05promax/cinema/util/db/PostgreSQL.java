@@ -10,6 +10,7 @@ public class PostgreSQL implements DBConnection {
     // jdbc:postgresql://localhost/test?user=fred&password=secret&ssl=true
     public void Open(String uri) throws SQLException {
         this.conn = DriverManager.getConnection(uri);
+        System.out.println("PostgreSQL connected to " + uri);
     }
 
     public Connection Connection() {
