@@ -12,5 +12,4 @@ public class CinemaManagerApplication {
 		SpringApplication.run(CinemaManagerApplication.class, args);
 		Config.getInstance();
 	}
-
 }
