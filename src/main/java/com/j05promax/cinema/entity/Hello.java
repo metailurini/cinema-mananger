@@ -19,6 +19,7 @@ public class Hello extends Entity {
 
     @Override
     public String toString() {
-        return "Hello {" + "Message='" + Message + "'" + "}";
+        // return "Hello {" + "Message='" + Message + "'" + "}";
+        return String.format("[hello]: mess-> %s; ----%s", Message, Message);
     }
 }
