@@ -5,12 +5,12 @@ import java.sql.SQLException;
 
 public class Promotion extends Entity {
 
-    public String Promotion_id = null;
+    public String PromotionID = null;
     public String Name = null;
-    public String Ticket_id = null;
-    public Boolean Is_student = null;
-    public float Number_value = 0;
-    public String String_value = null;
+    public String TicketID = null;
+    public Boolean IsStudent = null;
+    public float NumberValue = 0;
+    public String StringValue = null;
 
 
     public static String TableName() {
@@ -19,12 +19,12 @@ public class Promotion extends Entity {
     };
 
     public Promotion FromResultSet(ResultSet result) throws SQLException {
-        Promotion_id = result.getString("promotion_id");
+        PromotionID = result.getString("promotion_id");
         Name = result.getString("name");
-        Ticket_id = result.getString("ticket_id");
-        Is_student = result.getBoolean("is_student");
-        Number_value = result.getFloat("number_value");
-        String_value = result.getString("string_value");
+        TicketID = result.getString("ticket_id");
+        IsStudent = result.getBoolean("is_student");
+        NumberValue = result.getFloat("number_value");
+        StringValue = result.getString("string_value");
         return this;
     }
 }

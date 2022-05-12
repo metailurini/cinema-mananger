@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 public class User extends Entity {
 
-    public String User_id = null;
-    public String Full_name = null;
-    public String Admin_id = null;
-    public String Phone_number = null;
+    public String UserID = null;
+    public String FullName = null;
+    public String AdminID = null;
+    public String PhoneNumber = null;
     public String Email = null;
 
 
@@ -18,10 +18,10 @@ public class User extends Entity {
     };
 
     public User FromResultSet(ResultSet result) throws SQLException {
-        User_id = result.getString("user_id");
-        Full_name = result.getString("full_name");
-        Admin_id = result.getString("admin_id");
-        Phone_number = result.getString("phone_number");
+        UserID = result.getString("user_id");
+        FullName = result.getString("full_name");
+        AdminID = result.getString("admin_id");
+        PhoneNumber = result.getString("phone_number");
         Email = result.getString("email");
         return this;
     }

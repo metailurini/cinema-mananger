@@ -6,11 +6,11 @@ import java.sql.Timestamp;
 
 public class Calendar extends Entity {
 
-    public String Calendar_id = null;
-    public Timestamp Start_time;
-    public Timestamp End_time;
-    public String Room_id = null;
-    public String Film_id = null;
+    public String CalendarID = null;
+    public Timestamp StartTime;
+    public Timestamp EndTime;
+    public String RoomID = null;
+    public String FilmID = null;
 
 
     public static String TableName() {
@@ -19,11 +19,11 @@ public class Calendar extends Entity {
     };
 
     public Calendar FromResultSet(ResultSet result) throws SQLException {
-        Calendar_id = result.getString("calendar_id");
-        Start_time = result.getTimestamp("start_time");
-        End_time = result.getTimestamp("end_time");
-        Room_id = result.getString("room_id");
-        Film_id = result.getString("film_id");
+        CalendarID = result.getString("calendar_id");
+        StartTime = result.getTimestamp("start_time");
+        EndTime = result.getTimestamp("end_time");
+        RoomID = result.getString("room_id");
+        FilmID = result.getString("film_id");
         return this;
     }
 }

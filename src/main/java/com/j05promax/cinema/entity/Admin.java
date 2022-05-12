@@ -5,9 +5,9 @@ import java.sql.SQLException;
 
 public class Admin extends Entity {
 
-    public String Admin_id = null;
+    public String AdminID = null;
     public String Password = null;
-    public String Sec_code = null;
+    public String SecCode = null;
     public String Email = null;
 
 
@@ -17,9 +17,9 @@ public class Admin extends Entity {
     };
 
     public Admin FromResultSet(ResultSet result) throws SQLException {
-        Admin_id = result.getString("admin_id");
+        AdminID = result.getString("admin_id");
         Password = result.getString("password");
-        Sec_code = result.getString("sec_code");
+        SecCode = result.getString("sec_code");
         Email = result.getString("email");
         return this;
     }

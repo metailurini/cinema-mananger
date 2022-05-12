@@ -6,9 +6,9 @@ import java.sql.Timestamp;
 
 public class Event extends Entity {
 
-    public String Event_id = null;
-    public Timestamp Start_time;
-    public Timestamp End_time;
+    public String EventID = null;
+    public Timestamp StartTime;
+    public Timestamp EndTime;
     public String Title = null;
 
 
@@ -18,9 +18,9 @@ public class Event extends Entity {
     };
 
     public Event FromResultSet(ResultSet result) throws SQLException {
-        Event_id = result.getString("event_id");
-        Start_time = result.getTimestamp("start_time");
-        End_time = result.getTimestamp("end_time");
+        EventID = result.getString("event_id");
+        StartTime = result.getTimestamp("start_time");
+        EndTime = result.getTimestamp("end_time");
         Title = result.getString("title");
         return this;
     }
