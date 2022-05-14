@@ -28,7 +28,7 @@
       style="height: 12vh; background-color: blur"
     >
       <div class="container">
-        <a class="custom-navbar-brand" href="#" onclick="reload()">WINX</a>
+        <a class="custom-navbar-brand" href="./main-page">WINX</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -43,21 +43,26 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item active">
-              <a class="nav-link header-nav-link" href="#" onclick="reload()"
+              <a
+                style="color: #fbca10 !important"
+                class="nav-link header-nav-link"
+                href="./main-page"
                 >Trang chủ</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link header-nav-link" href="#">Khách hàng</a>
+              <a class="nav-link header-nav-link" href="./customer"
+                >Khách hàng</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link header-nav-link" href="#">Xuất vé phim</a>
+              <a class="nav-link header-nav-link" href="./film">Xuất vé phim</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link header-nav-link" href="#">Sự kiện</a>
+              <a class="nav-link header-nav-link" href="./event">Sự kiện</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link header-nav-link" href="#">Tin tức</a>
+              <a class="nav-link header-nav-link" href="./news">Tin tức</a>
             </li>
           </ul>
           <div class="staff-cover">
@@ -83,11 +88,10 @@
     </nav>
 
     <header>
-      <!-- data-bs-ride="carousel" -->
       <div
         id="carouselExampleCaptions"
         class="carousel slide"
-        data-interval="false"
+        data-bs-ride="carousel"
       >
         <div class="carousel-indicators">
           <button
