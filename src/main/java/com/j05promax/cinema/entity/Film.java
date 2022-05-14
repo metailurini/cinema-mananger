@@ -14,6 +14,7 @@ public class Film extends Entity {
     public String Thumnail = null;
     public Timestamp CreatedAt;
     public Timestamp Updated;
+    public String Category;
 
 
     public static String TableName() {
@@ -28,12 +29,12 @@ public class Film extends Entity {
         Price = result.getFloat("price");
         Duration = result.getInt("duration");
         Thumnail = result.getString("url");
+        Category = result.getString("category");
         return this;
     }
 
     @Override
     public String toString() {
-        // return "Hello {" + "Message='" + Message + "'" + "}";
-        return String.format("[film]: id-> %s; name-> %s; price-> %s; duration-> %s; url-> %s", FilmID, Name, Price, Duration, Thumnail);
+        return String.format("[film]: id-> %s; name-> %s; details-> %s; price-> %s; duration-> %s; category-> %s;", FilmID, Name, Details, Price, Duration, Category);
     }
 }

@@ -17,7 +17,23 @@ public class FilmRepo extends Repository {
     public ArrayList<Film> GetAll() throws SQLException {
         ArrayList<Film> films = new ArrayList<Film>();
 
-        String query = "select films.film_id, films.name, films.details, films.price, films.status, films.duration, films.created_at, films.updated_at, images.url from films left join images on images.image_id = films.film_id and images.image_type = 'films'";
+        String query = (
+            " select " +
+            " 	films.film_id, " +
+            " 	films.name, " +
+            " 	films.details, " +
+            " 	films.price, " +
+            " 	films.status, " +
+            " 	films.category, " +
+            " 	films.duration, " +
+            " 	films.created_at, " +
+            " 	films.updated_at, " +
+            " 	images.url " +
+            " from " +
+            " 	films " +
+            " left join images on " +
+            " 	images.image_id = films.film_id and " +
+            " 	images.image_type = 'films' ");
         System.out.println(query);
 
         ResultSet result = this.Query(String.format(query, Film.TableName()), (ParamSetter)(statement) -> {});
