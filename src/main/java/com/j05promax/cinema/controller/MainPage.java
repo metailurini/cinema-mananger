@@ -1,11 +1,14 @@
 package com.j05promax.cinema.controller;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import com.j05promax.cinema.config.Config;
+import com.j05promax.cinema.entity.Film;
 
 @Controller
 public class MainPage {
@@ -14,44 +17,14 @@ public class MainPage {
             Model model) {
         model.addAttribute("staffName", "Staff's name");
 
-        ArrayList<Integer> carouselLoop = new ArrayList<Integer>();
-        carouselLoop.add(0);
-        carouselLoop.add(1);
-        carouselLoop.add(2);
-        model.addAttribute("carouselLoop", carouselLoop);
+        Config c = Config.getInstance();
 
-        ArrayList<carouselLoopData> carouselLoopData = new ArrayList<>();
-        carouselLoopData.add(new carouselLoopData(0, "GODZILLA:KING OF THE MONSTER",
-                "Phiêu lưu - Hành động, Khoa học - Viễn tưởng", 132,
-                "https://source.unsplash.com/RCAhiGJsUUE/1920x1080"));
-        carouselLoopData.add(new carouselLoopData(0, "GODZILLA:KING OF THE MONSTER",
-                "Phiêu lưu - Hành động, Khoa học - Viễn tưởng", 132,
-                "https://source.unsplash.com/wfh8dDlNFOk/1920x1080"));
-        carouselLoopData.add(new carouselLoopData(0, "GODZILLA:KING OF THE MONSTER",
-                "Phiêu lưu - Hành động, Khoa học - Viễn tưởng", 132,
-                "https://source.unsplash.com/lHGeqh3XhRY/1920x1080"));
-
-        model.addAttribute("carouselLoopData", carouselLoopData);
+        try {
+            List<Film> films = c.filmRepo.GetAll();
+            model.addAttribute("films", films);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return "main-page";
-    }
-}
-
-class carouselLoopData {
-    Integer id;
-    String filmName;
-    String category;
-    Integer time;
-    String backgroundImg;
-
-    carouselLoopData(Integer id,
-            String filmName,
-            String category,
-            Integer time,
-            String backgroundImg) {
-        this.id = id;
-        this.filmName = filmName;
-        this.category = category;
-        this.time = time;
-        this.backgroundImg = backgroundImg;
     }
 }

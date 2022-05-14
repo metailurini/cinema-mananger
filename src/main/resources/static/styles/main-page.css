@@ -18,6 +18,22 @@
   color: #fbca10 !important;
 }
 
+.custom-navbar-brand {
+  color: #fff;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 48px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.custom-navbar-brand:hover {
+  color: #fbca10;
+}
+
 .staff-cover {
   margin-left: 80px;
   margin-top: 25px;
