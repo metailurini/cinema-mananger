@@ -11,6 +11,7 @@ public class Film extends Entity {
     public String Details = null;
     public float Price = 0;
     public int Duration = 0;
+    public String Thumnail = null;
     public Timestamp CreatedAt;
     public Timestamp Updated;
 
@@ -26,6 +27,13 @@ public class Film extends Entity {
         Details = result.getString("details");
         Price = result.getFloat("price");
         Duration = result.getInt("duration");
+        Thumnail = result.getString("url");
         return this;
+    }
+
+    @Override
+    public String toString() {
+        // return "Hello {" + "Message='" + Message + "'" + "}";
+        return String.format("[film]: id-> %s; name-> %s; price-> %s; duration-> %s; url-> %s", FilmID, Name, Price, Duration, Thumnail);
     }
 }
