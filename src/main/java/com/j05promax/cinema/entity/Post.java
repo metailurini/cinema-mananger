@@ -2,6 +2,7 @@ package com.j05promax.cinema.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Post extends Entity {
 
@@ -9,6 +10,8 @@ public class Post extends Entity {
     public String Author = null;
     public String Title = null;
     public String Content = null;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {

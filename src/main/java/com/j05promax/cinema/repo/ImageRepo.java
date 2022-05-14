@@ -15,7 +15,32 @@ public class ImageRepo extends Repository {
     }
 
     public ArrayList<Image> GetAll() throws SQLException {
-        ArrayList<Image> Images = new ArrayList<Image>();
-        return Images;
+        ArrayList<Image> images = new ArrayList<Image>();
+
+        String query = "select * from %s";
+        ResultSet result = this.Query(String.format(query, Image.TableName()), (ParamSetter)(statement) -> {});
+
+        while (result.next()) {
+            images.add(new Image().FromResultSet(result));
+        }
+
+        this.Close();
+        return images;
+    }
+
+    public Image GetByID(String id) {
+        return new Image();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Image image) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

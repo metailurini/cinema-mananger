@@ -15,7 +15,32 @@ public class FilmRepo extends Repository {
     }
 
     public ArrayList<Film> GetAll() throws SQLException {
-        ArrayList<Film> Films = new ArrayList<Film>();
-        return Films;
+        ArrayList<Film> films = new ArrayList<Film>();
+
+        String query = "select * from %s";
+        ResultSet result = this.Query(String.format(query, Film.TableName()), (ParamSetter)(statement) -> {});
+
+        while (result.next()) {
+            films.add(new Film().FromResultSet(result));
+        }
+
+        this.Close();
+        return films;
+    }
+
+    public Film GetByID(String id) {
+        return new Film();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Film film) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

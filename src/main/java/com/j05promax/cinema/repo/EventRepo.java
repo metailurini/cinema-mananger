@@ -15,7 +15,32 @@ public class EventRepo extends Repository {
     }
 
     public ArrayList<Event> GetAll() throws SQLException {
-        ArrayList<Event> Events = new ArrayList<Event>();
-        return Events;
+        ArrayList<Event> events = new ArrayList<Event>();
+
+        String query = "select * from %s";
+        ResultSet result = this.Query(String.format(query, Event.TableName()), (ParamSetter)(statement) -> {});
+
+        while (result.next()) {
+            events.add(new Event().FromResultSet(result));
+        }
+
+        this.Close();
+        return events;
+    }
+
+    public Event GetByID(String id) {
+        return new Event();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Event event) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

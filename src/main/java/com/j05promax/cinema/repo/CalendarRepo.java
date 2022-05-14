@@ -15,7 +15,32 @@ public class CalendarRepo extends Repository {
     }
 
     public ArrayList<Calendar> GetAll() throws SQLException {
-        ArrayList<Calendar> Calendars = new ArrayList<Calendar>();
-        return Calendars;
+        ArrayList<Calendar> calendars = new ArrayList<Calendar>();
+        
+        String query = "SELECT * FROM %s";
+        ResultSet result = this.Query(String.format(query,Calendar.TableName()),(ParamSetter)(statement) -> {});
+        
+        while (result.next()){
+            calendars.add(new Calendar().FromResultSet(result));
+        }
+
+        this.Close();
+        return calendars;
+    }
+
+    public Calendar GetByID(String id) {
+        return new Calendar();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Calendar calendar) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

@@ -2,12 +2,15 @@ package com.j05promax.cinema.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Image extends Entity {
 
     public String ImageID = null;
     public String ImageType = null;
     public String Url = null;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {

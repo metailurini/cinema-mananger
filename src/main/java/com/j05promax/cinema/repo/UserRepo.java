@@ -15,7 +15,32 @@ public class UserRepo extends Repository {
     }
 
     public ArrayList<User> GetAll() throws SQLException {
-        ArrayList<User> Users = new ArrayList<User>();
-        return Users;
+        ArrayList<User> users = new ArrayList<User>();
+        
+        String query = "select * from %s";
+        ResultSet result = this.Query(String.format(query, User.TableName()), (ParamSetter)(statement) -> {});
+
+        while (result.next()) {
+            users.add(new User().FromResultSet(result));
+        }
+
+        this.Close();
+        return users;
+    }
+
+    public User GetByID(String id) {
+        return new User();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, User user) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

@@ -2,6 +2,7 @@ package com.j05promax.cinema.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Seat extends Entity {
 
@@ -10,6 +11,8 @@ public class Seat extends Entity {
     public String Name = null;
     public float BonusPrice = 0;
     public String Status = null;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {

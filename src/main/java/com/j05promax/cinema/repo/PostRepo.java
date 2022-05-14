@@ -15,7 +15,32 @@ public class PostRepo extends Repository {
     }
 
     public ArrayList<Post> GetAll() throws SQLException {
-        ArrayList<Post> Posts = new ArrayList<Post>();
-        return Posts;
+        ArrayList<Post> posts = new ArrayList<Post>();
+
+        String query = "select * from %s";
+        ResultSet result = this.Query(String.format(query, Post.TableName()), (ParamSetter)(statement) -> {});
+
+        while (result.next()) {
+            posts.add(new Post().FromResultSet(result));
+        }
+
+        this.Close();
+        return posts;
+    }
+
+    public Post GetByID(String id) {
+        return new Post();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Post post) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

@@ -2,6 +2,7 @@ package com.j05promax.cinema.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Film extends Entity {
 
@@ -10,6 +11,8 @@ public class Film extends Entity {
     public String Details = null;
     public float Price = 0;
     public int Duration = 0;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {

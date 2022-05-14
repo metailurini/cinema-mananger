@@ -15,7 +15,32 @@ public class SeatRepo extends Repository {
     }
 
     public ArrayList<Seat> GetAll() throws SQLException {
-        ArrayList<Seat> Seats = new ArrayList<Seat>();
-        return Seats;
+        ArrayList<Seat> seats = new ArrayList<Seat>();
+
+        String query = "select * from %s";
+        ResultSet result = this.Query(String.format(query, Seat.TableName()), (ParamSetter)(statement) -> {});
+
+        while (result.next()) {
+            seats.add(new Seat().FromResultSet(result));
+        }
+
+        this.Close();
+        return seats;
+    }
+
+    public Seat GetByID(String id) {
+        return new Seat();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Seat seat) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

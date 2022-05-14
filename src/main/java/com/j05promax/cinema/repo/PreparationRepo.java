@@ -15,7 +15,32 @@ public class PreparationRepo extends Repository {
     }
 
     public ArrayList<Preparation> GetAll() throws SQLException {
-        ArrayList<Preparation> Preparations = new ArrayList<Preparation>();
-        return Preparations;
+        ArrayList<Preparation> preparations = new ArrayList<Preparation>();
+
+        String query = "select * from %s";
+        ResultSet result = this.Query(String.format(query, Preparation.TableName()), (ParamSetter)(statement) -> {});
+
+        while (result.next()) {
+            preparations.add(new Preparation().FromResultSet(result));
+        }
+
+        this.Close();
+        return preparations;
+    }
+
+    public Preparation GetByID(String id) {
+        return new Preparation();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Preparation preparation) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
     }
 }

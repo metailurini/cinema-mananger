@@ -15,7 +15,32 @@ public class TicketRepo extends Repository {
     }
 
     public ArrayList<Ticket> GetAll() throws SQLException {
-        ArrayList<Ticket> Tickets = new ArrayList<Ticket>();
-        return Tickets;
+        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+
+        String query = "SELECT * FROM %s";
+        ResultSet result = this.Query(String.format(query,Ticket.TableName()),(ParamSetter)(statement) -> {});
+        
+        while (result.next()){
+            tickets.add(new Ticket().FromResultSet(result));
+        }
+
+        this.Close();
+        return tickets;
+    }
+
+    public Ticket GetByID(String id){
+        return new Ticket();
+    }
+
+    public boolean Create(String id){
+        return true;
+    }
+
+    public boolean Update(String id, Ticket ticket){
+        return true;
+    }
+
+    public boolean Delete(String id){
+        return true;
     }
 }

@@ -2,6 +2,7 @@ package com.j05promax.cinema.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class Promotion extends Entity {
 
@@ -11,6 +12,8 @@ public class Promotion extends Entity {
     public Boolean IsStudent = null;
     public float NumberValue = 0;
     public String StringValue = null;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {

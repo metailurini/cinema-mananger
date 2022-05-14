@@ -10,6 +10,8 @@ public class Event extends Entity {
     public Timestamp StartTime;
     public Timestamp EndTime;
     public String Title = null;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {

@@ -2,6 +2,7 @@ package com.j05promax.cinema.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class User extends Entity {
 
@@ -10,6 +11,8 @@ public class User extends Entity {
     public String AdminID = null;
     public String PhoneNumber = null;
     public String Email = null;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {

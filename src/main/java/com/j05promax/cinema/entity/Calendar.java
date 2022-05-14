@@ -11,6 +11,8 @@ public class Calendar extends Entity {
     public Timestamp EndTime;
     public String RoomID = null;
     public String FilmID = null;
+    public Timestamp CreatedAt;
+    public Timestamp Updated;
 
 
     public static String TableName() {
