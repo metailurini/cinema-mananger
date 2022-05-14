@@ -1,0 +1,67 @@
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.header-nav-link {
+  color: #fff !important;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.header-nav-link:hover {
+  color: #fbca10 !important;
+}
+
+.staff-cover {
+  margin-left: 80px;
+  margin-top: 25px;
+  text-align: center;
+  display: block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  float: left;
+  color: #fff;
+}
+
+.custom-carousel-caption {
+  position: absolute;
+  right: 15%;
+  top: 13rem;
+  left: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: left;
+  width: 56vh;
+}
+
+.carousel-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.carousel-btn {
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: 500;
+  color: #fbca10;
+  text-align: center;
+  transition: all 0.3s;
+  border: 2px solid #fbca10;
+  border-radius: 10px;
+  width: 27vh;
+}
+
+.carousel-btn:hover {
+  color: #fff;
+  background-color: #fbca10;
+}

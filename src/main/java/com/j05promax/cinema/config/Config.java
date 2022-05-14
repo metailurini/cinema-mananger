@@ -19,7 +19,8 @@ public class Config {
             // postgresql://dyferylqhijzep:b1f9d7c095fd085cd8d1127ca1b974547fc0f2eef510ad66a57abb18479cc672@ec2-3-228-75-39.compute-1.amazonaws.com:5432/d547mp4ioththq
             // jdbc:postgresql://localhost:5432/bob?user=postgres&password=example
 			postgreSQL.Open("jdbc:postgresql://ec2-3-228-75-39.compute-1.amazonaws.com:5432/d547mp4ioththq?user=dyferylqhijzep&password=b1f9d7c095fd085cd8d1127ca1b974547fc0f2eef510ad66a57abb18479cc672");
-			helloRepo = new HelloRepo(postgreSQL);
+			// postgresql://dyferylqhijzep:b1f9d7c095fd085cd8d1127ca1b974547fc0f2eef510ad66a57abb18479cc672@ec2-3-228-75-39.compute-1.amazonaws.com:5432/d547mp4ioththq
+            helloRepo = new HelloRepo(postgreSQL);
 		} catch (SQLException e) {
             new Log(e).Show();
 		}
