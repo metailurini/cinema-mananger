@@ -22,7 +22,6 @@ public class MainPage {
         try {
             List<Film> films = c.filmRepo.GetAll();
             model.addAttribute("films", films);
-            System.out.println(films.size());
         } catch (SQLException e) {
             e.printStackTrace();
         }
