@@ -14,6 +14,11 @@
       src="https://kit.fontawesome.com/53a42bcb20.js"
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
     <script src="scripts/main-page.js"></script>
     <title>Trang chủ</title>
   </head>
@@ -86,85 +91,92 @@
         data-interval="false"
       >
         <div class="carousel-indicators">
-          <div th:each="i : ${carouselLoop}">
+          <div th:each="film, state : ${films}">
             <button
               type="button"
               data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to="${i}"
+              data-bs-slide-to="${state.index}"
               class="active"
               aria-current="true"
             ></button>
           </div>
         </div>
-        <div class="carousel-inner">
-          <div th:each="carouselLoopData : ${carouselLoopData}">
-            <div
-              class="carousel-item active"
-              style="
-                background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080');
-              "
-            >
-              <div class="custom-carousel-caption">
-                <h5
-                  style="
-                    color: #fbca10;
-                    font-size: 36px;
-                    backdrop-filter: blur(10px);
-                    margin-bottom: 10px;
-                  "
-                >
-                  Phim nổi bật tháng này
-                </h5>
-                <h1 class="carousel-text" style="font-size: 72px">
-                  GODZILLA: KING OF THE MONSTER
-                </h1>
-                <h5 class="carousel-text">
-                  Phiêu lưu - Hành động, Khoa học - Viễn tưởng
-                </h5>
-
-                <h5 class="carousel-text">
-                  <i class="fa-solid fa-clock"></i> Thời lượng: 132 phút
-                </h5>
-                <div style="margin-top: 35px">
-                  <a href="#" class="carousel-btn" style="margin-right: 10px"
-                    >Xem thông tin</a
+        <div>
+          <div class="carousel-inner">
+            <div th:each="film : ${films}">
+              <div
+                class="carousel-item active"
+                style="
+                  background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080');
+                  overflow-y: scroll;
+                "
+              >
+                <div class="custom-carousel-caption">
+                  <h5
+                    style="
+                      color: #fbca10;
+                      font-size: 36px;
+                      backdrop-filter: blur(10px);
+                      margin-bottom: 10px;
+                    "
                   >
-                  <a
-                    href="#"
-                    class="carousel-btn"
-                    style="color: #fff; background-color: #fbca10"
-                    >Xuất vé</a
-                  >
+                    Phim nổi bật tháng này
+                  </h5>
+                  <h1 class="carousel-text" style="font-size: 72px">
+                    <p th:text="${film.Name} + '.'" />
+                  </h1>
+                  <h5 class="carousel-text">
+                    Phiêu lưu - Hành động, Khoa học - Viễn tưởng
+                  </h5>
+                  <div style="display: inline-flex">
+                    <i class="fa-solid fa-clock"></i>
+                    <h5
+                      class="carousel-text"
+                      th:text="'Thời lượng: ' + ${film.Duration} + ' phút' "
+                      style="margin-left: 10px; margin-top: -8px"
+                    ></h5>
+                  </div>
+                  <div style="margin-top: 35px">
+                    <a href="#" class="carousel-btn" style="margin-right: 10px"
+                      >Xem thông tin</a
+                    >
+                    <a
+                      href="#"
+                      class="carousel-btn"
+                      style="color: #fff; background-color: #fbca10"
+                      >Xuất vé</a
+                    >
+                  </div>
                 </div>
               </div>
+              <!-- <div
+              class="carousel-item"
+              style="
+                background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080');
+              "
+            >
+              <div class="carousel-caption active">
+                <h5>Second slide label</h5>
+                <p>
+                  Some representative placeholder content for the second slide.
+                </p>
+              </div>
+            </div>
+            <div
+              class="carousel-item"
+              style="
+                background-image: url('https://source.unsplash.com/lHGeqh3XhRY/1920x1080');
+              "
+            >
+              <div class="carousel-caption active">
+                <h5>Third slide label</h5>
+                <p>
+                  Some representative placeholder content for the third slide.
+                </p>
+              </div>
+            </div> -->
             </div>
           </div>
-          <!-- <div
-            class="carousel-item"
-            style="
-              background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1920x1080');
-            "
-          >
-            <div class="carousel-caption active">
-              <h5>Second slide label</h5>
-              <p>
-                Some representative placeholder content for the second slide.
-              </p>
-            </div>
-          </div>
-          <div
-            class="carousel-item"
-            style="
-              background-image: url('https://source.unsplash.com/lHGeqh3XhRY/1920x1080');
-            "
-          >
-            <div class="carousel-caption active">
-              <h5>Third slide label</h5>
-              <p>
-                Some representative placeholder content for the third slide.
-              </p>
-            </div>
-          </div> -->
         </div>
         <button
           class="carousel-control-prev"
@@ -186,10 +198,5 @@
         </button>
       </div>
     </header>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
