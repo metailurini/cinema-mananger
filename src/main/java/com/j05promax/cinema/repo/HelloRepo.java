@@ -27,4 +27,20 @@ public class HelloRepo extends Repository {
         this.Close();
         return hellos;
     }
+
+    public Hello GetByID(String id) {
+        return new Hello();
+    }
+
+    public boolean Create(String id) {
+        return true;
+    }
+
+    public boolean Update(String id, Hello hello) {
+        return true;
+    }
+
+    public boolean Delete(String id) {
+        return true;
+    }
 }
