@@ -1,0 +1,42 @@
+AuthC
+  POST:	Login
+    Admin.GetByEmail
+    static Admin.CheckHashPassword
+
+RevenueC
+  GET:	FilterByFactor
+    switch type
+      Ticket.FilterByMonth
+      Ticket.FilterByYear
+
+FilmC
+  GET:	GetAllFilms
+    Film.All
+  GET:	GetFilmsByID
+    Film.FindByIDs
+  POST:	CreateFilm
+    Film.Create
+  PUT:	UpdateFilmByID
+    Film.Update
+  DELETE:DeleteFilmByID
+    Film.Delete
+
+NewsC
+  GET:	GetAllNews
+    News.All
+  GET:	GetNewsByID
+    News.FindByIDs
+  POST:	CreateNews
+    News.Create
+  PUT:	UpdateNewsByID
+    News.Update
+  DELETE:	DeleteNewsByID
+    News.Delete
+
+StaffC
+  GetAllStaffs
+    Admin.All
+  GetStaffsByID
+    Admin.FindByIDs
+  UpdateStaffByID
+    Admin.Update
