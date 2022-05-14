@@ -7,43 +7,47 @@
       name="viewport"
     />
     <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Đăng nhập</title>
   </head>
-  <body>
-    <h2>Login Form</h2>
+  <body
+    style="
+      background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080');
+    "
+  >
+    <form>
+      <h3 style="margin-bottom: 30px">Chào mừng đến với WINX</h3>
+      <h3>Đăng Nhập</h3>
 
-    <form action="/auth/auth" method="post">
-      <div class="imgcontainer">
-        <img
-          src="https://www.w3schools.com/howto/img_avatar2.png"
-          alt="Avatar"
-          class="avatar"
-        />
-      </div>
-
-      <div class="container">
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required />
-
-        <label for="password"><b>Password</b></label>
+      <div style="width: 80%; margin-left: 10%">
+        <label for="username">Tài khoản</label>
         <input
-          type="password"
-          placeholder="Enter Password"
-          name="password"
+          type="text"
+          placeholder="Nhập tài khoản"
+          id="username"
           required
         />
 
-        <button type="submit">Login</button>
-        <label>
-          <input type="checkbox" checked="checked" name="remember" /> Remember
-          me
-        </label>
+        <label for="password">Mật khẩu</label>
+        <input
+          type="password"
+          placeholder="Nhập mật khẩu"
+          id="password"
+          required
+        />
       </div>
 
-      <div class="container" style="background-color: #f1f1f1">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <span class="psw">Forgot <a href="#">password?</a></span>
+      <div style="text-align: center">
+        <button>Đăng nhập</button>
       </div>
-      <script src="/scripts/login.js"></script>
     </form>
   </body>
 </html>
