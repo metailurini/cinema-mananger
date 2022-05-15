@@ -54,7 +54,8 @@
   padding-bottom: 1.25rem;
   color: #fff;
   text-align: left;
-  width: 56vh;
+  width: 520px;
+  overflow: clip;
 }
 
 .carousel-text {
@@ -74,7 +75,7 @@
   transition: all 0.3s;
   border: 2px solid #fbca10;
   border-radius: 10px;
-  width: 27vh;
+  width: 245px;
 }
 
 .carousel-btn:hover {
