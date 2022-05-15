@@ -101,25 +101,3 @@ body {
   border-radius: 5px;
   padding: 2px;
 }
-
-form.example button {
-  float: left;
-  width: 20%;
-  padding: 10px;
-  background: #2196f3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
-
-form.example button:hover {
-  background: #0b7dda;
-}
-
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
