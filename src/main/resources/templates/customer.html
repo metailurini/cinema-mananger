@@ -111,77 +111,136 @@
           >
             + Thêm khách hàng
           </button>
+        </div>
+      </div>
 
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <h4 style="text-align: center">Thêm khách hàng mới</h4>
+                  <div style="margin-bottom: 15px">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Họ và tên</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nhập họ và tên"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Số điện thoại</label
+                    >
+                    <input
+                      type="tel"
+                      name="phone"
+                      pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                      class="form-control"
+                      placeholder="Nhập số điện thoại"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <a type="button" class="cancel" data-bs-dismiss="modal">
+                    Hủy
+                  </a>
                   <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
+                    type="submit"
+                    id="submit"
+                    class="btn-add-cus"
+                    style="font-size: 18px; width: 170px; padding: 0.3em 0.3em"
+                  >
+                    Thêm khách hàng
+                  </button>
                 </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3">
-                      <h4 style="text-align: center">Thêm khách hàng mới</h4>
-                      <div style="margin-bottom: 15px">
-                        <label for="exampleInputEmail1" class="form-label"
-                          >Họ và tên</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Nhập họ và tên"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label for="exampleInputEmail1" class="form-label"
-                          >Số điện thoại</label
-                        >
-                        <input
-                          type="tel"
-                          name="phone"
-                          pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                          class="form-control"
-                          placeholder="Nhập số điện thoại"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <a type="button" class="cancel" data-bs-dismiss="modal">
-                        Hủy
-                      </a>
-                      <button
-                        type="submit"
-                        id="submit"
-                        class="btn-add-cus"
-                        style="
-                          font-size: 18px;
-                          width: 170px;
-                          padding: 0.3em 0.3em;
-                        "
-                      >
-                        Thêm khách hàng
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
+      </div>
+
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          background-color: rgba(128, 128, 128, 0.7);
+          vertical-align: middle;
+          align-items: center;
+          padding: 20px;
+          border-radius: 10px;
+          margin-top: 30px;
+        "
+      >
+        <!-- Example single danger button -->
+        <div class="btn-group">
+          <button
+            type="button"
+            class="btn dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="color: #4a4a4a; background-color: #fff"
+          >
+            Trạng thái
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Hoạt động</a></li>
+            <li><a class="dropdown-item" href="#">Bị khóa</a></li>
+          </ul>
+        </div>
+        <form style="height: 38px">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Tìm kiếm"
+              aria-label="#"
+              aria-describedby="basic-addon2"
+              required
+            />
+            <button
+              type="submit"
+              id="submit"
+              style="
+                background-color: #fbca10;
+                border: 1px solid #fbca10;
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+              "
+            >
+              <i
+                class="input-group-text fa-solid fa-magnifying-glass"
+                id="basic-addon2"
+                style="
+                  color: #fff;
+                  background-color: #fbca10;
+                  border: 1px solid #fbca10;
+                "
+                ;
+              ></i>
+            </button>
+          </div>
+        </form>
       </div>
 
       <table
