@@ -1,6 +1,5 @@
 package com.j05promax.cinema.controller;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,24 +18,24 @@ public class AuthController {
 
 	@PostMapping("/auth/auth")
 	public String Auth(
-		@RequestParam(value = "username", defaultValue = "") String username,
-		@RequestParam(value = "password", defaultValue = "") String password,
 		HttpServletRequest request,
-		HttpServletResponse response
-	) {
-		// for(Cookie cookie : request.getCookies()) {
-		// 	System.out.println(cookie.getName() + ": " + cookie.getValue());
-		// }
-		response.addCookie(new Cookie("name" , username));
+		HttpServletResponse response,
 
-		// TODO: handle login
+		@RequestParam(value = "username", defaultValue = "") String username,
+		@RequestParam(value = "password", defaultValue = "") String password
+	) {
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
+
+		// TODO: handle check auth and find user id
 		if (username.contentEquals("admin") && password.contentEquals("admin")) {
-			return "redirect:/";
+			String adminID = "adminID";
+			Midleware.SignInToken(ctx, adminID);
+			return "redirect:/main-page";
 		} else {
 			return "redirect:/auth/login";
 		}
-
-		// return "login";
 	}
 
 }
