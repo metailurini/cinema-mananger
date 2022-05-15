@@ -23,7 +23,7 @@
       background-image: url('https://source.unsplash.com/RCAhiGJsUUE/1920x1080');
     "
   >
-    <form>
+    <form action="/auth/auth" method="post">
       <h3 style="margin-bottom: 30px">Chào mừng đến với WINX</h3>
       <h3>Đăng Nhập</h3>
 
@@ -33,6 +33,7 @@
           type="text"
           placeholder="Nhập tài khoản"
           id="username"
+          name="username"
           required
         />
 
@@ -41,6 +42,7 @@
           type="password"
           placeholder="Nhập mật khẩu"
           id="password"
+          name="password"
           required
         />
       </div>

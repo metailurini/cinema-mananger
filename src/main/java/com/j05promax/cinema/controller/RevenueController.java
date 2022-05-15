@@ -17,7 +17,7 @@ public class RevenueController {
 		HttpServletRequest request,
 		HttpServletResponse response
 	) {
-		Midleware.Auth(request, response);
+		// Midleware.Auth(request, response);
 		switch(type) {
 		case "month":
 			// for month
