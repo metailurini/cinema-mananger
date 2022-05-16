@@ -132,7 +132,7 @@
                 class="input-group-text fa-solid fa-magnifying-glass"
                 id="basic-addon2"
                 style="
-                  color: #fff;
+                  color: #000;
                   background-color: #fbca10;
                   border: 1px solid #fbca10;
                 "
@@ -144,83 +144,96 @@
       </div>
       <div
         id="father"
-        class="cus-card mb-3 table-responsive"
+        class="table-responsive"
         style="
           max-width: 100%;
           background-color: blur !important;
           max-height: 700px;
         "
       >
-        <div id="child" class="row g-0">
-          <div
-            class="col-md-4"
-            style="width: 25%; display: flex; justify-content: center"
-          >
-            <img
-              src="https://www.researchgate.net/profile/Hanhe-Lin/publication/344400221/figure/fig1/AS:940579932348417@1601263139233/SAN-and-Tarsier-on-the-baboon-image-from-Set-14-The-image-generated-by-SAN-is-visibly.ppm"
-              class="img-fluid rounded-start"
-              style="
-                width: 225px;
-                height: 320px;
-                border-radius: 10px;
-                margin: auto;
-                display: block;
-              "
-              alt="..."
-            />
-          </div>
-          <div class="col-md-4" style="width: 60%">
-            <div class="card-body" style="margin-left: -20px; color: #fff">
-              <h5 class="card-title" style="font-weight: 600; font-size: 32px">
-                GODZILLA: KING OF THE MONSTER
-              </h5>
-              <p class="card-text" style="font-weight: 500; font-size: 24px">
-                Phiêu lưu - Hành động, Khoa học - Viễn tưởng
-              </p>
-              <div style="display: inline-flex">
-                <i style="font-size: 24px" class="fa-solid fa-clock"></i>
+        <div style="max-height: 500px">
+          <div id="child" class="row g-0">
+            <div
+              class="col-md-4"
+              style="width: 25%; display: flex; justify-content: center"
+            >
+              <img
+                src="https://www.researchgate.net/profile/Hanhe-Lin/publication/344400221/figure/fig1/AS:940579932348417@1601263139233/SAN-and-Tarsier-on-the-baboon-image-from-Set-14-The-image-generated-by-SAN-is-visibly.ppm"
+                class="img-fluid rounded-start"
+                style="
+                  width: 225px;
+                  height: 320px;
+                  border-radius: 10px;
+                  margin: auto;
+                  display: block;
+                "
+                alt="..."
+              />
+            </div>
+            <div class="col-md-4" style="width: 60%">
+              <div class="card-body" style="margin-left: -20px; color: #fff">
                 <h5
+                  class="card-title"
+                  style="font-weight: 600; font-size: 32px"
+                >
+                  GODZILLA: KING OF THE MONSTER
+                </h5>
+                <p class="card-text" style="font-weight: 500; font-size: 24px">
+                  Phiêu lưu - Hành động, Khoa học - Viễn tưởng
+                </p>
+                <div style="display: inline-flex">
+                  <i style="font-size: 24px" class="fa-solid fa-clock"></i>
+                  <h5
+                    style="
+                      margin-left: 7px;
+                      margin-top: -3px;
+                      font-weight: 500;
+                      font-size: 24px;
+                    "
+                  >
+                    Thời lượng: 122 phút
+                  </h5>
+                </div>
+                <p
+                  class="card-text"
                   style="
-                    margin-left: 7px;
-                    margin-top: -3px;
                     font-weight: 500;
                     font-size: 24px;
+
+                    color: #fbca10;
                   "
                 >
-                  Thời lượng: 122 phút
-                </h5>
+                  Ngày đăng: 12/06/2022
+                </p>
+                <p class="card-text" style="font-weight: 400; font-size: 24px">
+                  Giới thiệu: Chúa tể Godzilla kể về Sự xuất hiện của Godzilla
+                  trong quá khứ khiến con người phát hiện ra những sinh vật cổ
+                  đại Titan khổng lồ vẫn còn tồn tại trên Trái Đất. Sau trận
+                  chiến đánh bại kẻ thù, Godzilla mất tích vào lòng biển.
+                </p>
               </div>
-              <p
-                class="card-text"
-                style="
-                  font-weight: 500;
-                  font-size: 24px;
-
-                  color: #fbca10;
-                "
-              >
-                Ngày đăng: 12/06/2022
-              </p>
-              <p class="card-text" style="font-weight: 400; font-size: 24px">
-                Giới thiệu: Chúa tể Godzilla kể về Sự xuất hiện của Godzilla
-                trong quá khứ khiến con người phát hiện ra những sinh vật cổ đại
-                Titan khổng lồ vẫn còn tồn tại trên Trái Đất. Sau trận chiến
-                đánh bại kẻ thù, Godzilla mất tích vào lòng biển.
-              </p>
+            </div>
+            <div
+              class="col-md-4"
+              style="
+                width: 15%;
+                justify-content: center;
+                text-align: center;
+                display: flex;
+              "
+            >
+              <button href="#" class="issue-ticket">Xuất vé</button>
             </div>
           </div>
-          <div
-            class="col-md-4"
-            style="
-              width: 15%;
-              justify-content: center;
-              text-align: center;
-              display: flex;
-            "
-          >
-            <button href="#" class="issue-ticket">Xuất vé</button>
-          </div>
         </div>
+        <button
+          id="button-see-more"
+          style="width: 110px; height: 50px; padding: 0; margin-top: -5px"
+          class="btn-add-cus"
+          onclick="more()"
+        >
+          Xem thêm
+        </button>
       </div>
     </div>
   </body>
