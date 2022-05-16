@@ -1,107 +1,120 @@
 .carousel-item {
-  height: 100vh;
-  min-height: 350px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    /* -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+}
+
+.carousel-image {
+    height: 100vh;
+    min-height: 350px;
+    filter: brightness(0.4);
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .header-nav-link {
-  color: #fff !important;
-  font-size: 20px;
-  margin-right: 20px;
+    color: #fff !important;
+    font-size: 20px;
+    margin-right: 20px;
 }
 
 .header-nav-link:hover {
-  color: #fbca10 !important;
+    color: #fbca10 !important;
 }
 
 .custom-navbar-brand {
-  color: #fff;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  text-decoration: none;
-  white-space: nowrap;
-  font-size: 48px;
-  font-weight: 500;
-  transition: all 0.3s;
+    color: #fff;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 48px;
+    font-weight: 500;
+    transition: all 0.3s;
 }
 
 .custom-navbar-brand:hover {
-  color: #fbca10;
+    color: #fbca10;
 }
 
 .staff-cover {
-  margin-left: 80px;
-  margin-top: 25px;
-  text-align: center;
-  display: block;
-  background-color: transparent;
-  border: 1px solid transparent;
-  float: left;
-  color: #fff;
+    margin-left: 80px;
+    margin-top: 25px;
+    text-align: center;
+    display: block;
+    background-color: transparent;
+    border: 1px solid transparent;
+    float: left;
+    color: #fff;
 }
 
 .custom-carousel-caption {
-  position: absolute;
-  right: 15%;
-  top: 13rem;
-  left: 15%;
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-  color: #fff;
-  text-align: left;
-  width: 520px;
-  overflow: clip;
+    position: absolute;
+    right: 15%;
+    top: 13rem;
+    left: 15%;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    color: #fff;
+    text-align: left;
+    width: 520px;
+    overflow: clip;
+    /* filter: brightness(3.5); */
+    /* backdrop-filter: blur(10px) */
 }
 
 .carousel-text {
-  font-size: 24px;
-  margin-bottom: 20px;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .carousel-btn {
-  display: inline-block;
-  padding: 0.5em 0.5em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-size: 32px;
-  font-weight: 500;
-  color: #fbca10;
-  text-align: center;
-  transition: all 0.3s;
-  border: 2px solid #fbca10;
-  border-radius: 10px;
-  width: 245px;
-  margin-right: 10px;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 500;
+    color: #fbca10;
+    text-align: center;
+    transition: all 0.3s;
+    border: 2px solid #fbca10;
+    border-radius: 10px;
+    width: 245px;
+    margin-right: 10px;
 }
 
 .carousel-btn:hover {
-  color: #fff;
-  background-color: #fbca10;
+    color: #fff;
+    background-color: #fbca10;
 }
 
 .issue-ticket {
-  display: inline-block;
-  padding: 0.5em 0.5em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-size: 32px;
-  font-weight: 500;
-  color: #fff;
-  background-color: #fbca10;
-  text-align: center;
-  transition: all 0.3s;
-  border: 2px solid #fbca10;
-  border-radius: 10px;
-  width: 245px;
+    display: inline-block;
+    padding: 0.5em 0.5em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 500;
+    color: #ffff;
+    background-color: #fbca10;
+    text-align: center;
+    transition: all 0.3s;
+    border: 2px solid #fbca10;
+    border-radius: 10px;
+    width: 245px;
 }
 
 .issue-ticket:hover {
-  color: #fff;
-  background-color: #fbd43f;
-  transition: all 0.5s;
+    color: #fff;
+    background-color: #fbd43f;
+    transition: all 0.5s;
 }
