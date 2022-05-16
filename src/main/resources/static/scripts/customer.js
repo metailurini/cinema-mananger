@@ -1,8 +1,6 @@
-function showAddCustomer() {
-  var x = document.getElementById("add-customer-form");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
+var child = document.getElementById("child");
+var father = document.getElementById("father");
+
+for (let i = 0; i < 20; i++) {
+  father.appendChild(child.cloneNode(true));
 }

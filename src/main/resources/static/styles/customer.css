@@ -101,3 +101,7 @@ body {
   border-radius: 5px;
   padding: 2px;
 }
+
+.table-responsive {
+  max-height: 550px;
+}
