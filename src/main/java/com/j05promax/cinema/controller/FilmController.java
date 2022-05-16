@@ -8,21 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class FilmController {
 
-	// @GetMapping("/film")
-	// public String film(String name,
-	// 		Model model) {
-
-	// 	model.addAttribute("staffName", "Staff's name");
-	// 	return "film";
-	// }
-
 	@GetMapping("/film")
-	public String GetAllFilms() {
+	public String GetAllFilms(Model model) {
+		model.addAttribute("staffName", "Staff's name");
 		return "film";
 	}
 
