@@ -29,6 +29,7 @@ body {
 ::-webkit-scrollbar {
   width: 10px;
   background-color: #f5f5f5;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -92,4 +93,58 @@ body {
   font-size: 22px;
   line-height: 26px;
   color: #000000;
+}
+
+.bottom-container {
+  width: 49%;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.bottom-select {
+  color: #fff !important;
+  background-color: transparent !important;
+  background-image: url("https://www.nicepng.com/png/full/381-3815068_two-way-radios-arrow-animated-down-white.png") !important;
+}
+
+option:checked {
+  color: #000;
+  background-color: #fbca10;
+}
+
+option:not(:checked) {
+  color: #000;
+  background-color: #fff;
+}
+
+.progress .progress-bar {
+  border-radius: 50px;
+  background-color: #fbca10;
+}
+
+.progress-value {
+  position: relative;
+  left: -68px;
+  top: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+  letter-spacing: 2px;
+  margin-top: -5px;
+}
+.progress-bar.active {
+  animation: reverse progress-bar-stripes 0.4s linear infinite,
+    animate-positive 2s;
+}
+@-webkit-keyframes animate-positive {
+  0% {
+    width: 0%;
+  }
+}
+@keyframes animate-positive {
+  0% {
+    width: 0%;
+  }
 }

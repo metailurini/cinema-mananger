@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainPage {
-    @GetMapping("/main-page")
-    public String mainpage(
+	@GetMapping("/main-page")
+	public String mainpage(
 			HttpServletRequest request,
 			HttpServletResponse response,
 
-            @RequestParam(name = "name", required = false, defaultValue = "World") String name,
-            Model model) {
+			@RequestParam(name = "name", required = false, defaultValue = "World") String name,
+			Model model) {
 
 		Context ctx = new Context();
 		ctx.request = request;
@@ -27,7 +27,7 @@ public class MainPage {
 			return "redirect:/auth/login";
 		}
 
-        model.addAttribute("staffName", "Staff's name");
-        return "main-page";
-    }
+		model.addAttribute("staffName", "Staff's name");
+		return "main-page";
+	}
 }

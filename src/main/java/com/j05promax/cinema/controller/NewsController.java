@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import org.springframework.ui.Model;
+
 @Controller
 public class NewsController {
 
 	@GetMapping("/news")
 	public String GetAllNews(
+			Model model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
 
@@ -27,6 +30,7 @@ public class NewsController {
 			return "redirect:/auth/login";
 		}
 
+		model.addAttribute("staffName", "Staff's name");
 		return "news";
 	}
 
@@ -62,7 +66,7 @@ public class NewsController {
 	}
 
 	@DeleteMapping("/news/{id}")
-	public String DeleteNewsByID(@PathVariable(value="id") String id) {
+	public String DeleteNewsByID(@PathVariable(value = "id") String id) {
 		System.out.println("====[news id] " + id);
 		return "news";
 	}
