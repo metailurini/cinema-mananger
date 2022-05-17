@@ -22,6 +22,7 @@
     <script src="scripts/film.js" defer></script>
     <title>Chọn phim</title>
   </head>
+
   <body>
     <nav
       class="navbar navbar-expand-lg navbar-dark fixed-top"
@@ -100,10 +101,9 @@
               border-radius: 4px;
               margin-left: 20px;
             "
+            th:text="${countedFilm}"
             id="nbr"
-          >
-            10
-          </h5>
+          ></h5>
         </div>
         <form style="height: 38px; width: 350px">
           <div class="input-group mb-3">
