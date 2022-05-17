@@ -17,6 +17,7 @@ public class NewsController {
 
 	@GetMapping("/news")
 	public String GetAllNews(
+			Model model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
 
@@ -29,6 +30,7 @@ public class NewsController {
 			return "redirect:/auth/login";
 		}
 
+		model.addAttribute("staffName", "Staff's name");
 		return "news";
 	}
 
