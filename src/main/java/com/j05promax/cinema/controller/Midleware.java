@@ -56,7 +56,7 @@ public class Midleware {
 
 			try {
 				claim = cm.JWT.Decode(token);
-			} catch (JWTVerificationException e) {
+			} catch (Exception e) {
 				new Log(e).Show();
 			}
 

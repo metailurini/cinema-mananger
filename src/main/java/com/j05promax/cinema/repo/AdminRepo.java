@@ -32,6 +32,24 @@ public class AdminRepo extends Repository {
         return new Admin();
     }
 
+    public Admin GetByEmail(String email) throws SQLException {
+        Admin aAdmin = new Admin();
+
+        String query = "select * from %s where email = ? limit 1";
+        ResultSet result = this.Query(
+            String.format(query, Admin.TableName()),
+            (ParamSetter)(statement) -> {
+                statement.setString(1, email);
+            }
+        );
+        
+        if (result.next()) {
+            aAdmin.FromResultSet(result);
+        }
+
+        return aAdmin;
+    }
+
     public boolean Create(String id) {
         return true;
     }

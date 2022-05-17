@@ -6,16 +6,15 @@ import java.sql.Timestamp;
 
 public class Admin extends Entity {
 
-    public String AdminID = null;
-    public String Password = null;
-    public String SecCode = null;
-    public String Email = null;
-    public Timestamp CreatedAt;
-    public Timestamp Updated;
+    public String AdminID = "";
+    public String Password = "";
+    public String SecCode = "";
+    public String Email = "";
+    public Timestamp CreatedAt = null;
+    public Timestamp UpdatedAt = null;
 
 
     public static String TableName() {
- 
         return "admins";
     };
 
@@ -24,6 +23,9 @@ public class Admin extends Entity {
         Password = result.getString("password");
         SecCode = result.getString("sec_code");
         Email = result.getString("email");
+        CreatedAt = result.getTimestamp("created_at");
+        UpdatedAt = result.getTimestamp("updated_at");
+
         return this;
     }
 }
