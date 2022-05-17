@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta
+            http-equiv="Content-Type"
+            content="text/html, charset=UTF-8"
+            name="viewport"
+        />
+        <link rel="stylesheet" href="/styles/login.css" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <title>Đăng nhập</title>
+    </head>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html, charset=UTF-8" name="viewport" />
-    <link rel="stylesheet" href="/styles/login.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
-    <title>Đăng nhập</title>
-</head>
+    <body
+        style="
+            background-image: url('https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+        "
+    >
+        <div class="login">
+            <h3 style="margin-bottom: 30px; color: white">
+                Chào mừng đến với WINX
+            </h3>
+            <form action="/auth/auth" method="post">
+                <h3>Đăng Nhập</h3>
+                <div style="width: 80%; margin-left: 10%">
+                    <label for="username">Tài khoản</label>
+                    <input
+                        type="text"
+                        placeholder="Nhập tài khoản"
+                        id="username"
+                        name="username"
+                        required
+                    />
 
-<body style="
-  background-image: url('https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-">
-    <div class="login">
-        <h3 style="margin-bottom: 30px ; color: white">Chào mừng đến với WINX</h3>
-        <form action="/auth/auth" method="post">
-            <h3>Đăng Nhập</h3>
-            <div style="width: 80%; margin-left: 10%">
-                <label for="username">Tài khoản</label>
-                <input type="text" placeholder="Nhập tài khoản" id="username" name="username" required />
+                    <label for="password">Mật khẩu</label>
+                    <input
+                        type="password"
+                        placeholder="Nhập mật khẩu"
+                        id="password"
+                        name="password"
+                        required
+                    />
+                </div>
 
-                <label for="password">Mật khẩu</label>
-                <input type="password" placeholder="Nhập mật khẩu" id="password" name="password" required />
-            </div>
-
-            <div style="text-align: center">
-                <button>Đăng nhập</button>
-            </div>
-        </form>
-    </div>
-
-</body>
-
+                <div style="text-align: center">
+                    <button>Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
