@@ -46,6 +46,17 @@ public class FilmRepo extends Repository {
         return films;
     }
 
+    public int Count_Film_Active() throws SQLException{
+        int count_film_active = 0;
+        String query = "SELECT COUNT(*) AS counted FROM films WHERE status LIKE N'%Đang chiếu%'";
+        ResultSet result = this.Query(query, (ParamSetter)(statement) -> {});
+        if(result.next()){
+            count_film_active = result.getInt("counted");
+        }
+        this.Close();
+        return count_film_active;
+    }
+
     public Film GetByID(String id) {
         return new Film();
     }
