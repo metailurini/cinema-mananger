@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles/customer-detail.css " />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://kit.fontawesome.com/53a42bcb20.js"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"
+        ></script>
+        <script src="scripts/customer.js" defer></script>
+        <title>Lịch sử giao dịch khách hàng</title>
+    </head>
+    <body>
+        <nav
+            class="navbar navbar-expand-lg navbar-dark fixed-top"
+            style="height: 12vh; background-color: #000"
+        >
+            <div class="container">
+                <a class="custom-navbar-brand" href="/customer">
+                    <i class="fa-solid fa-arrow-left"></i> Quay lại</a
+                >
+            </div>
+        </nav>
+        <div class="container" style="margin-top: 10vh">
+            <div class="info">
+                <h5 style="color: white; width: 100%; font-size: 25px">
+                    Thông tin khách hàng
+                </h5>
+                <div style="display: flex; margin-top: 20px">
+                    <div class="username" style="margin-left: 30px" ;>
+                        <h6 style="color: white; font-size: 13px">Họ và tên</h6>
+                        <input
+                            type="text"
+                            placeholder=""
+                            id="username"
+                            name="username"
+                            style="
+                                border-radius: 10px;
+                                height: 40px;
+                                width: 250px;
+                                backdrop-filter: blur(20px);
+                                background-color: rgba(117, 117, 117, 0.2);
+                                box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+                                outline: none;
+                                border: none;
+                            "
+                            required
+                        />
+                    </div>
+                    <div class="numberphone" style="margin-left: 13.5em" ;>
+                        <h6 style="color: white; font-size: 13px">
+                            Số điện thoại
+                        </h6>
+                        <input
+                            type="numberphone"
+                            placeholder=""
+                            id="number"
+                            name="number"
+                            required
+                            style="
+                                border-radius: 10px;
+                                height: 40px;
+                                width: 250px;
+                                backdrop-filter: blur(20px);
+                                background-color: rgba(117, 117, 117, 0.2);
+                                box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+                                outline: none;
+                                border: none;
+                            "
+                        />
+                    </div>
+                    <div
+                        class="status"
+                        style="
+                            margin-left: 13.5em;
+                            border-radius: 30px;
+                            color: white;
+                        "
+                        ;
+                    >
+                        <h6 style="margin-bottom: 20px; font-size: 13px">
+                            Trạng thái
+                        </h6>
+                        <label for="work">Hoạt động</label>
+                        <input
+                            type="radio"
+                            id="work"
+                            name="status"
+                            value="work"
+                        />
+                        <label for="age2" style="margin-left: 20px"
+                            >Bị khóa</label
+                        >
+                        <input
+                            type="radio"
+                            id="ban"
+                            name="status"
+                            value="ban"
+                        />
+                    </div>
+                </div>
+                <div class="container" style="text-align: center">
+                    <div style="display: inline-block; margin-top: 15px">
+                        <button
+                            type="button"
+                            class="btn-add-cus"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                        >
+                            Thay đổi thông tin
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; margin-top: 30px">
+                <h5 style="color: #fff; font-size: 20">Lịch sử giao dịch</h5>
+                <h5
+                    style="
+                        background-color: #fff;
+                        padding: 3px 8px;
+                        height: 30px;
+                        border-radius: 4px;
+                        margin-left: 20px;
+                    "
+                >
+                    10
+                </h5>
+            </div>
+            <div
+                style="
+                    display: block;
+                    justify-content: space-between;
+                    background-color: rgba(128, 128, 128, 0.7);
+                    vertical-align: middle;
+                    align-items: center;
+                    padding: 20px;
+                    border-radius: 10px;
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                "
+            >
+                <div class="table-responsive" style="text-align: center">
+                    <table
+                        class="table table-dark"
+                        style="
+                            --bs-table-bg: none;
+                            margin-top: 5px;
+                            text-align: center;
+                            background: rgba(128, 128, 128, 0.7);
+                            border-radius: 10px;
+                        "
+                    >
+                        <thead>
+                            <tr class="table-tr">
+                                <th scope="col">Mã giao dịch</th>
+                                <th scope="col">Phim</th>
+                                <th scope="col">Ngày mua</th>
+                                <th scope="col">Giảm giá</th>
+                                <th scope="col">Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody id="father">
+                            <tr class="table-tr" id="child">
+                                <td>AIGFTJFKFJ</td>
+                                <td>The Incredibles</td>
+                                <td>12/02/2022</td>
+                                <td>10%</td>
+                                <td>45.000 VNĐ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

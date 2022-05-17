@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.auth0.jwt.exceptions.JWTCreationException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.log.Log;
@@ -56,7 +55,7 @@ public class Midleware {
 
 			try {
 				claim = cm.JWT.Decode(token);
-			} catch (JWTVerificationException e) {
+			} catch (Exception e) {
 				new Log(e).Show();
 			}
 

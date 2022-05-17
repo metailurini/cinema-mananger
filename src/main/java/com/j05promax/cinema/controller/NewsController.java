@@ -1,5 +1,8 @@
 package com.j05promax.cinema.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +16,38 @@ import org.springframework.ui.Model;
 public class NewsController {
 
 	@GetMapping("/news")
-	public String GetAllNews(Model model) {
-		model.addAttribute("staffName", "Staff's name");
+	public String GetAllNews(
+			HttpServletRequest request,
+			HttpServletResponse response) {
+
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
+
+		ctx = Midleware.Authenticate(ctx);
+		if (!ctx.SignedIn) {
+			return "redirect:/auth/login";
+		}
+
 		return "news";
 	}
 
 	@GetMapping("/news/{id}")
-	public String GetNewsByIDs(@PathVariable(value = "id") String id) {
+	public String GetNewsByIDs(
+			HttpServletRequest request,
+			HttpServletResponse response,
+
+			@PathVariable(value = "id") String id) {
+
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
+
+		ctx = Midleware.Authenticate(ctx);
+		if (!ctx.SignedIn) {
+			return "redirect:/auth/login";
+		}
+
 		System.out.println("====[news id] " + id);
 		return "news";
 	}

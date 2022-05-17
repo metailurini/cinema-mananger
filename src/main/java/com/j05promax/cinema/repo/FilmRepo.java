@@ -34,7 +34,6 @@ public class FilmRepo extends Repository {
             " left join images on " +
             " 	images.image_id = films.film_id and " +
             " 	images.image_type = 'films' ");
-        System.out.println(query);
 
         ResultSet result = this.Query(String.format(query, Film.TableName()), (ParamSetter)(statement) -> {});
 
