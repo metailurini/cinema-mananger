@@ -7,16 +7,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import org.springframework.ui.Model;
+
 @Controller
 public class NewsController {
 
 	@GetMapping("/news")
-	public String GetAllNews() {
+	public String GetAllNews(Model model) {
+		model.addAttribute("staffName", "Staff's name");
 		return "news";
 	}
 
 	@GetMapping("/news/{id}")
-	public String GetNewsByIDs(@PathVariable(value="id") String id) {
+	public String GetNewsByIDs(@PathVariable(value = "id") String id) {
 		System.out.println("====[news id] " + id);
 		return "news";
 	}
@@ -25,16 +28,15 @@ public class NewsController {
 	public String CreateNews() {
 		return "news";
 	}
-	
+
 	@PutMapping("/news/{id}")
-	public String UpdateNewsByID(@PathVariable(value="id") String id) {
+	public String UpdateNewsByID(@PathVariable(value = "id") String id) {
 		System.out.println("====[news id] " + id);
 		return "news";
 	}
 
-
 	@DeleteMapping("/news/{id}")
-	public String DeleteNewsByID(@PathVariable(value="id") String id) {
+	public String DeleteNewsByID(@PathVariable(value = "id") String id) {
 		System.out.println("====[news id] " + id);
 		return "news";
 	}
