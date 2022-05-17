@@ -28,6 +28,17 @@ public class UserRepo extends Repository {
         return users;
     }
 
+    public int Count_Customer() throws SQLException {
+        int count_customer = 0;
+        String query = "SELECT COUNT(*) as counted FROM users";
+        ResultSet result = this.Query(query, (ParamSetter)(statement) -> {});
+        if (result.next()) {
+            count_customer = result.getInt("counted");
+        }
+        this.Close();
+        return count_customer;
+    }
+
     public User GetByID(String id) {
         return new User();
     }
