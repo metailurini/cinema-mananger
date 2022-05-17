@@ -19,7 +19,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="scripts/film.js" defer></script> -->
+    <script src="scripts/film-ticketing.js" defer></script>
     <title>Xuất vé phim</title>
   </head>
   <body>
@@ -90,22 +90,36 @@
           </div>
         </div>
       </div>
-      <div>
-        <h3 class="choose-text">Chọn ngày chiếu</h3>
-        <div>
-          <div
-            style="
-              width: 137px;
-              height: 114px;
-              background: #fbca10;
-              border-radius: 10px;
-              text-align: center;
-            "
-          >
-            <p class="day">Thứ 2</p>
-            <p class="day">18</p>
-            <p class="day">th5/2022</p>
+      <div
+        style="justify-content: space-between; display: flex; margin-top: 20px"
+      >
+        <div class="bottom-container">
+          <h5>Xuất vé phim</h5>
+          <h3>Chọn lịch chiếu</h3>
+          <div class="progress" style="border-radius: 10px; height: 1.3rem">
+            <div
+              class="progress-bar progress-bar-info progress-bar-striped active"
+              style="
+                width: 20%;
+                box-shadow: -1px 10px 10px rgba(91, 192, 222, 0.7);
+              "
+            ></div>
+            <div class="progress-value">Bước 1</div>
           </div>
+        </div>
+        <div class="bottom-container">
+          <h3>Ngày chiếu</h3>
+          <select
+            id="select-day-father"
+            class="form-select bottom-select"
+            aria-label="Default select example"
+          ></select>
+          <h3>Giờ chiếu</h3>
+          <select
+            id="select-time-father"
+            class="form-select bottom-select"
+            aria-label="Default select example"
+          ></select>
         </div>
       </div>
     </div>
