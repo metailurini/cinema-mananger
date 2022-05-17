@@ -12,12 +12,21 @@ public class RevenueController {
 
 	@GetMapping("/revenue")
 	public String FilterByFactor(
-		@RequestParam(value = "type", defaultValue = "month") String type,
-		@RequestParam(value = "value", defaultValue = "") String value,
 		HttpServletRequest request,
-		HttpServletResponse response
+		HttpServletResponse response,
+
+		@RequestParam(value = "type", defaultValue = "month") String type,
+		@RequestParam(value = "value", defaultValue = "") String value
 	) {
-		// Midleware.Auth(request, response);
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
+
+		ctx = Midleware.Authenticate(ctx);
+		if (!ctx.SignedIn) {
+			return "redirect:/auth/login";
+		}
+		
 		switch(type) {
 		case "month":
 			// for month
