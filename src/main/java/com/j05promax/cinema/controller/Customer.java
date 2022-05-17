@@ -2,6 +2,9 @@ package com.j05promax.cinema.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
+
+import com.j05promax.cinema.repo.PostgreSQLRepo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +30,17 @@ public class Customer {
             return "redirect:/auth/login";
         }
 
+        PostgreSQLRepo postgreSQL = PostgreSQLRepo.getInstance();
+        
         model.addAttribute("staffName", "Staff's name");
+        int counted = 0;
+        try {
+            counted = postgreSQL.User.Count_Customer();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("countedCustomer", counted);
+
         return "customer";
     }
 }

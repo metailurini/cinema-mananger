@@ -2,6 +2,9 @@ package com.j05promax.cinema.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
+
+import com.j05promax.cinema.repo.PostgreSQLRepo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,6 +35,14 @@ public class FilmController {
 		}
 
 		model.addAttribute("staffName", "Staff's name");
+		PostgreSQLRepo postgreSQL = PostgreSQLRepo.getInstance();
+		int counted =0;
+		try {
+            counted = postgreSQL.Film.Count_Film_Active();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+		model.addAttribute("countedFilm", counted);
 		return "film";
 	}
 

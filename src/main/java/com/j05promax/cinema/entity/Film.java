@@ -16,6 +16,8 @@ public class Film extends Entity {
     public Timestamp Updated;
     public String Category;
 
+    public static final String Active = "Đang chiếu";
+    public static final String Archived = "Đã lưu trữ";
 
     public static String TableName() {
  

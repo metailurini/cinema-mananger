@@ -41,16 +41,6 @@ body {
   background-color: #cccccc;
 }
 
-.header-nav-link {
-  color: #fff !important;
-  font-size: 20px;
-  margin-right: 20px;
-}
-
-.header-nav-link:hover {
-  color: #fbca10 !important;
-}
-
 .custom-navbar-brand {
   color: #fff;
   padding-top: 0.3125rem;
@@ -58,7 +48,7 @@ body {
   margin-right: 1rem;
   text-decoration: none;
   white-space: nowrap;
-  font-size: 48px;
+  font-size: 38px;
   font-weight: 500;
   transition: all 0.3s;
 }
@@ -90,46 +80,16 @@ body {
   border-radius: 0.25rem;
 }
 
-.issue-ticket {
-  padding: 0.1em 0em;
-  box-sizing: border-box;
-  text-decoration: none;
+.choose-text {
   font-weight: 500;
-  font-size: 28px;
-  color: #000;
-  background-color: #fbca10;
-  text-align: center;
-  transition: all 0.3s;
-  border: 2px solid #fbca10;
-  border-radius: 10px;
-  width: 245px;
-  margin: auto;
-  display: block;
+  font-size: 32px;
+  color: #ffffff;
 }
 
-.issue-ticket:hover {
-  color: #000;
-  background-color: #fbd43f;
-  transition: all 0.5s;
-}
-
-.btn-add-cus {
-  display: inline-block;
-  padding: 0.5em 0.5em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-size: 20px;
+.day {
+  font-style: normal;
   font-weight: 400;
-  color: #000;
-  text-align: center;
-  transition: all 0.3s;
-  border: 2px solid #fbca10;
-  border-radius: 10px;
-  width: 27vh;
-  background-color: #fbca10;
-}
-
-.btn-add-cus:hover {
-  background-color: #fbd43f;
-  transition: all 0.5s;
+  font-size: 22px;
+  line-height: 26px;
+  color: #000000;
 }
