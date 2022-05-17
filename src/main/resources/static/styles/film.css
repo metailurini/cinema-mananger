@@ -1,3 +1,19 @@
+html {
+  background-color: #000;
+  animation: transitionIn 0.75s !important;
+}
+
+@keyframes transitionIn {
+  from {
+    opacity: 0.2;
+    transform: rotateX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
 body {
   background-image: url("https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg");
   background-repeat: no-repeat;
