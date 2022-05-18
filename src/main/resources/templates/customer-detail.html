@@ -38,23 +38,20 @@
                 <h5 style="color: white; width: 100%; font-size: 25px">
                     Thông tin khách hàng
                 </h5>
-                <div style="display: flex; margin-top: 20px">
+                <div style="display: flex; margin-top: 30px">
                     <div class="username" style="margin-left: 30px" ;>
                         <h6 style="color: white; font-size: 13px">Họ và tên</h6>
                         <input
                             type="text"
-                            placeholder=""
+                            placeholder="Nguyễn Ngọc Thanh Danh"
                             id="username"
                             name="username"
                             style="
                                 border-radius: 10px;
-                                height: 40px;
+                                height: 50px;
                                 width: 250px;
-                                backdrop-filter: blur(20px);
                                 background-color: rgba(117, 117, 117, 0.2);
-                                box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-                                outline: none;
-                                border: none;
+                                border: 1px solid #fff;
                             "
                             required
                         />
@@ -65,19 +62,16 @@
                         </h6>
                         <input
                             type="numberphone"
-                            placeholder=""
+                            placeholder="1234567890"
                             id="number"
                             name="number"
                             required
                             style="
                                 border-radius: 10px;
-                                height: 40px;
+                                height: 50px;
                                 width: 250px;
-                                backdrop-filter: blur(20px);
                                 background-color: rgba(117, 117, 117, 0.2);
-                                box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-                                outline: none;
-                                border: none;
+                                border: 1px solid #fff;
                             "
                         />
                     </div>
@@ -90,41 +84,63 @@
                         "
                         ;
                     >
-                        <h6 style="margin-bottom: 20px; font-size: 13px">
-                            Trạng thái
-                        </h6>
-                        <label for="work">Hoạt động</label>
-                        <input
-                            type="radio"
-                            id="work"
-                            name="status"
-                            value="work"
-                        />
-                        <label for="age2" style="margin-left: 20px"
-                            >Bị khóa</label
+                        <h6 style="font-size: 13px">Trạng thái</h6>
+                        <div
+                            class="body-status"
+                            style="
+                                border-radius: 10px;
+                                height: 50px;
+                                width: 250px;
+                                border: 1px solid #fff;
+                                display: inline-block;
+                                display: inline-block;
+                                text-align: center;
+                            "
                         >
-                        <input
-                            type="radio"
-                            id="ban"
-                            name="status"
-                            value="ban"
-                        />
+                            <input
+                                type="radio"
+                                id="work"
+                                name="status"
+                                value="work"
+                                style="margin-right: 5px; margin-top: 15px"
+                            />
+                            <label for="work">Hoạt động</label>
+
+                            <input
+                                type="radio"
+                                id="ban"
+                                name="status"
+                                value="ban"
+                                style="margin-left: 20px; margin-right: 5px"
+                            />
+                            <label for="age2">Bị khóa</label>
+                        </div>
                     </div>
                 </div>
-                <div class="container" style="text-align: center">
-                    <div style="display: inline-block; margin-top: 15px">
+                <div
+                    class="container"
+                    style="text-align: center; margin-top: 17px"
+                >
+                    <div
+                        style="
+                            display: inline-block;
+                            margin-top: 20px;
+                            font-size: 13px;
+                        "
+                    >
                         <button
                             type="button"
                             class="btn-add-cus"
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
+                            style="height: 40px; width: 200px; font-size: 14px"
                         >
                             Thay đổi thông tin
                         </button>
                     </div>
                 </div>
             </div>
-            <div style="display: flex; margin-top: 30px">
+            <div style="display: flex; margin-top: 20px">
                 <h5 style="color: #fff; font-size: 20">Lịch sử giao dịch</h5>
                 <h5
                     style="
@@ -167,6 +183,7 @@
                                 <th scope="col">Mã giao dịch</th>
                                 <th scope="col">Phim</th>
                                 <th scope="col">Ngày mua</th>
+                                <th scope="col">Số lượng</th>
                                 <th scope="col">Giảm giá</th>
                                 <th scope="col">Thành tiền</th>
                             </tr>
@@ -176,6 +193,7 @@
                                 <td>AIGFTJFKFJ</td>
                                 <td>The Incredibles</td>
                                 <td>12/02/2022</td>
+                                <td>1</td>
                                 <td>10%</td>
                                 <td>45.000 VNĐ</td>
                             </tr>
