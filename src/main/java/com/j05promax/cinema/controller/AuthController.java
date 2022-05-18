@@ -1,7 +1,10 @@
 package com.j05promax.cinema.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,6 +19,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthController {
+
+	public static Context setError(Context ctx, String message) {
+		Cookie error = ctx.getCookie("error");
+		String mess = "";
+		try {
+			mess = URLEncoder.encode(message, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+
+		error.setValue(mess);
+		error.setPath("/");
+		ctx.response.addCookie(error);
+		return ctx;
+	}
 
 	@GetMapping("/")
 	public String Default(
@@ -68,10 +86,12 @@ public class AuthController {
 		try {
 			foundedAdmin = repo.Admin.GetByEmail(adminEmail);
 		} catch (SQLException e) {
+			AuthController.setError(ctx, "Lỗi Hệ Thống");
 			return "redirect:/auth/login";
 		}
 
 		if (foundedAdmin.AdminID.contentEquals("")) {
+			AuthController.setError(ctx, "Tài Khoản Đăng Nhập Không Hợp Lệ");
 			return "redirect:/auth/login";
 		}
 

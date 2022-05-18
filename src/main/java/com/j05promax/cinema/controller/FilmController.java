@@ -74,7 +74,6 @@ public class FilmController {
 			return "redirect:/auth/login";
 		}
 
-		System.out.println("====[films id] " + id);
 		return "film";
 	}
 
@@ -85,13 +84,11 @@ public class FilmController {
 
 	@PutMapping("/film/{id}")
 	public String UpdateFilmByID(@PathVariable String id) {
-		System.out.println("====[films id] " + id);
 		return "film";
 	}
 
 	@DeleteMapping("/film/{id}")
 	public String DeleteFilmByID(@PathVariable String id) {
-		System.out.println("====[films id] " + id);
 		return "film";
 	}
 }

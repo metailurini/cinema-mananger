@@ -21,6 +21,7 @@ public class Customer {
             HttpServletRequest request,
             HttpServletResponse response,
 
+            @RequestParam(name = "phone_or_name", required = false, defaultValue = "") String searchString,
             @RequestParam(name = "name", required = false, defaultValue = "World") String name,
             Model model) {
 
@@ -29,27 +30,27 @@ public class Customer {
         ctx.response = response;
 
         ctx = Midleware.Authenticate(ctx);
-        if (!ctx.SignedIn) {
-            return "redirect:/auth/login";
-        }
+        if (!ctx.SignedIn) return "redirect:/auth/login";
+            
 
         PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
         
-        model.addAttribute("staffName", "Staff's name");
         int counted = 0;
         try {
-            counted = repo.User.Count_Customer();
+            counted = repo.User.CountCustomer(searchString);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        model.addAttribute("countedCustomer", counted);
 
         List<User> users = new ArrayList<>();
-        
         try {
-            users = repo.User.GetAll();
-        } catch (SQLException e) {}
+            users = repo.User.GetAll(searchString);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        model.addAttribute("staffName", "Staff's name");
+        model.addAttribute("countedCustomer", counted);
         model.addAttribute("users", users);
         return "customer";
     }

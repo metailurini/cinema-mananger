@@ -50,7 +50,6 @@ public class NewsController {
 			return "redirect:/auth/login";
 		}
 
-		System.out.println("====[news id] " + id);
 		return "news";
 	}
 
@@ -61,13 +60,11 @@ public class NewsController {
 
 	@PutMapping("/news/{id}")
 	public String UpdateNewsByID(@PathVariable(value = "id") String id) {
-		System.out.println("====[news id] " + id);
 		return "news";
 	}
 
 	@DeleteMapping("/news/{id}")
 	public String DeleteNewsByID(@PathVariable(value = "id") String id) {
-		System.out.println("====[news id] " + id);
 		return "news";
 	}
 }
