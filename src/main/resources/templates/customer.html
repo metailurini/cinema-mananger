@@ -281,7 +281,7 @@
         >
           <thead>
             <tr class="table-tr">
-              <th scope="col">#</th>
+              <th scope="col">STT</th>
               <th scope="col">ID</th>
               <th scope="col">Họ và tên</th>
               <th scope="col">Số điện thoại</th>
@@ -290,31 +290,19 @@
             </tr>
           </thead>
           <tbody id="father">
-            <!-- <tr class="table-tr" id="child">
-              <th scope="row">1</th>
-              <td>1234567890</td>
-              <td>Nguyễn Ngọc Thanh Danh</td>
-              <td>0903150548</td>
+            <tr th:each="users, state: ${users}">
+              <th scope="row" th:text="${state.index + 1}" />
+              <td th:text="${users.UserID}" />
+              <td th:text="${users.FullName}" />
+              <td th:text="${users.PhoneNumber}" />
               <td>
-                <p class="status-active">Hoạt động</p>
-              </td>
-              <td class="see-history">Xem chi tiết</td>
-            </tr> -->
-
-
-            <tr class="table-tr">
-            <tr th:each="users: ${users}">
-              <th scope="row">1</th>
-              <td th:text="${users.UserID}"/>
-              <td th:text="${users.FullName}"/>
-              <td th:text="${users.PhoneNumber}"/>
-              <td>
-                <p class="status-active" th:text="${users.Status}"> </p>
+                <p
+                  th:classappend="${users.Status} == 'Hoạt động' ? status-active : status-locked"
+                  th:text="${users.Status}"
+                ></p>
               </td>
               <td class="see-history">Xem chi tiết</td>
             </tr>
-
-
           </tbody>
         </table>
         <button
