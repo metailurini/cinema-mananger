@@ -160,7 +160,7 @@
               style="width: 25%; display: flex; justify-content: center"
             >
               <img
-                src="https://www.researchgate.net/profile/Hanhe-Lin/publication/344400221/figure/fig1/AS:940579932348417@1601263139233/SAN-and-Tarsier-on-the-baboon-image-from-Set-14-The-image-generated-by-SAN-is-visibly.ppm"
+                th:attr="src=${films.Thumnail}" 
                 class="img-fluid"
                 style="
                   width: 225px;
@@ -181,7 +181,7 @@
                   <td th:text="${films.Name}"/>
                 </h5>
                 <p class="card-text" style="font-weight: 500; font-size: 24px">
-                  Phiêu lưu - Hành động, Khoa học - Viễn tưởng
+                  <td th:text="${films.Category}"/>
                 </p>
                 <div style="display: inline-flex">
                   <i style="font-size: 24px" class="fa-solid fa-clock"></i>
