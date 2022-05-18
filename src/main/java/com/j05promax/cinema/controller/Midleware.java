@@ -20,7 +20,6 @@ class Context {
 	public Context LoadFromClaim(Map<String, ?> claim) {
 		Map<String, ?> details = ((Claim) claim.get(Midleware.TokenDetailsKey)).asMap();
 		this.UserID = (String) details.get("userID");
-		System.out.println(this.UserID);
 		return this;
 	}
 

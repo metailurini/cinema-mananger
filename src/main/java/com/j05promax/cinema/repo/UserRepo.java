@@ -14,11 +14,18 @@ public class UserRepo extends Repository {
         super(conn);
     }
 
-    public ArrayList<User> GetAll() throws SQLException {
+    public ArrayList<User> GetAll(String search) throws SQLException {
         ArrayList<User> users = new ArrayList<User>();
         
-        String query = "select * from %s";
-        ResultSet result = this.Query(String.format(query, User.TableName()), (ParamSetter)(statement) -> {});
+        String query = "select * from %s where LOWER(full_name) like ? OR phone_number like ?";
+        System.out.println( String.format(query, User.TableName()) + "|| " +  ("%" + search + "%").toLowerCase());
+        ResultSet result = this.Query(
+            String.format(query, User.TableName()),
+            (ParamSetter)(statement) -> {
+                statement.setString(1, ("%" + search + "%").toLowerCase());
+                statement.setString(2, ("%" + search + "%").toLowerCase());
+            }
+        );
 
         while (result.next()) {
             users.add(new User().FromResultSet(result));

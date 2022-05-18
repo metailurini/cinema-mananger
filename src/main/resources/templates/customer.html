@@ -259,7 +259,7 @@
           </ul>
         </div>
         <form style="height: 38px">
-          <div class="input-group mb-3">
+          <div class="input-group mb-3" action="/customer" method="get">
             <input
               type="text"
               class="form-control"
@@ -269,8 +269,8 @@
               "
               placeholder="Tìm kiếm"
               aria-label="#"
+              name="phone_or_name"
               aria-describedby="basic-addon2"
-              required
             />
             <button
               type="submit"
@@ -332,7 +332,7 @@
           <tbody id="father" th:each="users, state: ${users}">
             <tr class="table-tr" id="child">
               <th scope="row" th:text="${state.index + 1}" />
-              <td th:text="${users.UserID}" />
+              <td th:text="${#strings.substring(users.UserID,0,5)}" />
               <td th:text="${users.FullName}" />
               <td th:text="${users.PhoneNumber}" />
               <td>

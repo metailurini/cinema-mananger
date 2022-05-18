@@ -46,7 +46,6 @@ public class StaffController {
 			return "redirect:/auth/login";
 		}
 
-		System.out.println("====[staff id] " + id);
 		return "staff";
 	}
 
@@ -57,14 +56,12 @@ public class StaffController {
 	
 	@PutMapping("/staff/{id}")
 	public String UpdateStaffByID(@PathVariable String id) {
-		System.out.println("====[staff id] " + id);
 		return "staff";
 	}
 
 
 	@DeleteMapping("/staff/{id}")
 	public String DeleteStaffByID(@PathVariable String id) {
-		System.out.println("====[staff id] " + id);
 		return "staff";
 	}
 }

@@ -21,6 +21,7 @@ public class Customer {
             HttpServletRequest request,
             HttpServletResponse response,
 
+            @RequestParam(name = "phone_or_name", required = false) String phoneOrName,
             @RequestParam(name = "name", required = false, defaultValue = "World") String name,
             Model model) {
 
@@ -47,8 +48,10 @@ public class Customer {
         List<User> users = new ArrayList<>();
         
         try {
-            users = repo.User.GetAll();
-        } catch (SQLException e) {}
+            users = repo.User.GetAll(phoneOrName == null ? "" : phoneOrName);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         model.addAttribute("users", users);
         return "customer";
