@@ -18,7 +18,6 @@ public class UserRepo extends Repository {
         ArrayList<User> users = new ArrayList<User>();
         
         String query = "select * from %s where LOWER(full_name) like ? OR phone_number like ?";
-        System.out.println( String.format(query, User.TableName()) + "|| " +  ("%" + search + "%").toLowerCase());
         ResultSet result = this.Query(
             String.format(query, User.TableName()),
             (ParamSetter)(statement) -> {
@@ -35,10 +34,16 @@ public class UserRepo extends Repository {
         return users;
     }
 
-    public int Count_Customer() throws SQLException {
+    public int CountCustomer(String search) throws SQLException {
         int count_customer = 0;
-        String query = "SELECT COUNT(*) as counted FROM users";
-        ResultSet result = this.Query(query, (ParamSetter)(statement) -> {});
+        String query = "select count(*) as counted from %s where LOWER(full_name) like ? OR phone_number like ?";
+        ResultSet result = this.Query(
+            String.format(query, User.TableName()),
+            (ParamSetter)(statement) -> {
+                statement.setString(1, ("%" + search + "%").toLowerCase());
+                statement.setString(2, ("%" + search + "%").toLowerCase());
+            }
+        );
         if (result.next()) {
             count_customer = result.getInt("counted");
         }
