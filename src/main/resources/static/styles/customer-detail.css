@@ -1,7 +1,24 @@
+html {
+    background-color: #000;
+    animation: transitionIn 0.75s !important;
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0.8;
+        transform: rotateX(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
 body {
     background-image: url("https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
+    font-family: "Roboto", sans-serif;
 }
 
 ::-webkit-scrollbar-track {
@@ -13,6 +30,7 @@ body {
 ::-webkit-scrollbar {
     width: 10px;
     background-color: #f5f5f5;
+    border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -145,4 +163,5 @@ h5 {
     max-height: 550px;
 }
 input {
+    color: #ffff;
 }
