@@ -100,13 +100,15 @@ body {
   background: rgba(255, 255, 255, 0.3);
   color: #fff;
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px;
 }
 
 .bottom-select {
   color: #fff !important;
   background-color: transparent !important;
-  background-image: url("https://www.nicepng.com/png/full/381-3815068_two-way-radios-arrow-animated-down-white.png") !important;
+  background-image: url("https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png") !important;
+  border-radius: 10px !important;
+  height: 52px !important;
 }
 
 option:checked {
@@ -127,12 +129,13 @@ option:not(:checked) {
 .progress-value {
   position: relative;
   left: -68px;
-  top: 4px;
+  top: 6px;
   font-size: 14px;
   font-weight: bold;
   color: #000;
   letter-spacing: 2px;
   margin-top: -5px;
+  cursor: default;
 }
 .progress-bar.active {
   animation: reverse progress-bar-stripes 0.4s linear infinite,
@@ -147,4 +150,26 @@ option:not(:checked) {
   0% {
     width: 0%;
   }
+}
+
+.btn-next {
+  margin-top: 50px;
+  display: inline-block;
+  padding: 0.5em 0em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  transition: all 0.3s;
+  border: 2px solid #fbca10;
+  border-radius: 10px;
+  width: 20vh;
+  background-color: #fbca10;
+}
+
+.btn-next:hover {
+  background-color: #fbd43f;
+  transition: all 0.5s;
 }
