@@ -47,7 +47,7 @@ public class FilmRepo extends Repository {
 
     public int Count_Film_Active() throws SQLException{
         int count_film_active = 0;
-        String query = "SELECT COUNT(*) AS counted FROM films WHERE status LIKE N'%Đang chiếu%'";
+        String query = "SELECT COUNT(*) AS counted FROM films WHERE status LIKE N'%open%'";
         ResultSet result = this.Query(query, (ParamSetter)(statement) -> {});
         if(result.next()){
             count_film_active = result.getInt("counted");

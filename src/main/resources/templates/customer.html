@@ -290,7 +290,7 @@
             </tr>
           </thead>
           <tbody id="father">
-            <tr class="table-tr" id="child">
+            <!-- <tr class="table-tr" id="child">
               <th scope="row">1</th>
               <td>1234567890</td>
               <td>Nguyễn Ngọc Thanh Danh</td>
@@ -299,7 +299,22 @@
                 <p class="status-active">Hoạt động</p>
               </td>
               <td class="see-history">Xem chi tiết</td>
+            </tr> -->
+
+
+            <tr class="table-tr">
+            <tr th:each="users: ${users}">
+              <th scope="row">1</th>
+              <td th:text="${users.UserID}"/>
+              <td th:text="${users.FullName}"/>
+              <td th:text="${users.PhoneNumber}"/>
+              <td>
+                <p class="status-active" th:text="${users.Status}"> </p>
+              </td>
+              <td class="see-history">Xem chi tiết</td>
             </tr>
+
+
           </tbody>
         </table>
         <button
