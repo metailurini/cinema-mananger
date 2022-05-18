@@ -94,12 +94,16 @@
         style="justify-content: space-between; display: flex; margin-top: 20px"
       >
         <div class="bottom-container">
-          <h5>Xuất vé phim</h5>
+          <h5 style="margin-bottom: 30px">Xuất vé phim</h5>
           <h3>Chọn lịch chiếu</h3>
-          <div class="progress" style="border-radius: 10px; height: 1.3rem">
+          <div
+            class="progress"
+            style="border-radius: 10px; height: 1.6rem; margin-top: 20px"
+          >
             <div
               class="progress-bar progress-bar-info progress-bar-striped active"
               style="
+                border-radius: 10px;
                 width: 20%;
                 box-shadow: -1px 10px 10px rgba(91, 192, 222, 0.7);
               "
@@ -108,19 +112,26 @@
           </div>
         </div>
         <div class="bottom-container">
-          <h3>Ngày chiếu</h3>
-          <select
-            id="select-day-father"
-            class="form-select bottom-select"
-            aria-label="Default select example"
-          ></select>
-          <h3>Giờ chiếu</h3>
-          <select
-            id="select-time-father"
-            class="form-select bottom-select"
-            aria-label="Default select example"
-          ></select>
+          <div style="margin-bottom: 20px">
+            <h3 style="margin-bottom: 10px">Ngày chiếu</h3>
+            <select
+              id="select-day-father"
+              class="form-select bottom-select"
+              aria-label="Default select example"
+            ></select>
+          </div>
+          <div>
+            <h3 style="margin-bottom: 10px">Giờ chiếu</h3>
+            <select
+              id="select-time-father"
+              class="form-select bottom-select"
+              aria-label="Default select example"
+            ></select>
+          </div>
         </div>
+      </div>
+      <div style="text-align: center">
+        <button class="btn-next">Tiếp theo</button>
       </div>
     </div>
   </body>
