@@ -44,7 +44,7 @@ public class Customer {
 
         List<User> users = new ArrayList<>();
         try {
-            users = repo.User.GetAll(searchString);
+            users = repo.User.GetAll(searchString.strip());
         } catch (SQLException e) {
             e.printStackTrace();
         }

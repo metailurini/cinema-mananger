@@ -14,11 +14,11 @@ public class FilmRepo extends Repository {
         super(conn);
     }
 
-    public ArrayList<Film> GetAll() throws SQLException {
+    public ArrayList<Film> GetAll(String search) throws SQLException {
         ArrayList<Film> films = new ArrayList<Film>();
 
         String query = (
-            " select " +
+            " SELECT " +
             " 	films.film_id, " +
             " 	films.name, " +
             " 	films.details, " +
@@ -31,11 +31,17 @@ public class FilmRepo extends Repository {
             " 	images.url " +
             " from " +
             " 	films " +
-            " left join images on " +
-            " 	images.image_id = films.film_id and " +
-            " 	images.image_type = 'films' ");
+            " LEFT JOIN images ON " +
+            " 	images.image_id = films.film_id AND " +
+            " 	images.image_type = 'films' " +
+            " WHERE LOWER(name) LIKE ? ");
 
-        ResultSet result = this.Query(String.format(query, Film.TableName()), (ParamSetter)(statement) -> {});
+        ResultSet result = this.Query(
+            String.format(query, Film.TableName()),
+            (ParamSetter)(statement) -> {
+                statement.setString(1, ("%" + search + "%").toLowerCase());
+            }
+        );
 
         while (result.next()) {
             films.add(new Film().FromResultSet(result));
@@ -45,7 +51,7 @@ public class FilmRepo extends Repository {
         return films;
     }
 
-    public int Count_Film_Active() throws SQLException{
+    public int CountFilmActive() throws SQLException{
         int count_film_active = 0;
         String query = "SELECT COUNT(*) AS counted FROM films WHERE status LIKE N'%open%'";
         ResultSet result = this.Query(query, (ParamSetter)(statement) -> {});
