@@ -62,32 +62,10 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link header-nav-link" href="./news">Sự kiện</a>
+              <a class="nav-link header-nav-link" href="./event">Sự kiện</a>
             </li>
-          </ul>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDarkDropdownMenuLink"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                style="font-size: 20px"
-              >
-                Dành cho admin
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                aria-labelledby="navbarDarkDropdownMenuLink"
-              >
-                <li><a class="dropdown-item" href="#">Thêm phim</a></li>
-                <li><a class="dropdown-item" href="#">Quản lý doanh thu</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Quản lý tài khoản</a>
-                </li>
-              </ul>
+            <li class="nav-item">
+              <a class="nav-link header-nav-link" href="./news">Tin tức</a>
             </li>
           </ul>
           <div class="staff-cover">
@@ -175,6 +153,7 @@
         "
       >
         <div style="max-height: 500px">
+          <tr th:each="films: ${films}">
           <div id="child" class="row g-0">
             <div
               class="col-md-4"
@@ -199,7 +178,7 @@
                   class="card-title"
                   style="font-weight: 600; font-size: 32px"
                 >
-                  GODZILLA: KING OF THE MONSTER
+                  <td th:text="${films.Name}"/>
                 </h5>
                 <p class="card-text" style="font-weight: 500; font-size: 24px">
                   Phiêu lưu - Hành động, Khoa học - Viễn tưởng
@@ -214,20 +193,22 @@
                       font-size: 24px;
                     "
                   >
-                    Thời lượng: 122 phút
+                    Thời lượng: <td th:text="${films.Duration}"/> phút
                   </h5>
                 </div>
                 <p
                   class="card-text"
-                  style="font-weight: 500; font-size: 24px; color: #fbca10"
+                  style="
+                    font-weight: 500;
+                    font-size: 24px;
+
+                    color: #fbca10;
+                  "
                 >
-                  Ngày đăng: 12/06/2022
+                  Ngày đăng: <td th:text="${films.CreatedAt}"/>
                 </p>
                 <p class="card-text" style="font-weight: 400; font-size: 24px">
-                  Giới thiệu: Chúa tể Godzilla kể về Sự xuất hiện của Godzilla
-                  trong quá khứ khiến con người phát hiện ra những sinh vật cổ
-                  đại Titan khổng lồ vẫn còn tồn tại trên Trái Đất. Sau trận
-                  chiến đánh bại kẻ thù, Godzilla mất tích vào lòng biển.
+                  Giới thiệu: <td th:text="${films.Details}"/>
                 </p>
               </div>
             </div>
@@ -243,6 +224,7 @@
               <a href="./film-ticketing" class="issue-ticket"> Xuất vé </a>
             </div>
           </div>
+        </tr>
         </div>
         <!-- <button
           id="button-see-more"

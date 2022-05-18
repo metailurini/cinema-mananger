@@ -13,6 +13,7 @@ public class User extends Entity {
     public String Email = null;
     public Timestamp CreatedAt;
     public Timestamp Updated;
+    public String Status = null;
 
 
     public static String TableName() {
@@ -26,6 +27,7 @@ public class User extends Entity {
         AdminID = result.getString("admin_id");
         PhoneNumber = result.getString("phone_number");
         Email = result.getString("email");
+        Status = result.getString("status");
         return this;
     }
 }
