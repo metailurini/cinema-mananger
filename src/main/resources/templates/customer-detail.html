@@ -20,7 +20,8 @@
             crossorigin="anonymous"
         ></script>
         <script src="scripts/customer.js" defer></script>
-        <title>Lịch sử giao dịch khách hàng</title>
+        <script src="scripts/customer-detail.js" defer></script>
+        <title>Chi tiết khách hàng</title>
     </head>
     <body>
         <nav
@@ -134,9 +135,13 @@
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
                             style="height: 40px; width: 200px; font-size: 14px"
+                            onclick="onchangeBTN()"
                         >
                             Thay đổi thông tin
                         </button>
+                        <script>
+                            function onchangeBTN() {}
+                        </script>
                     </div>
                 </div>
             </div>
