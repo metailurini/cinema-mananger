@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class FilmTicketingController {
-    @GetMapping("film-ticketing")
-    public String filmTicketing(Model model, HttpServletRequest request, HttpServletResponse response) {
+public class FilmTicketingSecondStep {
+    @GetMapping("film-ticketing-second-step")
+    public String filmTicketingSecondStep(Model model, HttpServletRequest request, HttpServletResponse response) {
         Context ctx = new Context();
         ctx.request = request;
         ctx.response = response;
@@ -20,6 +20,6 @@ public class FilmTicketingController {
             return "redirect:/auth/login";
         }
         model.addAttribute("staffName", "Staff's name");
-        return "film-ticketing";
+        return "film-ticketing-second-step";
     }
 }
