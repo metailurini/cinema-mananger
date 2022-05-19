@@ -45,25 +45,14 @@ function initSeats() {
       const seatText = document.createElement("p");
       seat.id = rowTextIndex + (j + 1);
       seat.addEventListener("click", function () {
-        // console.log(rowTextIndex + (j + 1));
         if (seat.className.includes("seat-available")) {
-          seat.className = seat.className.replace(
-            "seat-available",
-            "seat-choosing"
-          );
-          showSeatChoosed(seat);
+          addSeatChoosed(seat);
         } else if (seat.className.includes("seat-choosing")) {
-          seat.className = seat.className.replace(
-            "seat-choosing",
-            "seat-available"
-          );
           deleteSeatChoosed(seat);
         }
       });
-
       seatText.className = "seat-text";
       seatText.innerText = rowTextIndex + (j + 1);
-
       seat.appendChild(seatText);
       if (j == 1 || j == 4) {
         seat.className =
@@ -80,7 +69,7 @@ function initSeats() {
   }
 }
 
-function showSeatChoosed(seatChoosed) {
+function addSeatChoosed(seatChoosed) {
   var showSeatFather = document.getElementById("father");
   var showSeatChild = document.createElement("div");
   var showSeatGrandChild = document.createElement("div");
@@ -96,6 +85,11 @@ function showSeatChoosed(seatChoosed) {
     "GODZILLA: KING OF THE MONSTER"
   );
   var textNodePrice = document.createTextNode("50.000");
+
+  seatChoosed.className = seatChoosed.className.replace(
+    "seat-available",
+    "seat-choosing"
+  );
 
   showSeatChild.style = "display: flex; justify-content: space-between";
   showSeatGrandChild.style = "display: flex";
@@ -123,6 +117,10 @@ function showSeatChoosed(seatChoosed) {
 
 function deleteSeatChoosed(seatChoosed) {
   const seatDelete = document.getElementById("temp" + seatChoosed.id);
+  seatChoosed.className = seatChoosed.className.replace(
+    "seat-choosing",
+    "seat-available"
+  );
   seatDelete.remove();
 }
 
