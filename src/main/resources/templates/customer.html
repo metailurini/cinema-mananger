@@ -1,411 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="styles/customer.css " />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous"
-        />
-        <script
-            src="https://kit.fontawesome.com/53a42bcb20.js"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"
-        ></script>
-        <script src="scripts/customer.js" defer></script>
-        <title>Khách hàng</title>
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/customer.css " />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/53a42bcb20.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/customer.js" defer></script>
+    <title>Khách hàng</title>
+  </head>
 
-    <body>
-        <nav
-            class="navbar navbar-expand-lg navbar-dark fixed-top"
-            style="height: 12vh; background-color: #000"
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top"
+      style="height: 12vh; background-color: #000"
+    >
+      <div class="container">
+        <a class="custom-navbar-brand" href="./main-page">WINX</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-            <div class="container">
-                <a class="custom-navbar-brand" href="./main-page">WINX</a>
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarResponsive"
-                    aria-controls="navbarResponsive"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item active">
-                            <a
-                                class="nav-link header-nav-link"
-                                href="./main-page"
-                                >Trang chủ</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                style="color: #fbca10 !important"
-                                class="nav-link header-nav-link"
-                                href="./customer"
-                                >Khách hàng</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link header-nav-link" href="./film"
-                                >Xuất vé phim</a
-                            >
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link header-nav-link" href="./news"
-                                >Sự kiện</a
-                            >
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle"
-                                href="#"
-                                id="navbarDarkDropdownMenuLink"
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                                style="font-size: 20px"
-                            >
-                                Dành cho admin
-                            </a>
-                            <ul
-                                class="dropdown-menu dropdown-menu-dark"
-                                aria-labelledby="navbarDarkDropdownMenuLink"
-                            >
-                                <li>
-                                    <a class="dropdown-item" href="#"
-                                        >Thêm phim</a
-                                    >
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#"
-                                        >Quản lý doanh thu</a
-                                    >
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#"
-                                        >Quản lý tài khoản</a
-                                    >
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="staff-cover">
-                        <div
-                            style="
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                            "
-                        >
-                            <img
-                                class="img-avatar"
-                                onclick="openCloseDropdownUser()"
-                                src="https://www.nicepng.com/png/full/189-1891900_alumni-team-black-icon-png.png"
-                            />
-                            <div
-                                id="openCloseDropdownUser"
-                                style="
-                                    display: none;
-                                    position: absolute;
-                                    top: 110px;
-                                    border: 1px solid rgba(0, 0, 0, 0.15);
-                                    border-radius: 0.25rem;
-                                    color: rgb(222, 226, 230);
-                                    background-color: rgb(52, 58, 64);
-                                    padding: 10px 15px;
-                                    margin: 0px;
-                                    font-size: 1rem;
-                                    z-index: 1000;
-                                    text-align: left;
-                                    list-style: none;
-                                    background-clip: padding-box;
-                                "
-                            >
-                                <a
-                                    class="img-avatar-drop"
-                                    onclick="deleteCookie()"
-                                >
-                                    <i class="fa-solid fa-power-off"></i> Đăng
-                                    xuất
-                                </a>
-                            </div>
-                        </div>
-                        <p
-                            style="margin-top: 5px; backdrop-filter: blur(15px)"
-                            th:text="${staffName}"
-                        />
-                    </div>
-                </div>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+              <a class="nav-link header-nav-link" href="./main-page"
+                >Trang chủ</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                style="color: #fbca10 !important"
+                class="nav-link header-nav-link"
+                href="./customer"
+                >Khách hàng</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link header-nav-link" href="./film">Xuất vé phim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link header-nav-link" href="./news">Sự kiện</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDarkDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                style="font-size: 20px"
+              >
+                Dành cho admin
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                aria-labelledby="navbarDarkDropdownMenuLink"
+              >
+                <li>
+                  <a class="dropdown-item" href="#">Thêm phim</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Quản lý doanh thu</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Quản lý tài khoản</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="staff-cover">
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <img
+                class="img-avatar"
+                onclick="openCloseDropdownUser()"
+                src="https://www.nicepng.com/png/full/189-1891900_alumni-team-black-icon-png.png"
+              />
+              <div
+                id="openCloseDropdownUser"
+                style="
+                  display: none;
+                  position: absolute;
+                  top: 110px;
+                  border: 1px solid rgba(0, 0, 0, 0.15);
+                  border-radius: 0.25rem;
+                  color: rgb(222, 226, 230);
+                  background-color: rgb(52, 58, 64);
+                  padding: 10px 15px;
+                  margin: 0px;
+                  font-size: 1rem;
+                  z-index: 1000;
+                  text-align: left;
+                  list-style: none;
+                  background-clip: padding-box;
+                "
+              >
+                <a class="img-avatar-drop" onclick="deleteCookie()">
+                  <i class="fa-solid fa-power-off"></i> Đăng xuất
+                </a>
+              </div>
             </div>
-        </nav>
-        <div class="container" style="margin-top: 12vh">
-            <div style="display: flex; justify-content: space-between">
-                <div style="display: flex">
-                    <h3 style="color: #fff; font-size: 20">Khách hàng</h3>
-                    <h5
-                        style="
-                            background-color: #fff;
-                            padding: 3px 10px;
-                            height: 33px;
-                            border-radius: 4px;
-                            margin-left: 20px;
-                        "
-                        th:text="${countedCustomer}"
-                        id="nbr"
-                    ></h5>
-                </div>
-                <div>
-                    <button
-                        type="button"
-                        class="btn-add-cus"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
+            <p
+              style="margin-top: 5px; backdrop-filter: blur(15px)"
+              th:text="${staffName}"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container" style="margin-top: 12vh">
+      <div style="display: flex; justify-content: space-between">
+        <div style="display: flex">
+          <h3 style="color: #fff; font-size: 20">Khách hàng</h3>
+          <h5
+            style="
+              background-color: #fff;
+              padding: 3px 10px;
+              height: 33px;
+              border-radius: 4px;
+              margin-left: 20px;
+            "
+            th:text="${countedCustomer}"
+            id="nbr"
+          ></h5>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn-add-cus"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            + Thêm khách hàng
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <h4 style="text-align: center">Thêm khách hàng mới</h4>
+                  <div style="margin-bottom: 15px">
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Họ và tên</label
                     >
-                        + Thêm khách hàng
-                    </button>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nhập họ và tên"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="exampleInputEmail1" class="form-label"
+                      >Số điện thoại</label
+                    >
+                    <input
+                      type="tel"
+                      name="phone"
+                      pattern="0[0-9]{9}"
+                      class="form-control"
+                      placeholder="Nhập số điện thoại"
+                      required
+                    />
+                  </div>
                 </div>
+                <div class="modal-footer">
+                  <a type="button" class="cancel" data-bs-dismiss="modal">
+                    Hủy
+                  </a>
+                  <button
+                    type="submit"
+                    id="submit"
+                    class="btn-add-cus"
+                    style="font-size: 18px; width: 170px; padding: 0.3em 0.3em"
+                  >
+                    Thêm khách hàng
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form
+        style="
+          height: 70px;
+          display: flex;
+          justify-content: space-between;
+          background-color: rgba(128, 128, 128, 0.7);
+          vertical-align: middle;
+          align-items: center;
+          padding: 20px;
+          border-radius: 10px;
+          margin-top: 30px;
+        "
+        action="/customer"
+        method="get"
+      >
+        <div>
+          <label for="status" style="color: #fff; font-size: 18px"
+            >Trạng thái:
+          </label>
+          <select
+            style="
+              margin-left: 5px;
+              width: 130px;
+              height: 30px;
+              border-radius: 5px;
+            "
+          >
+            <option value="">Chọn</option>
+            <option value="Hoạt động">Hoạt động</option>
+            <option value="Bị khóa">Bị khóa</option>
+          </select>
+        </div>
+        <div style="display: flex">
+          <input
+            type="text"
+            class="form-control"
+            style="
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+            "
+            placeholder="Tìm kiếm"
+            aria-label="#"
+            name="phone_or_name"
+            aria-describedby="basic-addon2"
+          />
+          <button
+            type="submit"
+            id="submit"
+            style="
+              background-color: #fbca10;
+              border: 1px solid #fbca10;
+              border-top-right-radius: 10px;
+              border-bottom-right-radius: 10px;
+            "
+          >
+            <i
+              class="input-group-text fa-solid fa-magnifying-glass"
+              id="basic-addon2"
+              style="
+                color: #000;
+                background-color: #fbca10;
+                border: 1px solid #fbca10;
+              "
+              ;
+            ></i>
+          </button>
+        </div>
+      </form>
+      <!-- Toast -->
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          style="
+            font-family: Roboto, sans-serif;
+            border-radius: 20px;
+            background-color: rgba(128, 128, 128, 0.7);
+            color: #fff;
+          "
+        >
+          <div
+            class="toast-header"
+            style="border-radius: 20px; background-color: #fff; color: #fff"
+          >
+            <div>
+              <img
+                src="https://res.cloudinary.com/baodang359/image/upload/v1652890417/java-project/logo_xhctkr.jpg"
+                style="height: 20px; width: 30px; border-radius: 4px"
+              />
             </div>
 
-            <!-- Modal -->
-            <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
+            <strong
+              class="me-auto"
+              style="
+                margin-left: 10px;
+                color: rgba(248, 39, 39, 0.7);
+                font-size: 17px;
+              "
+              >LỖI!</strong
             >
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            ></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="mb-3">
-                                    <h4 style="text-align: center">
-                                        Thêm khách hàng mới
-                                    </h4>
-                                    <div style="margin-bottom: 15px">
-                                        <label
-                                            for="exampleInputEmail1"
-                                            class="form-label"
-                                            >Họ và tên</label
-                                        >
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            placeholder="Nhập họ và tên"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label
-                                            for="exampleInputEmail1"
-                                            class="form-label"
-                                            >Số điện thoại</label
-                                        >
-                                        <input
-                                            type="tel"
-                                            name="phone"
-                                            pattern="0[0-9]{9}"
-                                            class="form-control"
-                                            placeholder="Nhập số điện thoại"
-                                            required
-                                        />
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a
-                                        type="button"
-                                        class="cancel"
-                                        data-bs-dismiss="modal"
-                                    >
-                                        Hủy
-                                    </a>
-                                    <button
-                                        type="submit"
-                                        id="submit"
-                                        class="btn-add-cus"
-                                        style="
-                                            font-size: 18px;
-                                            width: 170px;
-                                            padding: 0.3em 0.3em;
-                                        "
-                                    >
-                                        Thêm khách hàng
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <form
-                style="
-                    height: 70px;
-                    display: flex;
-                    justify-content: space-between;
-                    background-color: rgba(128, 128, 128, 0.7);
-                    vertical-align: middle;
-                    align-items: center;
-                    padding: 20px;
-                    border-radius: 10px;
-                    margin-top: 30px;
-                "
-                action="/customer"
-                method="get"
-            >
-                <div>
-                    <label for="status" style="color: #fff; font-size: 18px"
-                        >Trạng thái:
-                    </label>
-                    <select
-                        style="
-                            margin-left: 5px;
-                            width: 130px;
-                            height: 30px;
-                            border-radius: 5px;
-                        "
-                    >
-                        <option value="">Chọn</option>
-                        <option value="Hoạt động">Hoạt động</option>
-                        <option value="Bị khóa">Bị khóa</option>
-                    </select>
-                </div>
-                <div style="display: flex">
-                    <input
-                        type="text"
-                        class="form-control"
-                        style="
-                            border-top-left-radius: 10px;
-                            border-bottom-left-radius: 10px;
-                            border-top-right-radius: 0;
-                            border-bottom-right-radius: 0;
-                        "
-                        placeholder="Tìm kiếm"
-                        aria-label="#"
-                        name="phone_or_name"
-                        aria-describedby="basic-addon2"
-                    />
-                    <button
-                        type="submit"
-                        id="submit"
-                        style="
-                            background-color: #fbca10;
-                            border: 1px solid #fbca10;
-                            border-top-right-radius: 10px;
-                            border-bottom-right-radius: 10px;
-                        "
-                    >
-                        <i
-                            class="input-group-text fa-solid fa-magnifying-glass"
-                            id="basic-addon2"
-                            style="
-                                color: #000;
-                                background-color: #fbca10;
-                                border: 1px solid #fbca10;
-                            "
-                            ;
-                        ></i>
-                    </button>
-                </div>
-            </form>
-            <div
-                class="table-responsive"
-                style="
-                    display: block;
-                    justify-content: space-between;
-                    background-color: rgba(128, 128, 128, 0.7);
-                    /* vertical-align: middle; */
-                    align-items: center;
-                    padding: 20px;
-                    border-radius: 10px;
-                    margin-top: 25px;
-                    margin-bottom: 20px;
-                "
-            >
-                <table
-                    class="table table-dark"
-                    style="
-                        --bs-table-bg: none;
-                        text-align: center;
-                        background: rgba(128, 128, 128, 0.7);
-                        border-radius: 10px;
-                    "
-                >
-                    <thead>
-                        <tr class="table-tr">
-                            <th scope="col">#</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Họ và tên</th>
-                            <th scope="col">Số điện thoại</th>
-                            <th scope="col">Trạng thái</th>
-                            <th scope="col">Chi tiết</th>
-                        </tr>
-                    </thead>
-                    <tbody id="father" th:each="users, state: ${users}">
-                        <tr class="table-tr" id="child">
-                            <th scope="row" th:text="${state.index + 1}" />
-                            <td
-                                th:text="${#strings.substring(users.UserID,0,5)}"
-                            />
-                            <td th:text="${users.FullName}" />
-                            <td th:text="${users.PhoneNumber}" />
-                            <td>
-                                <p
-                                    th:classappend="${users.Status} == 'Hoạt động' ? status-active : status-locked"
-                                    th:text="${users.Status}"
-                                ></p>
-                            </td>
-                            <td>
-                                <a class="see-history" href="./customer-detail"
-                                    >Xem chi tiết</a
-                                >
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="container" style="text-align: center">
-                    <nav aria-label="..." style="display: inline-block">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link page-unactive" href="#"
-                                    >1</a
-                                >
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link page-active" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link page-unactive" href="#"
-                                    >3</a
-                                >
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+            <small class="text-muted" style="color: #fff">Bây giờ</small>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">Thông tin đăng nhập không chính xác</div>
         </div>
-    </body>
+
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          style="
+            font-family: Roboto, sans-serif;
+            border-radius: 20px;
+            background-color: rgba(128, 128, 128, 0.7);
+            color: #fff;
+          "
+        >
+          <div
+            class="toast-header"
+            style="
+              font-family: Roboto, sans-serif;
+              border-radius: 20px;
+              background-color: rgba(0, 0, 0, 0.3);
+              color: #fff;
+            "
+          >
+            <img src="..." class="rounded me-2" alt="..." />
+            <strong class="me-auto">Bootstrap</strong>
+            <small class="text-muted">2 seconds ago</small>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body">
+            Heads up, toasts will stack automatically
+          </div>
+        </div>
+      </div>
+      <div
+        class="table-responsive"
+        style="
+          display: block;
+          justify-content: space-between;
+          background-color: rgba(128, 128, 128, 0.7);
+          /* vertical-align: middle; */
+          align-items: center;
+          padding: 20px;
+          border-radius: 10px;
+          margin-top: 25px;
+          margin-bottom: 20px;
+        "
+      >
+        <table
+          class="table table-dark"
+          style="
+            --bs-table-bg: none;
+            text-align: center;
+            background: rgba(128, 128, 128, 0.7);
+            border-radius: 10px;
+          "
+        >
+          <thead>
+            <tr class="table-tr">
+              <th scope="col">#</th>
+              <th scope="col">ID</th>
+              <th scope="col">Họ và tên</th>
+              <th scope="col">Số điện thoại</th>
+              <th scope="col">Trạng thái</th>
+              <th scope="col">Chi tiết</th>
+            </tr>
+          </thead>
+          <tbody id="father" th:each="users, state: ${users}">
+            <tr class="table-tr" id="child">
+              <th scope="row" th:text="${state.index + 1}" />
+              <td th:text="${#strings.substring(users.UserID,0,5)}" />
+              <td th:text="${users.FullName}" />
+              <td th:text="${users.PhoneNumber}" />
+              <td>
+                <p
+                  th:classappend="${users.Status} == 'Hoạt động' ? status-active : status-locked"
+                  th:text="${users.Status}"
+                ></p>
+              </td>
+              <td>
+                <a class="see-history" href="./customer-detail">Xem chi tiết</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="container" style="text-align: center">
+          <nav aria-label="..." style="display: inline-block">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link page-unactive" href="#">1</a>
+              </li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link page-active" href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link page-unactive" href="#">3</a>
+              </li>
+            </ul>
+          </nav>
+          <button type="button" class="btn btn-primary" id="liveToastBtn">
+            Show live toast
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
