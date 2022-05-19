@@ -18,6 +18,28 @@ body {
   background-image: url("https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+  font-family: "Roboto", sans-serif;
+}
+
+.img-avatar {
+  width: 50px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.img-avatar:hover {
+  opacity: 0.8;
+}
+
+.img-avatar-drop {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+.img-avatar-drop:hover {
+  color: #adb5bd !important;
 }
 
 ::-webkit-scrollbar-track {
@@ -96,22 +118,21 @@ body {
   box-sizing: border-box;
   text-decoration: none;
   font-weight: 500;
-  font-size: 28px;
-  color: #000;
-  background-color: #fbca10;
+  font-size: 23px;
+  color: rgb(24, 22, 22);
+  background-color: #fbf310;
   text-align: center;
   transition: all 0.3s;
   border: 2px solid #fbca10;
   border-radius: 10px;
   width: 245px;
-  margin: auto;
-  display: block;
 }
 
 .issue-ticket:hover {
   color: #000;
   background-color: #fbd43f;
   transition: all 0.5s;
+  opacity: 0.6;
 }
 
 .btn-add-cus {
