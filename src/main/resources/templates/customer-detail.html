@@ -53,6 +53,8 @@
                                 width: 250px;
                                 background-color: rgba(117, 117, 117, 0.2);
                                 border: 1px solid #fff;
+                                vertical-align: middle;
+                                padding: 20px;
                             "
                             required
                         />
@@ -73,6 +75,8 @@
                                 width: 250px;
                                 background-color: rgba(117, 117, 117, 0.2);
                                 border: 1px solid #fff;
+                                vertical-align: middle;
+                                padding: 20px;
                             "
                         />
                     </div>
@@ -94,8 +98,9 @@
                                 width: 250px;
                                 border: 1px solid #fff;
                                 display: inline-block;
-                                display: inline-block;
-                                text-align: center;
+                                /* text-align: center; */
+                                vertical-align: middle;
+                                padding: 10px;
                             "
                         >
                             <input
@@ -103,7 +108,12 @@
                                 id="work"
                                 name="status"
                                 value="work"
-                                style="margin-right: 5px; margin-top: 15px"
+                                style="
+                                    margin-right: 2px;
+                                    margin-left: 10px;
+                                    width: 15px;
+                                    height: 15px;
+                                "
                             />
                             <label for="work">Hoạt động</label>
 
@@ -112,7 +122,11 @@
                                 id="ban"
                                 name="status"
                                 value="ban"
-                                style="margin-left: 20px; margin-right: 5px"
+                                style="
+                                    margin-left: 30px;
+                                    width: 15px;
+                                    height: 15px;
+                                "
                             />
                             <label for="age2">Bị khóa</label>
                         </div>
@@ -134,7 +148,13 @@
                             class="btn-add-cus"
                             data-bs-toggle="modal"
                             data-bs-target="#exampleModal"
-                            style="height: 40px; width: 200px; font-size: 14px"
+                            style="
+                                height: 40px;
+                                width: 200px;
+                                font-size: 14px;
+                                font-weight: 500;
+                                color: #fff;
+                            "
                             onclick="onchangeBTN()"
                         >
                             Thay đổi thông tin
@@ -181,6 +201,8 @@
                             text-align: center;
                             background: rgba(128, 128, 128, 0.7);
                             border-radius: 10px;
+                            background-origin: none;
+                            border-bottom: none;
                         "
                     >
                         <thead>
