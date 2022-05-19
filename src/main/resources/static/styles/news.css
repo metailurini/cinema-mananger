@@ -113,26 +113,25 @@ body {
   border-radius: 0.25rem;
 }
 
-.issue-ticket {
+.edit-delete-btn {
   padding: 0.1em 0em;
   box-sizing: border-box;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 23px;
-  color: rgb(24, 22, 22);
-  background-color: #fbf310;
+  font-weight: 400;
+  font-size: 26px;
+  color: #000;
+  background-color: #fbca10;
   text-align: center;
   transition: all 0.3s;
-  border: 2px solid #fbca10;
   border-radius: 10px;
-  width: 245px;
+  width: 200px;
+  cursor: pointer;
 }
-
-.issue-ticket:hover {
+.edit-delete-btn:hover {
   color: #000;
+  opacity: 0.6;
   background-color: #fbd43f;
   transition: all 0.5s;
-  opacity: 0.6;
 }
 
 .btn-add-cus {
@@ -154,4 +153,15 @@ body {
 .btn-add-cus:hover {
   background-color: #fbd43f;
   transition: all 0.5s;
+}
+
+.cus-cancel {
+  color: #888888;
+  margin-right: 20px !important;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cus-cancel:hover {
+  color: #999;
 }

@@ -26,7 +26,7 @@ public class FilmController {
 			HttpServletRequest request,
 			HttpServletResponse response,
 
-            @RequestParam(name = "name", required = false, defaultValue = "") String search,
+			@RequestParam(name = "name", required = false, defaultValue = "") String search,
 			Model model) {
 
 		Context ctx = new Context();
@@ -39,18 +39,17 @@ public class FilmController {
 
 		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
 
-		int counted =0;
+		int counted = 0;
 		try {
-            counted = repo.Film.CountFilmActive();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+			counted = repo.Film.CountFilmActive();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		List<Film> films = new ArrayList<>();
-		try{
+		try {
 			films = repo.Film.GetAll(search.strip());
-		}
-		catch(SQLException e){
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 

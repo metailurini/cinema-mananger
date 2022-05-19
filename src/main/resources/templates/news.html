@@ -161,21 +161,23 @@
             type="button"
             class="btn-add-cus"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#addEventModal"
           >
             + Thêm sự kiện
           </button>
         </div>
       </div>
-      <!-- Modal -->
+
+      <!-- Modal add event -->
       <div
         class="modal fade"
-        id="exampleModal"
+        id="addEventModal"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
         tabindex="-1"
-        aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
           <div class="modal-content" style="border-radius: 20px; height: 700px">
             <div class="modal-header">
               <button
@@ -185,11 +187,13 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding: 3rem">
               <form>
                 <div class="mb-3">
-                  <h4 style="text-align: center">Thêm sự kiện</h4>
-                  <div style="margin-bottom: 15px">
+                  <h4 style="text-align: center; margin-top: -20px">
+                    Thêm sự kiện
+                  </h4>
+                  <div style="margin-bottom: 20px">
                     <label for="exampleInputEmail1" class="form-label"
                       >Tiêu đề</label
                     >
@@ -200,7 +204,7 @@
                       required
                     />
                   </div>
-                  <div>
+                  <div style="margin-bottom: 20px">
                     <label for="exampleInputEmail1" class="form-label"
                       >Liên kết ảnh</label
                     >
@@ -212,15 +216,16 @@
                   </div>
                   <div>
                     <label class="form-label">Nội dung</label>
-                    <input
+                    <textarea
+                      style="height: 250px; resize: none"
                       class="form-control"
                       placeholder="Nhập nội dung"
                       required
-                    />
+                    ></textarea>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <a type="button" class="cancel" data-bs-dismiss="modal">
+                  <a type="button" class="cus-cancel" data-bs-dismiss="modal">
                     Hủy
                   </a>
                   <button
@@ -254,6 +259,142 @@
         <div style="margin-top: 30px">
           <tr th:each="films: ${films}">
             <div id="child" class="row g-0" style="margin-bottom: 30px">
+              <!-- Modal delete -->
+              <div
+                th:attr="id= 'delete' + ${films.FilmID}"
+                class="modal fade"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                >
+                  <div
+                    class="modal-content"
+                    style="text-align: center; border-radius: 20px"
+                  >
+                    <div class="modal-body">
+                      <h5 style="font-weight: 500; font-size: 32px">
+                        Xóa sự kiện!
+                      </h5>
+                      <p style="font-weight: 400; font-size: 24px">
+                        Bạn có chắc muốn xóa sự kiện “
+                        <td style="font-weight: bold" th:text="${films.Name}" />
+                        ” không?
+                      </p>
+                    </div>
+                    <div
+                      class="modal-footer"
+                      style="justify-content: center; border: none"
+                    >
+                      <a
+                        class="edit-delete-btn"
+                        style="
+                          background-color: #fff;
+                          border: 1px solid #fbca10;
+                        "
+                        data-bs-dismiss="modal"
+                        href="#"
+                      >
+                        Hủy
+                      </a>
+                      <a class="edit-delete-btn" href="#"> Xác nhận </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal edit event -->
+              <div
+                th:attr="id= 'edit' + ${films.FilmID}"
+                class="modal fade"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                >
+                  <div
+                    class="modal-content"
+                    style="border-radius: 20px; height: 700px"
+                  >
+                    <div class="modal-header">
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body" style="padding: 3rem">
+                      <form>
+                        <div class="mb-3">
+                          <h4 style="text-align: center; margin-top: -20px">
+                            Chỉnh sửa sự kiện
+                          </h4>
+                          <div style="margin-bottom: 20px">
+                            <label for="exampleInputEmail1" class="form-label"
+                              >Tiêu đề</label
+                            >
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Nhập tiêu đề"
+                              required
+                              th:attr="value= ${films.Name}"
+                            />
+                          </div>
+                          <div style="margin-bottom: 20px">
+                            <label for="exampleInputEmail1" class="form-label"
+                              >Liên kết ảnh</label
+                            >
+                            <input
+                              class="form-control"
+                              placeholder="Nhập liên kết ảnh"
+                              required
+                              th:attr="value= ${films.Thumnail}"
+                            />
+                          </div>
+                          <div>
+                            <label class="form-label">Nội dung</label>
+                            <textarea
+                              style="height: 250px; resize: none"
+                              class="form-control"
+                              placeholder="Nhập nội dung"
+                              required
+                              th:text="${films.Details}"
+                            ></textarea>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <a
+                            type="button"
+                            class="cus-cancel"
+                            data-bs-dismiss="modal"
+                          >
+                            Hủy
+                          </a>
+                          <button
+                            type="submit"
+                            id="submit"
+                            class="btn-add-cus"
+                            style="
+                              font-size: 18px;
+                              width: 170px;
+                              padding: 0.3em 0.3em;
+                            "
+                          >
+                            Thêm sự kiện
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div
                 class="col-md-4"
                 style="
@@ -265,6 +406,7 @@
               >
                 <img
                   th:attr="src=${films.Thumnail}"
+                  onerror="this.onerror=null;this.src='https://u.today/sites/default/files/styles/1600x900/public/2021-09/AdobeStock_312349880.jpeg';"
                   class="img-fluid"
                   style="
                     width: 225px;
@@ -274,7 +416,6 @@
                     display: block;
                     object-fit: cover;
                   "
-                  alt="..."
                 />
               </div>
               <div class="col-md-4" style="width: 75%">
@@ -307,9 +448,23 @@
                       Ngày đăng:
                       <td th:text="${films.CreatedAt}" />
                     </p>
-                    <a href="./film-ticketing" class="issue-ticket">
-                      Xuất vé
-                    </a>
+                    <div style="display: flex">
+                      <a
+                        class="edit-delete-btn"
+                        style="margin-right: 20px"
+                        data-bs-toggle="modal"
+                        th:attr="data-bs-target= '#delete' + ${films.FilmID}"
+                      >
+                        Xóa
+                      </a>
+                      <a
+                        class="edit-delete-btn"
+                        data-bs-toggle="modal"
+                        th:attr="data-bs-target= '#edit' + ${films.FilmID}"
+                      >
+                        Chỉnh sửa
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
