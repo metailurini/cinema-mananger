@@ -72,17 +72,6 @@ body {
   background-color: #fbca10;
 }
 
-.progress-value {
-  position: relative;
-  top: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #000;
-  letter-spacing: 2px;
-  cursor: default;
-  text-align: right;
-  margin-right: 20px;
-}
 .progress-bar.active {
   animation: reverse progress-bar-stripes 0.4s linear infinite,
     animate-positive 2s;

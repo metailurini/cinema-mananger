@@ -83,32 +83,11 @@ body {
   height: 52px !important;
 }
 
-option:checked {
-  color: #000;
-  background-color: #fbca10;
-}
-
-option:not(:checked) {
-  color: #000;
-  background-color: #fff;
-}
-
 .progress .progress-bar {
   border-radius: 50px;
   background-color: #fbca10;
 }
 
-.progress-value {
-  position: relative;
-  left: -68px;
-  top: 6px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #000;
-  letter-spacing: 2px;
-  margin-top: -5px;
-  cursor: default;
-}
 .progress-bar.active {
   animation: reverse progress-bar-stripes 0.4s linear infinite,
     animate-positive 2s;
