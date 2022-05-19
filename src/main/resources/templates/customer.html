@@ -261,8 +261,9 @@
                     </div>
                 </div>
             </div>
-            <div
+            <form
                 style="
+                    height: 70px;
                     display: flex;
                     justify-content: space-between;
                     background-color: rgba(128, 128, 128, 0.7);
@@ -272,21 +273,10 @@
                     border-radius: 10px;
                     margin-top: 30px;
                 "
+                action="/customer"
+                method="get"
             >
-                <div class="btn-group">
-                    <!-- <button
-            type="button"
-            class="btn dropdown-toggle"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-            style="color: #4a4a4a; background-color: #fff; border-radius: 5px"
-          >
-            Trạng thái
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Hoạt động</a></li>
-            <li><a class="dropdown-item" href="#">Bị khóa</a></li>
-          </ul> -->
+                <div>
                     <label for="status" style="color: #fff; font-size: 18px"
                         >Trạng thái:
                     </label>
@@ -303,44 +293,44 @@
                         <option value="Bị khóa">Bị khóa</option>
                     </select>
                 </div>
-                <form style="height: 38px">
-                    <div class="input-group mb-3">
-                        <input
-                            type="text"
-                            class="form-control"
+                <div style="display: flex">
+                    <input
+                        type="text"
+                        class="form-control"
+                        style="
+                            border-top-left-radius: 10px;
+                            border-bottom-left-radius: 10px;
+                            border-top-right-radius: 0;
+                            border-bottom-right-radius: 0;
+                        "
+                        placeholder="Tìm kiếm"
+                        aria-label="#"
+                        name="phone_or_name"
+                        aria-describedby="basic-addon2"
+                    />
+                    <button
+                        type="submit"
+                        id="submit"
+                        style="
+                            background-color: #fbca10;
+                            border: 1px solid #fbca10;
+                            border-top-right-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                        "
+                    >
+                        <i
+                            class="input-group-text fa-solid fa-magnifying-glass"
+                            id="basic-addon2"
                             style="
-                                border-top-left-radius: 10px;
-                                border-bottom-left-radius: 10px;
-                            "
-                            placeholder="Tìm kiếm"
-                            aria-label="#"
-                            aria-describedby="basic-addon2"
-                            required
-                        />
-                        <button
-                            type="submit"
-                            id="submit"
-                            style="
+                                color: #000;
                                 background-color: #fbca10;
                                 border: 1px solid #fbca10;
-                                border-top-right-radius: 10px;
-                                border-bottom-right-radius: 10px;
                             "
-                        >
-                            <i
-                                class="input-group-text fa-solid fa-magnifying-glass"
-                                id="basic-addon2"
-                                style="
-                                    color: #000;
-                                    background-color: #fbca10;
-                                    border: 1px solid #fbca10;
-                                "
-                                ;
-                            ></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
+                            ;
+                        ></i>
+                    </button>
+                </div>
+            </form>
             <div
                 class="table-responsive"
                 style="
@@ -377,7 +367,9 @@
                     <tbody id="father" th:each="users, state: ${users}">
                         <tr class="table-tr" id="child">
                             <th scope="row" th:text="${state.index + 1}" />
-                            <td th:text="${users.UserID}" />
+                            <td
+                                th:text="${#strings.substring(users.UserID,0,5)}"
+                            />
                             <td th:text="${users.FullName}" />
                             <td th:text="${users.PhoneNumber}" />
                             <td>
@@ -395,18 +387,23 @@
                     </tbody>
                 </table>
                 <div class="container" style="text-align: center">
-                    <button
-                        style="
-                            display: inline-block;
-                            width: 110px;
-                            height: 30px;
-                            font-size: 16px;
-                            padding: 0;
-                        "
-                        class="btn-add-cus"
-                    >
-                        Xem thêm
-                    </button>
+                    <nav aria-label="..." style="display: inline-block">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link page-unactive" href="#"
+                                    >1</a
+                                >
+                            </li>
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link page-active" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link page-unactive" href="#"
+                                    >3</a
+                                >
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>

@@ -38,7 +38,6 @@ public class RevenueController {
 			// raise error
 		}
 
-		System.out.println("====[revenue type] " + type + "; " + "====[revenue value] " + value + request.getHeader("Accept"));
 		return "revenue";
 	}
 }

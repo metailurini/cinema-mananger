@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 
 @Controller
@@ -26,6 +26,7 @@ public class FilmController {
 			HttpServletRequest request,
 			HttpServletResponse response,
 
+            @RequestParam(name = "name", required = false, defaultValue = "") String search,
 			Model model) {
 
 		Context ctx = new Context();
@@ -33,28 +34,29 @@ public class FilmController {
 		ctx.response = response;
 
 		ctx = Midleware.Authenticate(ctx);
-		if (!ctx.SignedIn) {
+		if (!ctx.SignedIn)
 			return "redirect:/auth/login";
-		}
 
-		model.addAttribute("staffName", "Staff's name");
 		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+
 		int counted =0;
 		try {
-            counted = repo.Film.Count_Film_Active();
+            counted = repo.Film.CountFilmActive();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-		model.addAttribute("countedFilm", counted);
 
 		List<Film> films = new ArrayList<>();
-
 		try{
-			films = repo.Film.GetAll();
+			films = repo.Film.GetAll(search.strip());
 		}
-		catch(SQLException e){}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
 
 		model.addAttribute("films", films);
+		model.addAttribute("countedFilm", counted);
+		model.addAttribute("staffName", "Staff's name");
 		return "film";
 	}
 
@@ -74,7 +76,6 @@ public class FilmController {
 			return "redirect:/auth/login";
 		}
 
-		System.out.println("====[films id] " + id);
 		return "film";
 	}
 
@@ -85,13 +86,11 @@ public class FilmController {
 
 	@PutMapping("/film/{id}")
 	public String UpdateFilmByID(@PathVariable String id) {
-		System.out.println("====[films id] " + id);
 		return "film";
 	}
 
 	@DeleteMapping("/film/{id}")
 	public String DeleteFilmByID(@PathVariable String id) {
-		System.out.println("====[films id] " + id);
 		return "film";
 	}
 }
