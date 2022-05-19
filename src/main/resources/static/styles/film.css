@@ -117,14 +117,13 @@ body {
     padding: 0.1em 0em;
     box-sizing: border-box;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 23px;
-    color: rgb(24, 22, 22);
-    background-color: #fbf310;
+    color: #fff;
+    background-color: #fbca10;
     text-align: center;
     transition: all 0.3s;
-    border: 2px solid #fbca10;
-
+    /* border: 2px solid #fbca10; */
     border-radius: 10px;
     width: 245px;
     margin: auto;
@@ -132,10 +131,6 @@ body {
 }
 .issue-ticket:hover {
     opacity: 0.6;
-}
-
-.issue-ticket:hover {
-    color: #000;
     background-color: #fbd43f;
     transition: all 0.5s;
 }
