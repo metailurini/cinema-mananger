@@ -166,3 +166,15 @@ body {
 .table-responsive {
   max-height: 550px;
 }
+
+.page-active {
+  background-color: #fbca10 !important;
+  color: #000 !important;
+  border-color: #fbca10 !important;
+  font-weight: 500;
+}
+
+.page-unactive {
+  color: #fbca10 !important;
+  font-weight: 500;
+}
