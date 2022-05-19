@@ -101,6 +101,7 @@ function showSeatChoosed(seatChoosed) {
   showSeatGrandChild.style = "display: flex";
   showSeatGrandChildTop.className = "seat-choosing";
   showSeatGrandChildTop.style = "margin-right: 10px; width: 50px; height: 50px";
+  a.style = "cursor: pointer";
   i.className = "fa-solid fa-square-xmark";
   seatName.style = "margin-top: 12px";
   seatPrice.style = "color: #fbca10";
@@ -109,7 +110,6 @@ function showSeatChoosed(seatChoosed) {
   seatName.appendChild(textNodeSeatName);
   filmName.appendChild(textNodeFilmName);
   seatPrice.appendChild(textNodePrice);
-
   showSeatGrandChildTop.appendChild(seatName);
   showSeatGrandChildBottom.appendChild(filmName);
   showSeatGrandChildBottom.appendChild(seatPrice);
@@ -126,11 +126,8 @@ function deleteSeatChoosed(seatChoosed) {
   seatDelete.remove();
 }
 
-var child = document.getElementById("child");
-var father = document.getElementById("father");
-
-// for (let i = 0; i < 20; i++) {
-//   father.appendChild(child.cloneNode(true));
-// }
-
 initSeats();
+
+function logra(varr) {
+  console.log(varr);
+}
