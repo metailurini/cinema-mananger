@@ -22,6 +22,7 @@ html {
 }
 body {
     background-color: #080710 !important;
+    font-family: "Roboto", sans-serif;
 }
 .background {
     width: 430px;
