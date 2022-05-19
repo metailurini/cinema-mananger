@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class FilmTicketingSecondStep {
-    @GetMapping("film-ticketing-second-step")
-    public String filmTicketingSecondStep(Model model, HttpServletRequest request, HttpServletResponse response) {
+public class FilmTicketingLastStep {
+    @GetMapping("film-ticketing-last-step")
+    public String filmTicketingLastStep(Model model, HttpServletRequest request, HttpServletResponse response) {
         Context ctx = new Context();
         ctx.request = request;
         ctx.response = response;
@@ -19,6 +19,6 @@ public class FilmTicketingSecondStep {
         if (!ctx.SignedIn) {
             return "redirect:/auth/login";
         }
-        return "film-ticketing-second-step";
+        return "film-ticketing-last-step";
     }
 }

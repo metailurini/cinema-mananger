@@ -59,38 +59,12 @@ body {
   color: #fbca10;
 }
 
-.day {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 26px;
-  color: #000000;
-}
-
-.bottom-container {
+.top-container {
   width: 49%;
   background: rgba(255, 255, 255, 0.3);
   color: #fff;
   border-radius: 10px;
   padding: 20px;
-}
-
-.bottom-select {
-  color: #fff !important;
-  background-color: transparent !important;
-  background-image: url("https://www.freeiconspng.com/uploads/white-down-arrow-png-2.png") !important;
-  border-radius: 10px !important;
-  height: 52px !important;
-}
-
-option:checked {
-  color: #000;
-  background-color: #fbca10;
-}
-
-option:not(:checked) {
-  color: #000;
-  background-color: #fff;
 }
 
 .progress .progress-bar {
@@ -100,14 +74,14 @@ option:not(:checked) {
 
 .progress-value {
   position: relative;
-  left: -68px;
-  top: 6px;
+  top: 5px;
   font-size: 14px;
   font-weight: bold;
   color: #000;
   letter-spacing: 2px;
-  margin-top: -5px;
   cursor: default;
+  text-align: right;
+  margin-right: 20px;
 }
 .progress-bar.active {
   animation: reverse progress-bar-stripes 0.4s linear infinite,
@@ -139,6 +113,7 @@ option:not(:checked) {
   border-radius: 10px;
   width: 20vh;
   background-color: #fbca10;
+  cursor: pointer;
 }
 
 .btn-next:hover {

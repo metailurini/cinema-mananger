@@ -7,7 +7,7 @@ const dates = (startDate, num) =>
 
 const chooseDay = () => {
   let date = new Date();
-  date.setDate(date.getDate() + 1);
+  date.setDate(date.getDate());
   let weekdays = dates(date, 7);
   let select = document.getElementById("select-day-father");
 
