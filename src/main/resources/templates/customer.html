@@ -353,18 +353,19 @@
           </tbody>
         </table>
         <div class="container" style="text-align: center">
-          <button
-            style="
-              display: inline-block;
-              width: 110px;
-              height: 30px;
-              font-size: 16px;
-              padding: 0;
-            "
-            class="btn-add-cus"
-          >
-            Xem thêm
-          </button>
+          <nav aria-label="..." style="display: inline-block">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link page-unactive" href="#">1</a>
+              </li>
+              <li class="page-item active" aria-current="page">
+                <a class="page-link page-active" href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link page-unactive" href="#">3</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
