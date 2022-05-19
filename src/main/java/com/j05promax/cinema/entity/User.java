@@ -27,6 +27,8 @@ public class User extends Entity {
         AdminID = result.getString("admin_id");
         PhoneNumber = result.getString("phone_number");
         Email = result.getString("email");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         Status = result.getString("status");
         return this;
     }

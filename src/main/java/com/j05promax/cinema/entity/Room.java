@@ -22,6 +22,8 @@ public class Room extends Entity {
         RoomID = result.getString("room_id");
         Name = result.getString("name");
         Status = result.getString("status");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }

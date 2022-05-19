@@ -24,6 +24,8 @@ public class Post extends Entity {
         Author = result.getString("author");
         Title = result.getString("title");
         Content = result.getString("content");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }

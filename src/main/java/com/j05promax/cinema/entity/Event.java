@@ -24,6 +24,8 @@ public class Event extends Entity {
         StartTime = result.getTimestamp("start_time");
         EndTime = result.getTimestamp("end_time");
         Title = result.getString("title");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }
