@@ -49,9 +49,10 @@ body {
   margin-right: 1rem;
   text-decoration: none;
   white-space: nowrap;
-  font-size: 38px;
+  font-size: 28px;
   font-weight: 500;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .custom-navbar-brand:hover {
@@ -112,6 +113,7 @@ body {
   border-radius: 10px;
   width: 20vh;
   background-color: #fbca10;
+  cursor: pointer;
 }
 
 .btn-next:hover {
