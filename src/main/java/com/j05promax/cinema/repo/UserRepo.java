@@ -35,7 +35,7 @@ public class UserRepo extends Repository {
         return users;
     }
 
-    public int CountCustomer(String search, String action) throws SQLException {
+    public int CountCustomer(String search, String choose) throws SQLException {
         int count_customer = 0;
         String query = "select count(*) as counted from %s where (LOWER(full_name) like ? OR phone_number like ?) AND LOWER(status) like ?";
         ResultSet result = this.Query(
@@ -43,7 +43,7 @@ public class UserRepo extends Repository {
             (ParamSetter)(statement) -> {
                 statement.setString(1, ("%" + search + "%").toLowerCase());
                 statement.setString(2, ("%" + search + "%").toLowerCase());
-                statement.setString(3, ("%" + action + "%").toLowerCase());
+                statement.setString(3, ("%" + choose + "%").toLowerCase());
             }
         );
         if (result.next()) {
