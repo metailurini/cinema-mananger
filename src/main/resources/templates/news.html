@@ -90,7 +90,7 @@
                   <a class="dropdown-item" href="#">Quản lý doanh thu</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Quản lý tài khoản</a>
+                  <a class="dropdown-item" href="/staff">Quản lý tài khoản</a>
                 </li>
               </ul>
             </li>
@@ -286,16 +286,23 @@
           max-width: 100%;
           max-height: 90vh;
           --bs-table-bg: none;
-          background: rgba(128, 128, 128, 0.7);
-          border-radius: 10px;
           margin-top: 15px;
           margin-bottom: 15px;
           margin-bottom: 30px;
         "
       >
-        <div style="margin-top: 30px">
+        <div style="margin-top: 30px; margin-right: 10px">
           <tr th:each="films: ${films}">
-            <div id="child" class="row g-0" style="margin-bottom: 30px">
+            <div
+              id="child"
+              class="row g-0"
+              style="
+                margin-bottom: 30px;
+                background: rgba(128, 128, 128, 0.7);
+                border-radius: 10px;
+                padding: 20px 0;
+              "
+            >
               <!-- Modal delete -->
               <div
                 th:attr="id= 'delete' + ${films.FilmID}"
@@ -424,7 +431,7 @@
                               padding: 0.3em 0.3em;
                             "
                           >
-                            Thêm sự kiện
+                            Sửa sự kiện
                           </button>
                         </div>
                       </form>
