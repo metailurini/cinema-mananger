@@ -250,18 +250,44 @@
           <label for="status" style="color: #fff; font-size: 18px"
             >Trạng thái:
           </label>
-          <select id = "chon" name = "chon"
+          <select
+            id="chon"
+            name="chon"
             style="
               margin-left: 5px;
+              margin-top: 1px;
               width: 130px;
-              height: 30px;
-              border-radius: 5px;
+              height: 35.5px;
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
             "
           >
-            <option value="">Chọn</option>
+            <option value="">Tất cả</option>
             <option value="Hoạt động">Hoạt động</option>
             <option value="Bị khóa">Bị khóa</option>
           </select>
+          <button
+            type="submit"
+            id="submit"
+            style="
+              background-color: #fbca10;
+              border: 1px solid #fbca10;
+              border-top-right-radius: 10px;
+              border-bottom-right-radius: 10px;
+              margin-left: -6px;
+            "
+          >
+            <i
+              class="input-group-text fa-solid fa-magnifying-glass"
+              id="basic-addon2"
+              style="
+                color: #000;
+                background-color: #fbca10;
+                border: 1px solid #fbca10;
+              "
+              ;
+            ></i>
+          </button>
         </div>
         <div style="display: flex">
           <input
@@ -344,43 +370,8 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="toast-body">Thông tin đăng nhập không chính xác</div>
-        </div>
-
-        <div
-          id="liveToast"
-          class="toast"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          style="
-            font-family: Roboto, sans-serif;
-            border-radius: 20px;
-            background-color: rgba(128, 128, 128, 0.7);
-            color: #fff;
-          "
-        >
-          <div
-            class="toast-header"
-            style="
-              font-family: Roboto, sans-serif;
-              border-radius: 20px;
-              background-color: rgba(0, 0, 0, 0.3);
-              color: #fff;
-            "
-          >
-            <img src="..." class="rounded me-2" alt="..." />
-            <strong class="me-auto">Bootstrap</strong>
-            <small class="text-muted">2 seconds ago</small>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="toast"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="toast-body">
-            Heads up, toasts will stack automatically
+          <div class="toast-body" style="height: 100px">
+            Thông tin đăng nhập không chính xác
           </div>
         </div>
       </div>
