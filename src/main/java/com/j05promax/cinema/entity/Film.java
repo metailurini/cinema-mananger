@@ -31,6 +31,8 @@ public class Film extends Entity {
         Price = result.getFloat("price");
         Duration = result.getInt("duration");
         Thumnail = result.getString("url");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         Category = result.getString("category");
         return this;
     }
