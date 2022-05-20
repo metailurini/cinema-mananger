@@ -21,7 +21,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="scripts/news.js" defer></script>
-    <title>>WINX | Sự kiện</title>
+    <title>WINX | Sự kiện</title>
   </head>
 
   <body>
@@ -90,7 +90,7 @@
                   <a class="dropdown-item" href="#">Quản lý doanh thu</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#">Quản lý tài khoản</a>
+                  <a class="dropdown-item" href="/staff">Quản lý tài khoản</a>
                 </li>
               </ul>
             </li>
@@ -249,19 +249,26 @@
           max-width: 100%;
           max-height: 90vh;
           --bs-table-bg: none;
-          background: rgba(128, 128, 128, 0.7);
-          border-radius: 10px;
           margin-top: 15px;
           margin-bottom: 15px;
           margin-bottom: 30px;
         "
       >
-        <div style="margin-top: 30px">
-          <tr th:each="events: ${events}">
-            <div id="child" class="row g-0" style="margin-bottom: 30px">
+        <div style="margin-top: 30px; margin-right: 10px">
+          <tr th:each="event: ${events}">
+            <div
+              id="child"
+              class="row g-0"
+              style="
+                margin-bottom: 30px;
+                background: rgba(128, 128, 128, 0.7);
+                border-radius: 10px;
+                padding: 20px 0;
+              "
+            >
               <!-- Modal delete -->
               <div
-                th:attr="id= 'delete' + ${events.EventID}"
+                th:attr="id= 'delete' + ${event.EventID}"
                 class="modal fade"
                 data-bs-keyboard="false"
                 tabindex="-1"
@@ -280,7 +287,10 @@
                       </h5>
                       <p style="font-weight: 400; font-size: 24px">
                         Bạn có chắc muốn xóa sự kiện “
-                        <td style="font-weight: bold" th:text="${events.Title}" />
+                        <td
+                          style="font-weight: bold"
+                          th:text="${event.Title}"
+                        />
                         ” không?
                       </p>
                     </div>
@@ -307,7 +317,7 @@
 
               <!-- Modal edit event -->
               <div
-                th:attr="id= 'edit' + ${events.EventID}"
+                th:attr="id= 'edit' + ${event.EventID}"
                 class="modal fade"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
@@ -344,7 +354,7 @@
                               class="form-control"
                               placeholder="Nhập tiêu đề"
                               required
-                              th:attr="value= ${events.Title}"
+                              th:attr="value= ${event.Title}"
                             />
                           </div>
                           <div style="margin-bottom: 20px">
@@ -355,7 +365,7 @@
                               class="form-control"
                               placeholder="Nhập liên kết ảnh"
                               required
-                              th:attr="value= ${events.Thumnail}"
+                              th:attr="value= ${event.Thumnail}"
                             />
                           </div>
                           <div>
@@ -365,7 +375,7 @@
                               class="form-control"
                               placeholder="Nhập nội dung"
                               required
-                              th:text="${events.Content}"
+                              th:text="${event.Content}"
                             ></textarea>
                           </div>
                         </div>
@@ -387,7 +397,7 @@
                               padding: 0.3em 0.3em;
                             "
                           >
-                            Thêm sự kiện
+                            Sửa sự kiện
                           </button>
                         </div>
                       </form>
@@ -405,7 +415,7 @@
                 "
               >
                 <img
-                  th:attr="src=${events.Thumnail}"
+                  th:attr="src=${event.Thumnail}"
                   onerror="this.onerror=null;this.src='https://u.today/sites/default/files/styles/1600x900/public/2021-09/AdobeStock_312349880.jpeg';"
                   class="img-fluid"
                   style="
@@ -428,12 +438,12 @@
                       margin-bottom: 7px;
                     "
                   >
-                    <td th:text="${events.Title}" />
+                    <td th:text="${event.Title}" />
                   </h5>
                   <p
                     class="card-text"
                     style="font-weight: 400; font-size: 16px"
-                    th:text="${events.Content}"
+                    th:text="${event.Content}"
                   />
                   <div style="display: flex; justify-content: space-between">
                     <p
@@ -446,21 +456,21 @@
                       "
                     >
                       Ngày đăng:
-                      <td th:text="${events.CreatedAt}" />
+                      <td th:text="${event.CreatedAt}" />
                     </p>
                     <div style="display: flex">
                       <a
                         class="edit-delete-btn"
                         style="margin-right: 20px"
                         data-bs-toggle="modal"
-                        th:attr="data-bs-target= '#delete' + ${events.EventID}"
+                        th:attr="data-bs-target= '#delete' + ${event.EventID}"
                       >
                         Xóa
                       </a>
                       <a
                         class="edit-delete-btn"
                         data-bs-toggle="modal"
-                        th:attr="data-bs-target= '#edit' + ${events.EventID}"
+                        th:attr="data-bs-target= '#edit' + ${event.EventID}"
                       >
                         Chỉnh sửa
                       </a>

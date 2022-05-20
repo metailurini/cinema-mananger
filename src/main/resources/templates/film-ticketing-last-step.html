@@ -1,282 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/styles/film-ticketing-last-step.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://kit.fontawesome.com/53a42bcb20.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-      crossorigin="anonymous"
-    ></script>
-    <script src="scripts/film-ticketing-last-step.js" defer></script>
-    <title>WINX | Xuất vé phim - Xác nhận & xuất vé</title>
-  </head>
-  <body>
-    <nav
-      class="navbar navbar-expand-lg navbar-dark fixed-top"
-      style="height: 12vh; background-color: #000"
-    >
-      <div class="container">
-        <a class="custom-navbar-brand" onclick="history.back()">
-          <i class="fa-solid fa-arrow-left"></i> Quay lại</a
-        >
-      </div>
-    </nav>
-    <div class="container" style="margin-top: 12vh">
-      <div
-        style="justify-content: space-between; display: flex; margin-top: 20px"
-      >
-        <div class="top-container">
-          <h5 style="margin-bottom: 30px">Xuất vé phim</h5>
-          <h3>Xác nhận giao dịch</h3>
-          <div
-            class="progress"
-            style="border-radius: 10px; height: 1.6rem; margin-top: 20px"
-          >
-            <div
-              class="progress-bar progress-bar-info progress-bar-striped active"
-              style="
-                border-radius: 10px;
-                width: 100%;
-                box-shadow: -1px 10px 10px rgba(91, 192, 222, 0.7);
-              "
-            ></div>
-          </div>
-          <h5 class="progress-value" style="margin-top: 20px">Bước 3</h5>
-        </div>
-        <div class="top-container">
-          <div class="row g-0">
-            <div
-              class="col-md-4"
-              style="
-                width: 40%;
-                display: flex;
-                justify-content: center;
-                margin-right: 20px;
-              "
-            >
-              <img
-                src="https://genk.mediacdn.vn/139269124445442048/2021/4/3/screen-shot-2021-04-03-at-112351-am-16174239799661809991699.png"
-                class="img-fluid"
-                style="
-                  height: 170px;
-                  border-radius: 10px;
-                  margin: auto;
-                  display: block;
-                "
-                alt="..."
-              />
-            </div>
-            <div class="col-md-8" style="width: 56%">
-              <div class="card-body" style="margin-left: -20px; color: #fff">
-                <h5
-                  class="card-title"
-                  style="font-weight: 600; font-size: 20px"
-                >
-                  GODZILLA: KING OF THE MONSTER
-                </h5>
-                <p class="card-text" style="font-weight: 400; font-size: 18px">
-                  Thứ 2 ngày 18 tháng 5 năm 2022 07:30 am
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        style="justify-content: space-between; display: flex; margin-top: 20px"
-      >
-        <div class="top-container" style="width: 68%">
-          <h5
-            style="
-              text-align: center;
-              font-weight: 500;
-              font-size: 24px;
-              line-height: 28px;
-            "
-          >
-            Thông tin giao dịch
-          </h5>
-          <div style="text-align: center; margin-top: 20px">
-            <div style="display: inline-block">
-              <div
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  text-align: initial;
-                "
-              >
-                <div
-                  style="
-                    font-weight: 400;
-                    font-size: 20px;
-                    line-height: 23px;
-                    margin-right: 20px;
-                  "
-                >
-                  <p>Mã khách hàng</p>
-                  <p>Tên phim</p>
-                  <p>Thời gian</p>
-                  <p>Số vé</p>
-                  <p>Số ghế</p>
-                  <p>Mã giao dịch</p>
-                  <p>Đơn giá</p>
-                  <p>Khuyến mãi</p>
-                  <p>Thành tiền</p>
-                </div>
-                <div
-                  style="
-                    font-weight: 500;
-                    font-size: 20px;
-                    line-height: 23px;
-                    color: #fbca10;
-                  "
-                >
-                  <p>fjdksighfhdkd</p>
-                  <p>Godzilla: King Of The Monster</p>
-                  <p>7:30 am, Thứ 2 ngày 18/05/2022</p>
-                  <p>02</p>
-                  <p>E4, E5</p>
-                  <p>gjfodjgjrnffj</p>
-                  <p>100.000 VND</p>
-                  <p>10%</p>
-                  <p>90.000</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="top-container table-responsive"
-          style="width: 30%; max-height: 600px"
-          id="father"
-        >
-          <div
-            id="child"
-            style="
-              margin-top: 20px;
-              border: 1px solid #fff;
-              padding: 10px;
-              border-radius: 10px;
-            "
-          >
-            <div style="text-align: center">
-              <p style="font-weight: 400; font-size: 18px; line-height: 21px">
-                Vé xem phim
-              </p>
-              <h5>GODZILLA: KING OF THE MONSTER</h5>
-            </div>
-            <div style="display: flex; font-weight: 400; font-size: 18px">
-              <p style="margin-right: 15px">Mã giao dịch:</p>
-              <p>ahiajdsjaisujd</p>
-            </div>
-            <div style="display: flex; font-weight: 400; font-size: 18px">
-              <p style="margin-right: 15px">Ngày:</p>
-              <p>Thứ 2, 18/05/2022</p>
-            </div>
-            <div style="display: flex; font-weight: 400; font-size: 18px">
-              <p style="margin-right: 15px">Giờ:</p>
-              <p style="font-weight: 500; font-size: 24px; line-height: 28px">
-                7:30 AM
-              </p>
-            </div>
-            <div style="display: flex; font-weight: 400; font-size: 18px">
-              <p style="margin-right: 15px">Số ghế:</p>
-              <p style="font-weight: 500; font-size: 24px; line-height: 28px">
-                E4
-              </p>
-            </div>
-            <div style="display: flex; font-weight: 400; font-size: 18px">
-              <p style="margin-right: 15px">Đơn giá:</p>
-              <p>100.000 VND</p>
-            </div>
-            <div style="display: flex; font-weight: 400; font-size: 18px">
-              <p style="margin-right: 15px">Khuyến mãi:</p>
-              <p>10%</p>
-            </div>
-            <div
-              style="
-                display: flex;
-                font-weight: 400;
-                font-size: 18px;
-                border-bottom: 1px dashed #fff;
-                margin-bottom: 10px;
-              "
-            >
-              <p style="margin-right: 15px">Thành tiền:</p>
-              <p style="font-weight: 500; font-size: 24px; line-height: 28px">
-                90.000 VND
-              </p>
-            </div>
-            <img
-              style="width: 100%; height: 130px; object-fit: cover"
-              src="https://res.cloudinary.com/baodang359/image/upload/v1652949126/java-project/bar-code_htw8da.png"
-            />
-          </div>
-        </div>
-      </div>
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div class="modal-content" style="border-radius: 20px">
-            <div class="modal-body" style="text-align: center">
-              <h5>Giao dịch hoàn tất</h5>
-              <div
-                style="
-                  width: 100px;
-                  height: 100px;
-                  border-radius: 50px;
-                  background-color: #23f600;
-                  display: block;
-                  margin: auto;
-                  margin-top: 20px;
-                  margin-bottom: 20px;
-                "
-              >
-                <i
-                  class="fa-solid fa-check"
-                  style="margin-top: 25%; font-size: 50px; color: #fff"
-                ></i>
-              </div>
-              <p style="font-weight: 400; font-size: 18px">
-                Bạn đã hoàn tất giao dịch với khách hàng, xin chúc mừng!
-              </p>
-            </div>
-            <div
-              class="modal-footer"
-              style="justify-content: center; border: none"
-            >
-              <a class="btn-next" href="./film"> Hoàn tất </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="text-align: center">
-        <a
-          class="btn-next"
-          data-bs-toggle="modal"
-          data-bs-target="#staticBackdrop"
-          >Xác nhận</a
-        >
-      </div>
-    </div>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/styles/film-ticketing-last-step.css" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://kit.fontawesome.com/53a42bcb20.js"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
+		<script src="scripts/film-ticketing-last-step.js" defer></script>
+		<title>WINX | Xuất vé phim - Xác nhận & xuất vé</title>
+	</head>
+	<body>
+		<nav
+			class="navbar navbar-expand-lg navbar-dark fixed-top"
+			style="height: 12vh; background-color: #000"
+		>
+			<div class="container">
+				<a class="custom-navbar-brand" onclick="history.back()">
+					<i class="fa-solid fa-arrow-left"></i> Quay lại</a
+				>
+			</div>
+		</nav>
+		<div class="container" style="margin-top: 12vh">
+			<div
+				style="
+					justify-content: space-between;
+					display: flex;
+					margin-top: 20px;
+				"
+			>
+				<div class="top-container">
+					<h5 style="margin-bottom: 30px">Xuất vé phim</h5>
+					<h3>Xác nhận giao dịch</h3>
+					<div
+						class="progress"
+						style="
+							border-radius: 10px;
+							height: 1.6rem;
+							margin-top: 20px;
+						"
+					>
+						<div
+							class="progress-bar progress-bar-info progress-bar-striped active"
+							style="
+								border-radius: 10px;
+								width: 100%;
+								box-shadow: -1px 10px 10px
+									rgba(91, 192, 222, 0.7);
+							"
+						></div>
+					</div>
+					<h5 class="progress-value" style="margin-top: 20px">
+						Bước 3
+					</h5>
+				</div>
+				<div class="top-container">
+					<div class="row g-0">
+						<div
+							class="col-md-4"
+							style="
+								width: 40%;
+								display: flex;
+								justify-content: center;
+								margin-right: 20px;
+							"
+						>
+							<img
+								src="https://genk.mediacdn.vn/139269124445442048/2021/4/3/screen-shot-2021-04-03-at-112351-am-16174239799661809991699.png"
+								class="img-fluid"
+								style="
+									height: 170px;
+									border-radius: 10px;
+									margin: auto;
+									display: block;
+								"
+								alt="..."
+							/>
+						</div>
+						<div class="col-md-8" style="width: 56%">
+							<div
+								class="card-body"
+								style="margin-left: -20px; color: #fff"
+							>
+								<h5
+									class="card-title"
+									style="font-weight: 600; font-size: 20px"
+								>
+									GODZILLA: KING OF THE MONSTER
+								</h5>
+								<p
+									class="card-text"
+									style="font-weight: 400; font-size: 18px"
+								>
+									Thứ 2 ngày 18 tháng 5 năm 2022 07:30 am
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				style="
+					justify-content: space-between;
+					display: flex;
+					margin-top: 20px;
+				"
+			>
+				<div class="top-container" style="width: 68%">
+					<h5
+						style="
+							text-align: center;
+							font-weight: 500;
+							font-size: 24px;
+							line-height: 28px;
+						"
+					>
+						Thông tin giao dịch
+					</h5>
+					<div style="text-align: center; margin-top: 35px">
+						<div style="display: inline-block">
+							<div
+								style="
+									display: flex;
+									justify-content: space-between;
+									text-align: initial;
+									margin-left: 100px;
+								"
+							>
+								<div
+									style="
+										font-weight: 400;
+										font-size: 20px;
+										line-height: 23px;
+										margin-right: 20px;
+									"
+								>
+									<p>Mã khách hàng</p>
+									<p>Tên phim</p>
+									<p>Thời gian</p>
+									<p>Số vé</p>
+									<p>Số ghế</p>
+									<p>Mã giao dịch</p>
+									<p>Đơn giá</p>
+									<p>Khuyến mãi</p>
+									<p>Thành tiền</p>
+								</div>
+								<div
+									style="
+										font-weight: 500;
+										font-size: 20px;
+										line-height: 23px;
+										color: #fbca10;
+									"
+								>
+									<p>fjdksighfhdkd</p>
+									<p>Godzilla: King Of The Monster</p>
+									<p>7:30 am, Thứ 2 ngày 18/05/2022</p>
+									<p>02</p>
+									<p>E4, E5</p>
+									<p>gjfodjgjrnffj</p>
+									<p>100.000 VND</p>
+									<p>10%</p>
+									<p>90.000</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="top-container table-responsive"
+					style="width: 30%; max-height: 600px"
+					id="father"
+				>
+					<div
+						id="child"
+						style="
+							margin-top: 20px;
+							border: 1px solid #fff;
+							padding: 10px;
+							border-radius: 10px;
+						"
+					>
+						<div style="text-align: center">
+							<p
+								style="
+									font-weight: 400;
+									font-size: 18px;
+									line-height: 21px;
+								"
+							>
+								Vé xem phim
+							</p>
+							<h5>GODZILLA: KING OF THE MONSTER</h5>
+						</div>
+						<div
+							style="
+								display: flex;
+								font-weight: 400;
+								font-size: 18px;
+							"
+						>
+							<p style="margin-right: 15px">Mã giao dịch:</p>
+							<p>ahiajdsjaisujd</p>
+						</div>
+						<div
+							style="
+								display: flex;
+								font-weight: 400;
+								font-size: 18px;
+							"
+						>
+							<p style="margin-right: 15px">Ngày:</p>
+							<p>Thứ 2, 18/05/2022</p>
+						</div>
+						<div
+							style="
+								display: flex;
+								font-weight: 400;
+								font-size: 18px;
+							"
+						>
+							<p style="margin-right: 15px">Giờ:</p>
+							<p
+								style="
+									font-weight: 500;
+									font-size: 24px;
+									line-height: 28px;
+								"
+							>
+								7:30 AM
+							</p>
+						</div>
+						<div
+							style="
+								display: flex;
+								font-weight: 400;
+								font-size: 18px;
+							"
+						>
+							<p style="margin-right: 15px">Số ghế:</p>
+							<p
+								style="
+									font-weight: 500;
+									font-size: 24px;
+									line-height: 28px;
+								"
+							>
+								E4
+							</p>
+						</div>
+						<div
+							style="
+								display: flex;
+								font-weight: 400;
+								font-size: 18px;
+							"
+						>
+							<p style="margin-right: 15px">Đơn giá:</p>
+							<p>100.000 VND</p>
+						</div>
+						<div
+							style="
+								display: flex;
+								font-weight: 400;
+								font-size: 18px;
+							"
+						>
+							<p style="margin-right: 15px">Khuyến mãi:</p>
+							<p>10%</p>
+						</div>
+						<div
+							style="
+								display: flex;
+								font-weight: 400;
+								font-size: 18px;
+								border-bottom: 1px dashed #fff;
+								margin-bottom: 10px;
+							"
+						>
+							<p style="margin-right: 15px">Thành tiền:</p>
+							<p
+								style="
+									font-weight: 500;
+									font-size: 24px;
+									line-height: 28px;
+								"
+							>
+								90.000 VND
+							</p>
+						</div>
+						<img
+							style="
+								width: 100%;
+								height: 130px;
+								object-fit: cover;
+							"
+							src="https://res.cloudinary.com/baodang359/image/upload/v1652949126/java-project/bar-code_htw8da.png"
+						/>
+					</div>
+				</div>
+			</div>
+			<!-- Modal -->
+			<div
+				class="modal fade"
+				id="staticBackdrop"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				aria-hidden="true"
+			>
+				<div
+					class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+				>
+					<div class="modal-content" style="border-radius: 20px">
+						<div class="modal-body" style="text-align: center">
+							<h5>Giao dịch hoàn tất</h5>
+							<div
+								style="
+									width: 100px;
+									height: 100px;
+									border-radius: 50px;
+									background-color: #23f600;
+									display: block;
+									margin: auto;
+									margin-top: 20px;
+									margin-bottom: 20px;
+								"
+							>
+								<i
+									class="fa-solid fa-check"
+									style="
+										margin-top: 25%;
+										font-size: 50px;
+										color: #fff;
+									"
+								></i>
+							</div>
+							<p style="font-weight: 400; font-size: 18px">
+								Bạn đã hoàn tất giao dịch với khách hàng, xin
+								chúc mừng!
+							</p>
+						</div>
+						<div
+							class="modal-footer"
+							style="justify-content: center; border: none"
+						>
+							<a class="btn-next" href="./film"> Hoàn tất </a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center">
+				<a
+					class="btn-next"
+					data-bs-toggle="modal"
+					data-bs-target="#staticBackdrop"
+					>Xác nhận</a
+				>
+			</div>
+		</div>
+	</body>
 </html>
