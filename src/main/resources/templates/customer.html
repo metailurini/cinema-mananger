@@ -21,6 +21,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="scripts/customer.js" defer></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
+    />
     <title>WINX | Khách hàng</title>
   </head>
 
@@ -125,9 +130,27 @@
                   background-clip: padding-box;
                 "
               >
-                <a class="img-avatar-drop" onclick="deleteCookie()">
-                  <i class="fa-solid fa-power-off"></i> Đăng xuất
-                </a>
+                <div
+                  style="display: flex; flex-direction: column; flex-wrap: wrap"
+                  class="col"
+                >
+                  <div style="margin-bottom: 10px">
+                    <i
+                      class="fa-solid fa-power-off"
+                      style="margin-right: 10px"
+                    ></i>
+                    <a
+                      class="img-avatar-drop"
+                      onclick="deleteAuthTokenCookie()"
+                    >
+                      Đăng xuất
+                    </a>
+                  </div>
+                  <div>
+                    <i class="fa-solid fa-key" style="margin-right: 10px"></i>
+                    <a class="img-avatar-drop" href="#"> Đổi mật khẩu </a>
+                  </div>
+                </div>
               </div>
             </div>
             <p
@@ -257,9 +280,10 @@
               margin-left: 5px;
               margin-top: 1px;
               width: 130px;
-              height: 35.5px;
+              height: 33.8px;
               border-top-left-radius: 10px;
               border-bottom-left-radius: 10px;
+              border: none;
             "
           >
             <option value="">Tất cả</option>
