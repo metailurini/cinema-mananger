@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.j05promax.cinema.entity.Film;
+import com.j05promax.cinema.entity.Event;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.ui.Model;
 
 @Controller
@@ -38,21 +39,22 @@ public class NewsController {
 		}
 		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
 
-		int counted = 0;
+		List<Event> events = new ArrayList<>();
 		try {
-			counted = repo.Film.CountFilmActive();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		List<Film> films = new ArrayList<>();
-		try {
-			films = repo.Film.GetAll(search.strip());
+			events = repo.Event.GetAll(search.strip());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("films", films);
-		model.addAttribute("countedFilm", counted);
+		int counted = 0;
+		try {
+			counted = repo.Event.CountEvent();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		model.addAttribute("events", events);
+		model.addAttribute("countedEvent", counted);
 		model.addAttribute("staffName", "Staff's name");
 		return "news";
 	}
