@@ -22,6 +22,8 @@ public class Image extends Entity {
         ImageID = result.getString("image_id");
         ImageType = result.getString("image_type");
         Url = result.getString("url");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }

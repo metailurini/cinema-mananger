@@ -31,6 +31,8 @@ public class Ticket extends Entity {
         SeatID = result.getString("seat_id");
         UserID = result.getString("user_id");
         AdminID = result.getString("admin_id");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 

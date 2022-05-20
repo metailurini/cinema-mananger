@@ -26,6 +26,8 @@ public class Seat extends Entity {
         Name = result.getString("name");
         BonusPrice = result.getFloat("bonus_price");
         Status = result.getString("status");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }

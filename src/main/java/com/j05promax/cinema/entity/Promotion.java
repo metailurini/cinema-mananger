@@ -28,6 +28,8 @@ public class Promotion extends Entity {
         IsStudent = result.getBoolean("is_student");
         NumberValue = result.getFloat("number_value");
         StringValue = result.getString("string_value");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }

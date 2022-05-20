@@ -14,4 +14,13 @@ function incNbrRec(i, endNbr, elt) {
   }
 }
 
+function openCloseDropdownUser() {
+  var x = document.getElementById("openCloseDropdownUser");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
 incEltNbr("nbr");

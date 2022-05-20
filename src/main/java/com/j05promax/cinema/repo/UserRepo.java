@@ -14,15 +14,16 @@ public class UserRepo extends Repository {
         super(conn);
     }
 
-    public ArrayList<User> GetAll(String search) throws SQLException {
+    public ArrayList<User> GetAll(String search, String choose) throws SQLException {
         ArrayList<User> users = new ArrayList<User>();
         
-        String query = "select * from %s where LOWER(full_name) like ? OR phone_number like ?";
+        String query = "select * from %s where (LOWER(full_name) like ? OR phone_number like ? ) AND LOWER(status) like ?";
         ResultSet result = this.Query(
             String.format(query, User.TableName()),
             (ParamSetter)(statement) -> {
                 statement.setString(1, ("%" + search + "%").toLowerCase());
                 statement.setString(2, ("%" + search + "%").toLowerCase());
+                statement.setString(3, ("%" + choose + "%").toLowerCase());
             }
         );
 
@@ -34,14 +35,15 @@ public class UserRepo extends Repository {
         return users;
     }
 
-    public int CountCustomer(String search) throws SQLException {
+    public int CountCustomer(String search, String choose) throws SQLException {
         int count_customer = 0;
-        String query = "select count(*) as counted from %s where LOWER(full_name) like ? OR phone_number like ?";
+        String query = "select count(*) as counted from %s where (LOWER(full_name) like ? OR phone_number like ?) AND LOWER(status) like ?";
         ResultSet result = this.Query(
             String.format(query, User.TableName()),
             (ParamSetter)(statement) -> {
                 statement.setString(1, ("%" + search + "%").toLowerCase());
                 statement.setString(2, ("%" + search + "%").toLowerCase());
+                statement.setString(3, ("%" + choose + "%").toLowerCase());
             }
         );
         if (result.next()) {
