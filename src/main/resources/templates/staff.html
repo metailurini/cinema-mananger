@@ -33,7 +33,7 @@
         >
       </div>
     </nav>
-    <div class="container" style="margin-top: 12vh">
+    <div class="container" style="margin-top: 12vh; padding-bottom: 30px">
       <div>
         <h2 style="color: #fff; margin-bottom: 30px">Admin</h2>
         <div class="top-container">
@@ -51,6 +51,117 @@
                 </div>
                 <p class="forgot-pass">Quên mật khẩu</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 50px">
+        <div style="display: flex; margin-bottom: 30px">
+          <h3 style="color: #fff; font-size: 20">Nhân viên</h3>
+          <h5
+            style="
+              background-color: #fff;
+              padding: 3px 10px;
+              height: 33px;
+              border-radius: 4px;
+              margin-left: 20px;
+            "
+            id="nbr"
+          >
+            108
+          </h5>
+        </div>
+        <div
+          class="row table-responsive"
+          style="max-height: 700px; padding-bottom: 30px"
+          id="father"
+        >
+          <div class="row cus-bottom-container" id="child">
+            <div style="width: 31%">
+              <img
+                src="https://www.nicepng.com/png/full/189-1891900_alumni-team-black-icon-png.png"
+                style="
+                  width: 135px;
+                  height: 120px;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  border: 1px solid #fbca10;
+                  padding: 5px;
+                "
+              />
+              <p
+                style="
+                  font-size: 24px;
+                  color: #fbca10;
+                  margin-left: 15px;
+                  margin-top: 10px;
+                "
+              >
+                Nhân viên
+              </p>
+            </div>
+            <div style="width: 69%">
+              <div class="staff-detail-text-cover">
+                <h5 class="staff-detail-text">Email:</h5>
+                <h5>abcdefgh@gmail.com</h5>
+              </div>
+              <div class="staff-detail-text-cover">
+                <h5 class="staff-detail-text">Ngày tạo:</h5>
+                <h5>19/02/2021</h5>
+              </div>
+              <div class="staff-detail-text-cover">
+                <h5 class="staff-detail-text" style="margin-top: 5px">
+                  Trạng thái:
+                </h5>
+                <h5 class="staff-active">Hoạt động</h5>
+              </div>
+              <!-- Modal change status -->
+              <!--  th:attr="id= 'delete' + ${films.FilmID}" -->
+              <div
+                id="modalChangeStatus"
+                class="modal fade"
+                data-bs-keyboard="false"
+                tabindex="-1"
+                aria-hidden="true"
+              >
+                <div
+                  class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+                >
+                  <div
+                    class="modal-content"
+                    style="text-align: center; border-radius: 20px"
+                  >
+                    <div class="modal-body" style="color: #000">
+                      <h5 style="font-weight: 500; font-size: 32px">
+                        Đổi trạng thái
+                      </h5>
+                      <p>
+                        Bạn có muốn thay đổi trạng thái của nhân viên này hay
+                        không?
+                      </p>
+                    </div>
+                    <div
+                      class="modal-footer"
+                      style="justify-content: center; border: none"
+                    >
+                      <a
+                        class="edit-delete-btn"
+                        style="background-color: #fff; color: #888888"
+                        data-bs-dismiss="modal"
+                      >
+                        Hủy
+                      </a>
+                      <button class="edit-delete-btn">Xác nhận</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a
+                data-bs-toggle="modal"
+                data-bs-target="#modalChangeStatus"
+                class="btn-add-cus"
+                >Thay đổi trạng thái</a
+              >
             </div>
           </div>
         </div>

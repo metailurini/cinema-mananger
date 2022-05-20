@@ -65,7 +65,7 @@ body {
   box-sizing: border-box;
   text-decoration: none;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 500;
   color: #000;
   text-align: center;
   transition: all 0.3s;
@@ -73,11 +73,14 @@ body {
   border-radius: 10px;
   width: 27vh;
   background-color: #fbca10;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 .btn-add-cus:hover {
   background-color: #fbd43f;
   transition: all 0.5s;
+  color: #000;
 }
 
 .top-container {
@@ -87,6 +90,24 @@ body {
   padding: 20px;
 }
 
+.cus-bottom-container {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 48% !important;
+  padding-left: 15px !important;
+  margin-bottom: 20px;
+}
+
+.cus-bottom-container:nth-child(odd) {
+  margin-left: 10px;
+}
+
+.cus-bottom-container:nth-child(even) {
+  margin-left: 35px;
+}
+
 .forgot-pass {
   color: #fff;
   margin-right: 10px !important;
@@ -94,6 +115,7 @@ body {
   text-decoration: none;
   text-align: right;
   margin-top: 10px;
+  transition: 0.2s all;
 }
 
 .forgot-pass:hover {
@@ -116,4 +138,49 @@ body {
 .admin-info-text {
   margin-top: 10px;
   margin-left: 15px;
+}
+
+.staff-detail-text-cover {
+  margin-top: 10px;
+  display: flex;
+}
+
+.staff-detail-text {
+  margin-right: 20px;
+}
+
+.staff-active {
+  color: #18aa00;
+  background-color: #acff9e;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.staff-unactive {
+  color: #ff2b2b;
+  background-color: #ffb2b2;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.edit-delete-btn {
+  padding: 0.1em 0em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 26px;
+  color: #000;
+  background-color: #fbca10;
+  text-align: center;
+  transition: all 0.3s;
+  border-radius: 10px;
+  width: 200px;
+  cursor: pointer;
+  border: none !important;
+}
+.edit-delete-btn:hover {
+  color: #000;
+  opacity: 0.6;
+  background-color: #fbd43f;
+  transition: all 0.5s;
 }
