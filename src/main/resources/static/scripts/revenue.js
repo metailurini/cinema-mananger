@@ -14,18 +14,11 @@ function incNbrRec(i, endNbr, elt) {
   }
 }
 
-function openCloseDropdownUser() {
-  var x = document.getElementById("openCloseDropdownUser");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+var child = document.getElementById("child");
+var father = document.getElementById("father");
 
-function deleteAuthTokenCookie() {
-  document.cookie = "_auth_token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'";
-  location.reload();
+for (let i = 0; i < 10; i++) {
+  father.appendChild(child.cloneNode(true));
 }
 
 incEltNbr("nbr");
