@@ -14,11 +14,30 @@ public class EventRepo extends Repository {
         super(conn);
     }
 
-    public ArrayList<Event> GetAll() throws SQLException {
+    public ArrayList<Event> GetAll(String search) throws SQLException {
         ArrayList<Event> events = new ArrayList<Event>();
 
-        String query = "select * from %s";
-        ResultSet result = this.Query(String.format(query, Event.TableName()), (ParamSetter)(statement) -> {});
+        String query = (
+            "SELECT " +
+            "events.event_id, " +
+            "events.start_time, " +
+            "events.end_time, " +
+            "events.title, " +
+            "events.content, " +
+            "events.created_at, " +
+            "events.updated_at, " +
+            "images.url " +
+            "FROM " +
+            "events " +
+            "LEFT JOIN images ON " +
+            "images.image_id = events.event_id AND " +
+            "images.image_type = 'events' " +
+            "WHERE LOWER(title) LIKE ?"
+        );
+        ResultSet result = this.Query(String.format(query, Event.TableName()), 
+        (ParamSetter)(statement) -> {
+            statement.setString(1,("%" + search + "%").toLowerCase());
+        });
 
         while (result.next()) {
             events.add(new Event().FromResultSet(result));
@@ -26,6 +45,17 @@ public class EventRepo extends Repository {
 
         this.Close();
         return events;
+    }
+
+    public int CountEvent() throws SQLException{
+        int count_event = 0;
+        String query = "SELECT COUNT(*) AS counted FROM events";
+        ResultSet result = this.Query(query, (ParamSetter)(statement) -> {});
+        if(result.next()){
+            count_event = result.getInt("counted");
+        }
+        this.Close();
+        return count_event;
     }
 
     public Event GetByID(String id) {
