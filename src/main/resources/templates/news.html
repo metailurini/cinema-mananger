@@ -152,57 +152,20 @@
               border-radius: 4px;
               margin-left: 20px;
             "
-            th:text="${countedFilm}"
+            th:text="${countedEvent}"
             id="nbr"
           ></h5>
         </div>
-        <form style="height: 38px; width: 350px; margin-top: 5px">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              style="
-                border-top-left-radius: 10px;
-                border-bottom-left-radius: 10px;
-              "
-              placeholder="Tìm kiếm"
-              aria-label="#"
-              name="name"
-              aria-describedby="basic-addon2"
-            />
-            <button
-              type="submit"
-              id="submit"
-              style="
-                background-color: #fbca10;
-                border: 1px solid #fbca10;
-                border-top-right-radius: 10px;
-                border-bottom-right-radius: 10px;
-              "
-            >
-              <i
-                class="input-group-text fa-solid fa-magnifying-glass"
-                id="basic-addon2"
-                style="
-                  color: #000;
-                  background-color: #fbca10;
-                  border: 1px solid #fbca10;
-                "
-                ;
-              ></i>
-            </button>
-          </div>
-        </form>
-      </div>
-      <div style="text-align: right; margin-top: 20px">
-        <button
-          type="button"
-          class="btn-add-cus"
-          data-bs-toggle="modal"
-          data-bs-target="#addEventModal"
-        >
-          + Thêm sự kiện
-        </button>
+        <div>
+          <button
+            type="button"
+            class="btn-add-cus"
+            data-bs-toggle="modal"
+            data-bs-target="#addEventModal"
+          >
+            + Thêm sự kiện
+          </button>
+        </div>
       </div>
 
       <!-- Modal add event -->
@@ -292,7 +255,7 @@
         "
       >
         <div style="margin-top: 30px; margin-right: 10px">
-          <tr th:each="films: ${films}">
+          <tr th:each="event: ${events}">
             <div
               id="child"
               class="row g-0"
@@ -305,7 +268,7 @@
             >
               <!-- Modal delete -->
               <div
-                th:attr="id= 'delete' + ${films.FilmID}"
+                th:attr="id= 'delete' + ${event.EventID}"
                 class="modal fade"
                 data-bs-keyboard="false"
                 tabindex="-1"
@@ -324,7 +287,10 @@
                       </h5>
                       <p style="font-weight: 400; font-size: 24px">
                         Bạn có chắc muốn xóa sự kiện “
-                        <td style="font-weight: bold" th:text="${films.Name}" />
+                        <td
+                          style="font-weight: bold"
+                          th:text="${event.Title}"
+                        />
                         ” không?
                       </p>
                     </div>
@@ -351,7 +317,7 @@
 
               <!-- Modal edit event -->
               <div
-                th:attr="id= 'edit' + ${films.FilmID}"
+                th:attr="id= 'edit' + ${event.EventID}"
                 class="modal fade"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
@@ -388,7 +354,7 @@
                               class="form-control"
                               placeholder="Nhập tiêu đề"
                               required
-                              th:attr="value= ${films.Name}"
+                              th:attr="value= ${event.Title}"
                             />
                           </div>
                           <div style="margin-bottom: 20px">
@@ -399,7 +365,7 @@
                               class="form-control"
                               placeholder="Nhập liên kết ảnh"
                               required
-                              th:attr="value= ${films.Thumnail}"
+                              th:attr="value= ${event.Thumnail}"
                             />
                           </div>
                           <div>
@@ -409,7 +375,7 @@
                               class="form-control"
                               placeholder="Nhập nội dung"
                               required
-                              th:text="${films.Details}"
+                              th:text="${event.Content}"
                             ></textarea>
                           </div>
                         </div>
@@ -449,7 +415,7 @@
                 "
               >
                 <img
-                  th:attr="src=${films.Thumnail}"
+                  th:attr="src=${event.Thumnail}"
                   onerror="this.onerror=null;this.src='https://u.today/sites/default/files/styles/1600x900/public/2021-09/AdobeStock_312349880.jpeg';"
                   class="img-fluid"
                   style="
@@ -472,12 +438,12 @@
                       margin-bottom: 7px;
                     "
                   >
-                    <td th:text="${films.Name}" />
+                    <td th:text="${event.Title}" />
                   </h5>
                   <p
                     class="card-text"
                     style="font-weight: 400; font-size: 16px"
-                    th:text="${films.Details}"
+                    th:text="${event.Content}"
                   />
                   <div style="display: flex; justify-content: space-between">
                     <p
@@ -490,21 +456,21 @@
                       "
                     >
                       Ngày đăng:
-                      <td th:text="${films.FormatCreatedAt}" />
+                      <td th:text="${event.FormatCreatedAt}" />
                     </p>
                     <div style="display: flex">
                       <a
                         class="edit-delete-btn"
                         style="margin-right: 20px"
                         data-bs-toggle="modal"
-                        th:attr="data-bs-target= '#delete' + ${films.FilmID}"
+                        th:attr="data-bs-target= '#delete' + ${event.EventID}"
                       >
                         Xóa
                       </a>
                       <a
                         class="edit-delete-btn"
                         data-bs-toggle="modal"
-                        th:attr="data-bs-target= '#edit' + ${films.FilmID}"
+                        th:attr="data-bs-target= '#edit' + ${event.EventID}"
                       >
                         Chỉnh sửa
                       </a>
