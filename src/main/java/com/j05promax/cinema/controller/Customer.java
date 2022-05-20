@@ -23,6 +23,7 @@ public class Customer {
 
             @RequestParam(name = "phone_or_name", required = false, defaultValue = "") String searchString,
             @RequestParam(name = "name", required = false, defaultValue = "World") String name,
+            @RequestParam(value = "chon", required = false, defaultValue = "") String choose,
             Model model) {
 
         Context ctx = new Context();
@@ -37,14 +38,14 @@ public class Customer {
         
         int counted = 0;
         try {
-            counted = repo.User.CountCustomer(searchString);
+            counted = repo.User.CountCustomer(searchString, choose);
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         List<User> users = new ArrayList<>();
         try {
-            users = repo.User.GetAll(searchString.strip());
+            users = repo.User.GetAll(searchString.strip(),choose);
         } catch (SQLException e) {
             e.printStackTrace();
         }
