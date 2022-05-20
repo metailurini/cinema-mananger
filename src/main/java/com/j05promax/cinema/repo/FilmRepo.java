@@ -34,12 +34,13 @@ public class FilmRepo extends Repository {
             " LEFT JOIN images ON " +
             " 	images.image_id = films.film_id AND " +
             " 	images.image_type = 'films' " +
-            " WHERE LOWER(name) LIKE ? ");
+            " WHERE (LOWER(name) LIKE ? OR LOWER(category) LIKE ?) ");
 
         ResultSet result = this.Query(
             String.format(query, Film.TableName()),
             (ParamSetter)(statement) -> {
                 statement.setString(1, ("%" + search + "%").toLowerCase());
+                statement.setString(2, ("%" + search + "%").toLowerCase());
             }
         );
 

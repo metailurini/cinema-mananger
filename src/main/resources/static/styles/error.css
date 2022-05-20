@@ -26,16 +26,19 @@ body {
   margin-top: 50px !important;
   width: 50%;
   background-color: #fbca10;
-  color: #fff;
+  color: #000;
   padding: 18px;
   border-radius: 10px !important;
   font-style: normal;
   font-weight: 500;
   font-size: 32px !important;
   line-height: 38px !important;
+  text-decoration: none;
+  -webkit-appearance: button;
 }
 
 .cus-button:hover {
   background-color: #fbd43f !important;
   transition: all 0.5s !important;
+  color: #000;
 }
