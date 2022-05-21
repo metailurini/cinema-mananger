@@ -52,7 +52,7 @@ public class Midleware {
 		try {
 			token = cm.JWT.Encode(ctx.ToClaim());
 		} catch (JWTCreationException e) {
-			e.printStackTrace();
+            new Log(e).Show();
 		}
 
 		cookie.setValue(token);

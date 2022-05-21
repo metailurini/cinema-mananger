@@ -26,6 +26,8 @@ public class Calendar extends Entity {
         EndTime = result.getTimestamp("end_time");
         RoomID = result.getString("room_id");
         FilmID = result.getString("film_id");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }

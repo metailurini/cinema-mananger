@@ -15,7 +15,7 @@ public class Repository {
     private PreparedStatement statement;
     private ResultSet result;
     public static class Perpage {
-        public int maxInPage = 5;
+        public int maxInPage = 10;
         public int page;
 
         public Perpage(int page) {

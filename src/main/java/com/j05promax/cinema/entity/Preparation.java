@@ -26,6 +26,8 @@ public class Preparation extends Entity {
         Name = result.getString("name");
         Duration = result.getInt("duration");
         Details = result.getString("details");
+        CreatedAt = result.getTimestamp("created_at");
+        Updated = result.getTimestamp("updated_at");
         return this;
     }
 }

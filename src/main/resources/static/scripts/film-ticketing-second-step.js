@@ -32,8 +32,30 @@ const arrSeatsIndex = [
     word: "H",
   },
 ];
-const arrSeatClass = ["seat-available", "seat-unvailable"];
+let arrTempSeats = [];
+setCookie("_arr_seats", JSON.stringify(arrTempSeats), 1);
 
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+const arrSeatClass = ["seat-available", "seat-unvailable"];
 function initSeats() {
   for (let i = 0; i < 7; i++) {
     const seatRowContainer = document.createElement("div");
@@ -86,6 +108,9 @@ function addSeatChoosed(seatChoosed) {
   );
   var textNodePrice = document.createTextNode("50.000");
 
+  arrTempSeats.push(seatChoosed.id);
+  setCookie("_arr_seats", JSON.stringify(arrTempSeats), 1);
+
   seatChoosed.className = seatChoosed.className.replace(
     "seat-available",
     "seat-choosing"
@@ -117,6 +142,11 @@ function addSeatChoosed(seatChoosed) {
 
 function deleteSeatChoosed(seatChoosed) {
   const seatDelete = document.getElementById("temp" + seatChoosed.id);
+  var index = arrTempSeats.indexOf(seatChoosed.id);
+  if (index > -1) {
+    arrTempSeats.splice(index, 1);
+    setCookie("_arr_seats", JSON.stringify(arrTempSeats), 1);
+  }
   seatChoosed.className = seatChoosed.className.replace(
     "seat-choosing",
     "seat-available"
@@ -125,7 +155,3 @@ function deleteSeatChoosed(seatChoosed) {
 }
 
 initSeats();
-
-function logra(varr) {
-  console.log(varr);
-}

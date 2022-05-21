@@ -11,6 +11,7 @@ import java.util.List;
 import com.j05promax.cinema.entity.User;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
 import com.j05promax.cinema.repo.Repository;
+import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,16 +47,22 @@ public class Customer {
         try {
             counted = repo.User.CountCustomer(nameOrPhone.strip(), status);
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Log(e).Show();
         }
 
         int page = 0;
-        try { page = Integer.parseInt(sPage); } catch(NumberFormatException ex) { }
+        try {
+            page = Integer.parseInt(sPage);
+        } catch(NumberFormatException e) {
+            new Log(e).Show();
+        }
 
         Repository.Perpage perpage = new Repository.Perpage(page);
         Boolean[] listActivepage = new Boolean[(int) Math.ceil(counted * 1.0 / perpage.maxInPage)];
         Arrays.fill(listActivepage, false);
-        listActivepage[perpage.page] = true;
+        if (listActivepage.length != 0) {
+            listActivepage[perpage.page] = true;
+        }
 
         List<User> users = new ArrayList<>();
         try {
@@ -65,7 +72,7 @@ public class Customer {
                 perpage
             );
         } catch (SQLException e) {
-            e.printStackTrace();
+            new Log(e).Show();
         }
        
        

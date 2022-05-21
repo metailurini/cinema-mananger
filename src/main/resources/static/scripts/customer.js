@@ -36,9 +36,19 @@ function openCloseDropdownUser() {
   }
 }
 
-function deleteCookie() {
+function deleteAuthTokenCookie() {
   document.cookie = "_auth_token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'";
   location.reload();
+}
+
+const toastTrigger = document.getElementById("liveToastBtn");
+const toastLiveExample = document.getElementById("liveToast");
+if (toastTrigger) {
+  toastTrigger.addEventListener("click", () => {
+    const toast = new bootstrap.Toast(toastLiveExample);
+
+    toast.show();
+  });
 }
 
 incEltNbr("nbr");
