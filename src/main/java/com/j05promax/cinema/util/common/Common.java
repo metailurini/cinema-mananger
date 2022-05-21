@@ -1,5 +1,9 @@
 package com.j05promax.cinema.util.common;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.j05promax.cinema.util.common.mail.EmailEngine;
 import com.j05promax.cinema.util.common.mail.GmailEngine;
 
@@ -33,5 +37,22 @@ public class Common {
         }
 
         return single_instance;
+    }
+
+	public String GetUID() {
+		String currentTime = String.valueOf(System.currentTimeMillis() / 100000L);
+		String mess = currentTime + currentTime + currentTime + currentTime;
+		String hashtext = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(mess.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+            hashtext = no.toString(16);
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+        } catch (NoSuchAlgorithmException e) { }
+
+		return hashtext.toUpperCase();
     }
 }
