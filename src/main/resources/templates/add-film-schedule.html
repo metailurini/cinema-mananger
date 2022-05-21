@@ -106,8 +106,57 @@
           </div>
         </div> -->
       </div>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content" style="border-radius: 20px">
+            <div class="modal-body" style="text-align: center">
+              <h5>Thêm phim thành công</h5>
+              <div
+                style="
+                  width: 100px;
+                  height: 100px;
+                  border-radius: 50px;
+                  background-color: #23f600;
+                  display: block;
+                  margin: auto;
+                  margin-top: 20px;
+                  margin-bottom: 20px;
+                "
+              >
+                <i
+                  class="fa-solid fa-check"
+                  style="margin-top: 25%; font-size: 50px; color: #fff"
+                ></i>
+              </div>
+              <p style="font-weight: 400; font-size: 18px">
+                Bạn đã hoàn tất thêm phim mới vào danh sách chiếu, xin chúc
+                mừng!
+              </p>
+            </div>
+            <div
+              class="modal-footer"
+              style="justify-content: center; border: none"
+            >
+              <a class="btn-next" href="./add-film-info"> Hoàn tất </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div style="text-align: center">
-        <a href="./film-ticketing-second-step" class="btn-next">Tiếp theo</a>
+        <a
+          class="btn-next"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop"
+          >Xác nhận</a
+        >
       </div>
     </div>
   </body>

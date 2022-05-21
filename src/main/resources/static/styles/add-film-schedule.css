@@ -82,6 +82,8 @@ body {
   border-radius: 10px;
   width: 20vh;
   background-color: #fbca10;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .btn-next:hover {

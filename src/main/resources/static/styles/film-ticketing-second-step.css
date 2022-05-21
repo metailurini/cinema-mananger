@@ -102,6 +102,7 @@ body {
   border-radius: 10px;
   width: 20vh;
   background-color: #fbca10;
+  margin-bottom: 20px;
 }
 
 .btn-next:hover {
