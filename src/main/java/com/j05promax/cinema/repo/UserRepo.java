@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.j05promax.cinema.entity.User;
+import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.db.DBConnection;
+import com.j05promax.cinema.util.log.Log;
 
 public class UserRepo extends Repository {
 
@@ -62,11 +64,35 @@ public class UserRepo extends Repository {
         return new User();
     }
 
-    public boolean Create(String id) {
+    public boolean Create(User user) {
+        Common cm = Common.getInstance();
+        user.UserID = cm.GetUID();
+        String query = "INSERT INTO %s (user_id,full_name,admin_id,phone_number, status) VALUES(?,?,?,?,?) RETURNING user_id;" ;
+        try {
+            ResultSet result = this.Query(
+                String.format(query,User.TableName()),(ParamSetter)(statement) -> {
+                    statement.setString(1, user.UserID);
+                    statement.setString(2, user.FullName);
+                    statement.setString(3, user.AdminID);
+                    statement.setString(4, user.PhoneNumber);
+                    statement.setString(5, user.Status);
+                });
+
+            if (result.next()) {
+                if (result.getString("user_id").contentEquals("")) {
+                    return false;
+                }
+            }
+        
+        } catch (SQLException e) {
+            new Log(e).Show();
+            return false;
+        }
+
         return true;
     }
 
-    public boolean Update(String id, User user) {
+    public boolean Update(User user) {
         return true;
     }
 

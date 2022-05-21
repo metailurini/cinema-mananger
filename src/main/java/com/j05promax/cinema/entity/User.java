@@ -3,6 +3,7 @@ package com.j05promax.cinema.entity;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Date;;
 
 public class User extends Entity {
 
@@ -11,9 +12,9 @@ public class User extends Entity {
     public String AdminID = null;
     public String PhoneNumber = null;
     public String Email = null;
-    public Timestamp CreatedAt;
-    public Timestamp Updated;
-    public String Status = null;
+    public Timestamp CreatedAt = new Timestamp(new Date().getTime());
+    public Timestamp Updated = new Timestamp(new Date().getTime());
+    public String Status = "Hoạt động";
 
 
     public static String TableName() {
