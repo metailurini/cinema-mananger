@@ -2,6 +2,7 @@ package com.j05promax.cinema.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,12 +17,52 @@ import com.j05promax.cinema.util.log.Log;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class Customer {
+    @PostMapping("/customer")
+    public String createCustomer(
+        HttpServletRequest request,
+        HttpServletResponse response,
+
+        @RequestParam(name = "uName", required = false, defaultValue = "") String uName,
+        @RequestParam(name = "phone", required = false, defaultValue = "") String uPhone
+    ) {
+        Context ctx = new Context();
+        ctx.request = request;
+        ctx.response = response;
+
+        ctx = Midleware.Authenticate(ctx);
+        if (!ctx.SignedIn) return "redirect:/auth/login";
+
+        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+        User user = new User();
+        user.FullName = uName;
+        user.AdminID = ctx.UserID;
+        user.PhoneNumber = uPhone;
+        
+        if (!repo.User.Create(user)) {
+            return "error";
+        }
+
+        return "redirect:/customer";
+    }
+
+    @GetMapping("/customer-detail/{id}")
+    public String getCustomers(
+        HttpServletRequest request,
+        HttpServletResponse response,
+
+        @PathVariable(value = "id") String id) {
+            return "customer-detail";
+        }
+
+
     @GetMapping("/customer")
-    public String customer(
+    public String getCustomers(
             HttpServletRequest request,
             HttpServletResponse response,
 
@@ -37,12 +78,11 @@ public class Customer {
         ctx.SetUnicodeCookie("status", status,  "/customer");
         ctx.SetUnicodeCookie("phone_or_name", nameOrPhone,  "/customer");
 
-
         ctx = Midleware.Authenticate(ctx);
         if (!ctx.SignedIn) return "redirect:/auth/login";
 
-        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
-        
+        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();   
+
         int counted = 0;
         try {
             counted = repo.User.CountCustomer(nameOrPhone.strip(), status);

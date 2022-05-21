@@ -21,7 +21,7 @@ public class Context {
 	public Context LoadFromClaim(Map<String, ?> claim) {
 		Map<String, ?> details = ((Claim) claim.get(Midleware.TokenDetailsKey)).asMap();
 		this.UserID = (String) details.get("user-id");
-		this.UserID = (String) details.get("user-email");
+		this.UserEmail = (String) details.get("user-email");
 		return this;
 	}
 
