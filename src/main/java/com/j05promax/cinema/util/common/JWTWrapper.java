@@ -30,6 +30,7 @@ public class JWTWrapper {
         this.subject = subject;
     }
 
+    @SuppressWarnings("unchecked")
     public String Encode(Map<String, ?> claim) throws JWTCreationException {
         String token = "";
 

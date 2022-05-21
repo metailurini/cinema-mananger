@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.j05promax.cinema.entity.Admin;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
 import com.j05promax.cinema.service.Service;
+import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class AuthController {
 		try {
 			mess = URLEncoder.encode(message, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+            new Log(e).Show();
 		}
 
 		error.setValue(mess);
@@ -97,7 +98,7 @@ public class AuthController {
 
 		// if (username.contentEquals("admin") && password.contentEquals("admin")) {
 		if (service.Admin.CheckCorrectPassword(foundedAdmin, password)) {
-			Midleware.SignInToken(ctx, foundedAdmin.AdminID);
+			Midleware.SignInToken(ctx, foundedAdmin);
 			return "redirect:/main-page";
 		} else {
 			return "redirect:/auth/login";
