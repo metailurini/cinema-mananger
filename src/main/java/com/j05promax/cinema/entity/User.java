@@ -16,7 +16,6 @@ public class User extends Entity {
     public Timestamp Updated = new Timestamp(new Date().getTime());
     public String Status = "Hoạt động";
 
-
     public static String TableName() {
  
         return "users";
