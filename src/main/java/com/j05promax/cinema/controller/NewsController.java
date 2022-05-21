@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.j05promax.cinema.entity.Event;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
+import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,14 +44,14 @@ public class NewsController {
 		try {
 			events = repo.Event.GetAll(search.strip());
 		} catch (SQLException e) {
-			e.printStackTrace();
+            new Log(e).Show();
 		}
 
 		int counted = 0;
 		try {
 			counted = repo.Event.CountEvent();
 		} catch (SQLException e) {
-			e.printStackTrace();
+            new Log(e).Show();
 		}
 
 		model.addAttribute("events", events);

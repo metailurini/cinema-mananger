@@ -2,6 +2,7 @@ package com.j05promax.cinema.service;
 
 import com.j05promax.cinema.entity.Admin;
 import com.j05promax.cinema.util.common.Common;
+import com.j05promax.cinema.util.log.Log;
 
 public class AdminService {
     public boolean CheckCorrectPassword(Admin admin, String password) {
@@ -10,7 +11,7 @@ public class AdminService {
         try {
             status = cm.Bcrypt.CheckPassword(password, admin.Password);
         } catch (Exception e) {
-            e.printStackTrace();
+            new Log(e).Show();
         }
         return status;
     }

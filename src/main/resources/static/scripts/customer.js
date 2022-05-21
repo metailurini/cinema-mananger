@@ -52,3 +52,6 @@ if (toastTrigger) {
 }
 
 incEltNbr("nbr");
+
+document.querySelector("#statusSelection").value = getCookie('status')
+document.querySelector("#searchID").value = getCookie('phone_or_name')

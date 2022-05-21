@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.j05promax.cinema.entity.Film;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
+import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,14 +44,14 @@ public class FilmController {
 		try {
 			counted = repo.Film.CountFilmActive();
 		} catch (SQLException e) {
-			e.printStackTrace();
+            new Log(e).Show();
 		}
 
 		List<Film> films = new ArrayList<>();
 		try {
 			films = repo.Film.GetAll(search.strip());
 		} catch (SQLException e) {
-			e.printStackTrace();
+            new Log(e).Show();
 		}
 
 		model.addAttribute("films", films);

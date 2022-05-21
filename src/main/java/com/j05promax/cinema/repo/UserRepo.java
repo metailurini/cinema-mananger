@@ -14,16 +14,19 @@ public class UserRepo extends Repository {
         super(conn);
     }
 
-    public ArrayList<User> GetAll(String search, String choose) throws SQLException {
+    public ArrayList<User> GetAll(String search, String status, Repository.Perpage perpage) throws SQLException {
         ArrayList<User> users = new ArrayList<User>();
+        String perpageQuery = String.format("offset %d limit %d", perpage.maxInPage * perpage.page, perpage.maxInPage);
         
-        String query = "select * from %s where (LOWER(full_name) like ? OR phone_number like ? ) AND LOWER(status) like ?";
+        String query = "SELECT * FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ?");
         ResultSet result = this.Query(
-            String.format(query, User.TableName()),
+            String.format(query, User.TableName()) + perpageQuery,
             (ParamSetter)(statement) -> {
                 statement.setString(1, ("%" + search + "%").toLowerCase());
                 statement.setString(2, ("%" + search + "%").toLowerCase());
-                statement.setString(3, ("%" + choose + "%").toLowerCase());
+                if (!status.equals("")) {
+                    statement.setString(3, status);
+                }
             }
         );
 
@@ -35,15 +38,17 @@ public class UserRepo extends Repository {
         return users;
     }
 
-    public int CountCustomer(String search, String choose) throws SQLException {
+    public int CountCustomer(String search, String status) throws SQLException {
         int count_customer = 0;
-        String query = "select count(*) as counted from %s where (LOWER(full_name) like ? OR phone_number like ?) AND LOWER(status) like ?";
+        String query = "SELECT count(*) as counted FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ?");
         ResultSet result = this.Query(
             String.format(query, User.TableName()),
             (ParamSetter)(statement) -> {
                 statement.setString(1, ("%" + search + "%").toLowerCase());
                 statement.setString(2, ("%" + search + "%").toLowerCase());
-                statement.setString(3, ("%" + choose + "%").toLowerCase());
+                if (!status.equals("")) {
+                    statement.setString(3, status);
+                }
             }
         );
         if (result.next()) {

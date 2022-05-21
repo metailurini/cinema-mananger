@@ -20,6 +20,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src="scripts/utils.js" defer></script>
     <script src="scripts/customer.js" defer></script>
     <link
       rel="icon"
@@ -274,8 +275,6 @@
             >Trạng thái:
           </label>
           <select
-            id="chon"
-            name="chon"
             style="
               margin-left: 5px;
               margin-top: 1px;
@@ -285,6 +284,8 @@
               border-bottom-left-radius: 10px;
               border: none;
             "
+            id="statusSelection"
+            name="status"
           >
             <option value="">Tất cả</option>
             <option value="Hoạt động">Hoạt động</option>
@@ -326,6 +327,7 @@
             placeholder="Tìm kiếm"
             aria-label="#"
             name="phone_or_name"
+            id="searchID"
             aria-describedby="basic-addon2"
           />
           <button
@@ -453,20 +455,20 @@
         <div style="text-align: center">
           <nav aria-label="..." style="display: inline-block">
             <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link page-unactive" href="#">1</a>
-              </li>
-              <li class="page-item active" aria-current="page">
-                <a class="page-link page-active" href="#">2</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link page-unactive" href="#">3</a>
-              </li>
+                <li
+                    th:each="page, state: ${pages}"
+                    th:attr="class=${'page-item ' + (page ? 'active': '')},aria-current=page"
+                >
+                    <a
+                        th:text="${state.index + 1}"
+                        th:attr="class=${'page-link ' + (page ? 'page-active': 'page-unactive')},href=${'?page=' + state.index}"
+                    ></a>
+                </li>
             </ul>
           </nav>
-          <button type="button" class="btn btn-primary" id="liveToastBtn">
+          <!-- <button type="button" class="btn btn-primary" id="liveToastBtn">
             Show live toast
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
