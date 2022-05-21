@@ -4,6 +4,9 @@ package com.j05promax.cinema.repo;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.util.Date;
+
 
 import com.j05promax.cinema.entity.User;
 import com.j05promax.cinema.util.common.Common;
@@ -60,8 +63,19 @@ public class UserRepo extends Repository {
         return count_customer;
     }
 
-    public User GetByID(String id) {
-        return new User();
+    public User GetByID(String id) throws SQLException{
+        String query = "SELECT * FROM %s WHERE user_id = ?";
+        User user = null;
+        ResultSet result = this.Query(String.format(query,User.TableName()),
+        (ParamSetter)(statement) -> {
+            statement.setString(1, id);
+        });
+        if(result.next()){
+            user = new User().FromResultSet(result);
+        }
+
+        this.Close();
+        return user;
     }
 
     public boolean Create(User user) {
@@ -92,7 +106,32 @@ public class UserRepo extends Repository {
         return true;
     }
 
-    public boolean Update(User user) {
+    public boolean Update( User user) {
+        Common cm = Common.getInstance();
+        user.UserID = cm.GetUID();
+        user.Updated = new Timestamp(new Date().getTime());
+        System.out.println(user.UserID);
+        String query = "UPDATE %s SET full_name = ?, phone_number = ?, status = ?, updated_at = ? WHERE user_id = ? RETURNING user_id;";
+        try{
+            ResultSet result = this.Query(
+                String.format(query,User.TableName()),(ParamSetter)(statement) -> {
+                    statement.setString(1, user.FullName);
+                    statement.setString(2, user.PhoneNumber);
+                    statement.setString(3, user.Status);
+                    statement.setTimestamp(4, user.Updated);
+                    statement.setString(5, user.UserID);
+                });
+            if (result.next()) {
+                if (!result.getString("user_id").contentEquals(user.UserID)) {
+                    return false;
+                }
+            }
+        }
+
+        catch (SQLException e) {
+            new Log(e).Show();
+            return false;
+        }
         return true;
     }
 

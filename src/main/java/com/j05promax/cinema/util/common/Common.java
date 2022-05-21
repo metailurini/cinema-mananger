@@ -10,10 +10,10 @@ import com.j05promax.cinema.util.common.mail.GmailEngine;
 public class Common {
     private static Common single_instance = null;
     public static Integer TokenExpired = 3600 * 3; // 3 hours
+    public static Integer LenCodeRecoveryPassword = 6; // 7 days
 
     public JWTWrapper JWT;
-    public BcryptWrapper Bcrypt;
-    public EmailEngine Gmail;
+    public BcryptWrapper Bcrypt; public EmailEngine Gmail;
 
     private Common() {
         this.Bcrypt = new BcryptWrapper();
@@ -54,5 +54,20 @@ public class Common {
         } catch (NoSuchAlgorithmException e) { }
 
 		return hashtext.toUpperCase();
+    }
+
+    public String getRandomCode() {
+        String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                + "0123456789"
+                + "abcdefghijklmnopqrstuvxyz";
+        StringBuilder sb = new StringBuilder(Common.LenCodeRecoveryPassword);
+
+        for (int i = 0; i < Common.LenCodeRecoveryPassword; i++) {
+            int index = (int) (AlphaNumericString.length() * Math.random());
+
+            sb.append(AlphaNumericString.charAt(index));
+        }
+
+        return sb.toString();
     }
 }

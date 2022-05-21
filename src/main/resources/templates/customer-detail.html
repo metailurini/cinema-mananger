@@ -39,7 +39,11 @@
       </div>
     </nav>
     <div class="container" style="margin-top: 12vh">
-      <form class="info">
+      <form
+        th:attr="action=${'/customer-detail/' + user.UserID}"
+        method="POST"
+        class="info"
+      >
         <h5 style="color: white; width: 100%; font-size: 25px">
           Thông tin khách hàng
         </h5>
@@ -48,7 +52,7 @@
             <h6 style="color: white; font-size: 13px">Họ và tên</h6>
             <input
               type="text"
-              placeholder="Nguyễn Ngọc Thanh Danh"
+              th:attr="placeholder=${user.FullName},value=${user.FullName}"
               id="username"
               name="username"
               style="
@@ -67,7 +71,7 @@
             <h6 style="color: white; font-size: 13px">Số điện thoại</h6>
             <input
               type="numberphone"
-              placeholder="1234567890"
+              th:attr="placeholder=${user.PhoneNumber},value=${user.PhoneNumber}"
               id="number"
               name="number"
               required
@@ -105,7 +109,8 @@
                 type="radio"
                 id="work"
                 name="status"
-                value="work"
+                value="Hoạt động"
+                th:attr="checked=${user.Status.contentEquals('Hoạt động')}"
                 style="
                   margin-right: 2px;
                   margin-left: 10px;
@@ -119,7 +124,8 @@
                 type="radio"
                 id="ban"
                 name="status"
-                value="ban"
+                th:attr="checked=${user.Status.contentEquals('Bị khóa')}"
+                value="Bị khóa"
                 style="margin-left: 30px; width: 15px; height: 15px"
               />
               <label for="age2">Bị khóa</label>
@@ -129,10 +135,9 @@
         <div class="container" style="text-align: center; margin-top: 17px">
           <div style="display: inline-block; margin-top: 20px; font-size: 13px">
             <button
-              type="button"
+              type="submit"
+              id="submit"
               class="btn-add-cus"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
               style="
                 height: 40px;
                 width: 200px;
@@ -140,13 +145,9 @@
                 font-weight: 500;
                 color: #fff;
               "
-              onclick="onchangeBTN()"
             >
               Thay đổi thông tin
             </button>
-            <script>
-              function onchangeBTN() {}
-            </script>
           </div>
         </div>
       </form>
