@@ -97,7 +97,7 @@ public class AuthController {
 
 		// if (username.contentEquals("admin") && password.contentEquals("admin")) {
 		if (service.Admin.CheckCorrectPassword(foundedAdmin, password)) {
-			Midleware.SignInToken(ctx, foundedAdmin.AdminID);
+			Midleware.SignInToken(ctx, foundedAdmin);
 			return "redirect:/main-page";
 		} else {
 			return "redirect:/auth/login";

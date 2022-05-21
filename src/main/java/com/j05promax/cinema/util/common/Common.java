@@ -3,6 +3,7 @@ package com.j05promax.cinema.util.common;
 public class Common {
     private static Common single_instance = null;
     public static Integer TokenExpired = 3600 * 3; // 3 hours
+
     public JWTWrapper JWT;
     public BcryptWrapper Bcrypt;
 

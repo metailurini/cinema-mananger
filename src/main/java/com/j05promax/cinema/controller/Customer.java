@@ -2,12 +2,15 @@ package com.j05promax.cinema.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.j05promax.cinema.entity.User;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
+import com.j05promax.cinema.repo.Repository;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,36 +24,54 @@ public class Customer {
             HttpServletRequest request,
             HttpServletResponse response,
 
-            @RequestParam(name = "phone_or_name", required = false, defaultValue = "") String searchString,
-            @RequestParam(name = "name", required = false, defaultValue = "World") String name,
+            @RequestParam(name = "phone_or_name", required = false, defaultValue = "") String nameOrPhone,
+            @RequestParam(name = "status", required = false, defaultValue = "") String status,
+            @RequestParam(name = "page", required = false, defaultValue = "0") String sPage,
             Model model) {
 
         Context ctx = new Context();
         ctx.request = request;
         ctx.response = response;
 
+        ctx.SetUnicodeCookie("status", status,  "/customer");
+        ctx.SetUnicodeCookie("phone_or_name", nameOrPhone,  "/customer");
+
+
         ctx = Midleware.Authenticate(ctx);
         if (!ctx.SignedIn) return "redirect:/auth/login";
-            
 
         PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
         
         int counted = 0;
         try {
-            counted = repo.User.CountCustomer(searchString);
+            counted = repo.User.CountCustomer(nameOrPhone.strip(), status);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        int page = 0;
+        try { page = Integer.parseInt(sPage); } catch(NumberFormatException ex) { }
+
+        Repository.Perpage perpage = new Repository.Perpage(page);
+        Boolean[] listActivepage = new Boolean[(int) Math.ceil(counted * 1.0 / perpage.maxInPage)];
+        Arrays.fill(listActivepage, false);
+        listActivepage[perpage.page] = true;
 
         List<User> users = new ArrayList<>();
         try {
-            users = repo.User.GetAll(searchString.strip());
+            users = repo.User.GetAll(
+                nameOrPhone.strip(),
+                status,
+                perpage
+            );
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        model.addAttribute("staffName", "Staff's name");
+       
+       
         model.addAttribute("countedCustomer", counted);
+        model.addAttribute("pages", listActivepage);
+        model.addAttribute("staffName", ctx.UserEmail);
         model.addAttribute("users", users);
         return "customer";
     }

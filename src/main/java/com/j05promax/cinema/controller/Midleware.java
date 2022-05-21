@@ -3,43 +3,12 @@ package com.j05promax.cinema.controller;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import com.auth0.jwt.exceptions.JWTCreationException;
-import com.auth0.jwt.interfaces.Claim;
+import com.j05promax.cinema.entity.Admin;
 import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.log.Log;
 
-class Context {
-	protected HttpServletRequest request;
-	protected HttpServletResponse response;
-	protected String UserID;
-	protected boolean SignedIn = false;
-
-	public Context LoadFromClaim(Map<String, ?> claim) {
-		Map<String, ?> details = ((Claim) claim.get(Midleware.TokenDetailsKey)).asMap();
-		this.UserID = (String) details.get("userID");
-		return this;
-	}
-
-	public Map<String, Map<String, String>> ToClaim() {
-		return Map.of(Midleware.TokenDetailsKey, Map.of("userID", this.UserID));
-	}
-	
-	public Cookie getCookie(String name) {
-		if (request.getCookies() != null) {
-			for (Cookie cookie : request.getCookies()) {
-				if (cookie.getName().equals(name)) {
-					return cookie;
-				}
-			}
-		}
-
-		return new Cookie(name, null);
-	}
-
-}
 
 public class Midleware {
 	private static String authKey = "_auth_token";
@@ -56,6 +25,7 @@ public class Midleware {
 				claim = cm.JWT.Decode(token);
 			} catch (Exception e) {
 				new Log(e).Show();
+				return ctx;
 			}
 
 			if (claim == null) {
@@ -70,8 +40,9 @@ public class Midleware {
 		return ctx;
 	}
 
-	public static void SignInToken(Context ctx, String userID) {
-		ctx.UserID = userID;
+	public static void SignInToken(Context ctx, Admin user) {
+		ctx.UserID = user.AdminID;
+		ctx.UserEmail = user.Email;
 		Common cm = Common.getInstance();
 		Cookie cookie = ctx.getCookie(authKey);
 

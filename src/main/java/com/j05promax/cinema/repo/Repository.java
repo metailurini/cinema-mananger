@@ -14,6 +14,14 @@ public class Repository {
     private DBConnection conn;
     private PreparedStatement statement;
     private ResultSet result;
+    public static class Perpage {
+        public int maxInPage = 5;
+        public int page;
+
+        public Perpage(int page) {
+            this.page = page;
+        }
+    }
 
     public Repository(DBConnection connection) {
         conn = connection;
