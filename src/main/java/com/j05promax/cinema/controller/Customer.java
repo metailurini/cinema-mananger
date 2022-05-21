@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -50,12 +51,67 @@ public class Customer {
         return "redirect:/customer";
     }
 
+
+    @PostMapping("/customer-detail/{id}")
+    public String updateCustomer(
+        HttpServletRequest request,
+        HttpServletResponse response,
+
+        @RequestParam(name = "username", required = false, defaultValue = "") String username,
+        @RequestParam(name = "number", required = false, defaultValue = "") String number,
+        @RequestParam(name = "status", required = false, defaultValue = "Hoạt động") String status,
+        @PathVariable String id
+    ){
+        Context ctx = new Context();
+        ctx.request = request;
+        ctx.response = response;
+
+        ctx = Midleware.Authenticate(ctx);
+        if (!ctx.SignedIn) return "redirect:/auth/login";
+
+        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+        User user = new User();
+        user.UserID = id;
+        user.FullName = username;
+        user.PhoneNumber = number;
+        user.Status = status;
+
+
+        if (!repo.User.Update(user)) {
+            return "error";
+        }
+
+        return "redirect:/customer";
+    }
+
+
     @GetMapping("/customer-detail/{id}")
     public String getCustomers(
         HttpServletRequest request,
         HttpServletResponse response,
 
-        @PathVariable(value = "id") String id) {
+        @PathVariable(value = "id") String id,
+        Model model) {
+
+            Context ctx = new Context();
+            ctx.request = request;
+            ctx.response = response;
+
+            ctx = Midleware.Authenticate(ctx);
+            if (!ctx.SignedIn) return "redirect:/auth/login";
+
+            PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+
+            User user = new User();
+            try{
+                user = repo.User.GetByID(id);
+
+            }
+            catch(SQLException e){
+                new Log(e).Show();
+            }
+
+            model.addAttribute("user", user);
             return "customer-detail";
         }
 
