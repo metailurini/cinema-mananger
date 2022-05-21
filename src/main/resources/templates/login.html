@@ -65,6 +65,13 @@
 
         <div style="text-align: center">
           <button class="cus-button">Đăng nhập</button>
+          <button
+              type="button"
+              style="display: none;"
+              id="liveToastBtn"
+          >
+              Show live toast
+          </button>
         </div>
       </form>
       <!-- Toast -->
@@ -110,7 +117,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="toast-body">Thông tin đăng nhập không chính xác</div>
+          <div class="toast-body" id="toastContext">Thông tin đăng nhập không chính xác</div>
         </div>
 
         <div

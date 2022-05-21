@@ -91,12 +91,16 @@ public class AuthController {
 			return "redirect:/auth/login";
 		}
 
+		if (foundedAdmin == null) {
+			AuthController.setError(ctx, "Tài Khoản Đăng Nhập Không Hợp Lệ");
+			return "redirect:/auth/login";
+		}
+
 		if (foundedAdmin.AdminID.contentEquals("")) {
 			AuthController.setError(ctx, "Tài Khoản Đăng Nhập Không Hợp Lệ");
 			return "redirect:/auth/login";
 		}
 
-		// if (username.contentEquals("admin") && password.contentEquals("admin")) {
 		if (service.Admin.CheckCorrectPassword(foundedAdmin, password)) {
 			Midleware.SignInToken(ctx, foundedAdmin);
 			return "redirect:/main-page";
@@ -105,4 +109,36 @@ public class AuthController {
 		}
 	}
 
+	@PostMapping("/auth/forgot-password")
+	public String forgotPassword(
+			HttpServletRequest request,
+			HttpServletResponse response,
+
+			@RequestParam(value = "email", defaultValue = "") String email) {
+
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
+
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+		Service service = Service.getInstance();
+
+		Admin foundedAdmin = null;
+		try {
+			foundedAdmin = repo.Admin.GetByEmail(email);
+		} catch (SQLException e) {
+			return "error";
+		}
+
+		// user not found
+		if (foundedAdmin == null ) {
+			return "error";
+		}
+
+		if (!service.Admin.RecoverPassword(foundedAdmin)) {
+			return "error";
+		}
+
+		return "redirect:/auth/login";
+	}
 }
