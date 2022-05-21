@@ -1,34 +1,27 @@
-let arrTimes = [
-  {
-    id: 1,
-    time: "00:00 - 01:30",
-  },
-  {
-    id: 2,
-    time: "01:45 - 03:15",
-  },
-  {
-    id: 3,
-    time: "03:30 - 05:00",
-  },
-  {
-    id: 4,
-    time: "05:15 - 06:45",
-  },
-  {
-    id: 5,
-    time: "07:00 - 08:30",
-  },
+arrTimes = [
+  "00:00 - 01:30",
+  "01:45 - 03:15",
+  "03:30 - 05:00",
+  "05:15 - 06:45",
+  "07:00 - 08:30",
+  "09:00 - 10:30",
+  "11:00 - 12:30",
 ];
 
 let arrDays = ["21-05-2022", "22-05-2022", "23-05-2022"];
 
-// var child = document.getElementById("child");
-// var father = document.getElementById("father");
+let arrDayTimeChoosed = [];
+setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 
-// for (let i = 0; i < 20; i++) {
-//   father.appendChild(child.cloneNode(true));
-// }
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+    var date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
 
 function initDayTimeChoose() {
   for (let arrDay of arrDays) {
@@ -45,10 +38,9 @@ function initDayTimeChoose() {
 
     for (let arrTime of arrTimes) {
       const childDayTime = document.createElement("h5");
-      childDayTime.id =
-        arrDay + "-" + arrTime.time.replace(/ /g, "").replaceAll(":", "");
+      childDayTime.id = arrDay + arrTime;
       childDayTime.className = "choose-time-unactive";
-      childDayTime.innerText = arrTime.time;
+      childDayTime.innerText = arrTime;
 
       childDayTime.addEventListener("click", function () {
         if (childDayTime.className.includes("choose-time-unactive")) {
@@ -68,10 +60,22 @@ function initDayTimeChoose() {
 
 function addTimeChoosed(childDayTime) {
   childDayTime.className = "choose-time-active";
+  arrDayTimeChoosed.push({
+    day: childDayTime.id.substring(0, 10),
+    time: childDayTime.id.substring(10),
+  });
+  setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 }
 
 function deleteTimeChoosed(childDayTime) {
   childDayTime.className = "choose-time-unactive";
+  var index = arrDayTimeChoosed.findIndex((object) => {
+    return object.day + object.time == childDayTime.id;
+  });
+  if (index > -1) {
+    arrDayTimeChoosed.splice(index, 1);
+    setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
+  }
 }
 
 initDayTimeChoose();
