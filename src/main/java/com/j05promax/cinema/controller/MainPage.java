@@ -27,7 +27,7 @@ public class MainPage {
 			return "redirect:/auth/login";
 		}
 
-		model.addAttribute("staffName", "Staff's name");
+		model.addAttribute("staffName", ctx.UserEmail);
 		return "main-page";
 	}
 }

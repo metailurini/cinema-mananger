@@ -19,7 +19,7 @@ public class FilmTicketingController {
         if (!ctx.SignedIn) {
             return "redirect:/auth/login";
         }
-        model.addAttribute("staffName", "Staff's name");
+        model.addAttribute("staffName", ctx.UserEmail);
         return "film-ticketing";
     }
 }
