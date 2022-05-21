@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.j05promax.cinema.util.common.Common;
-import com.j05promax.cinema.util.common.mail.Mail;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,11 +28,12 @@ public class CheckHealthController {
 
 		Common cm = Common.getInstance();
 
-		cm.Gmail.Send(
-				new Mail().blank()
-						.to("tessst", "shanenoi.org@gmail.com")
-						.withSubject("Email Subject")
-						.withHTMLText("<b>HHH</b><i>ccc</i>"));
+		System.out.print(cm.GetUID());
+		// cm.Gmail.Send(
+		// 		new Mail().blank()
+		// 				.to("tessst", "shanenoi.org@gmail.com")
+		// 				.withSubject("Email Subject")
+		// 				.withHTMLText("<b>HHH</b><i>ccc</i>"));
 
 		return "check_health";
 	}

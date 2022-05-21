@@ -42,7 +42,6 @@ public class Customer {
         if (!ctx.SignedIn) return "redirect:/auth/login";
 
         PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
-        
         int counted = 0;
         try {
             counted = repo.User.CountCustomer(nameOrPhone.strip(), status);

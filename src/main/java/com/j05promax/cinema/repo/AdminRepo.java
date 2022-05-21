@@ -1,12 +1,12 @@
 package com.j05promax.cinema.repo;
 
-
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.j05promax.cinema.entity.Admin;
 import com.j05promax.cinema.util.db.DBConnection;
+import com.j05promax.cinema.util.log.Log;
 
 public class AdminRepo extends Repository {
 
@@ -18,7 +18,8 @@ public class AdminRepo extends Repository {
         ArrayList<Admin> admins = new ArrayList<Admin>();
 
         String query = "select * from %s";
-        ResultSet result = this.Query(String.format(query, Admin.TableName()), (ParamSetter)(statement) -> {});
+        ResultSet result = this.Query(String.format(query, Admin.TableName()), (ParamSetter) (statement) -> {
+        });
 
         while (result.next()) {
             admins.add(new Admin().FromResultSet(result));
@@ -33,18 +34,17 @@ public class AdminRepo extends Repository {
     }
 
     public Admin GetByEmail(String email) throws SQLException {
-        Admin aAdmin = new Admin();
+        Admin aAdmin = null;
 
         String query = "select * from %s where email = ? limit 1";
         ResultSet result = this.Query(
-            String.format(query, Admin.TableName()),
-            (ParamSetter)(statement) -> {
-                statement.setString(1, email);
-            }
-        );
-        
+                String.format(query, Admin.TableName()),
+                (ParamSetter) (statement) -> {
+                    statement.setString(1, email);
+                });
+
         if (result.next()) {
-            aAdmin.FromResultSet(result);
+            aAdmin = new Admin().FromResultSet(result);
         }
 
         return aAdmin;
@@ -54,7 +54,29 @@ public class AdminRepo extends Repository {
         return true;
     }
 
-    public boolean Update(String id, Admin admin) {
+    public boolean Update(Admin admin) {
+        String query = "update  %s set password = ?, sec_code = ?, email = ?, updated_at = ? where admin_id = ? returning admin_id";
+        try {
+            ResultSet result = this.Query(
+                    String.format(query, Admin.TableName()),
+                    (ParamSetter) (statement) -> {
+                        statement.setString(1, admin.Password);
+                        statement.setString(2, admin.SecCode);
+                        statement.setString(3, admin.Email);
+                        statement.setTimestamp(4, admin.UpdatedAt);
+                        statement.setString(5, admin.AdminID);
+                    });
+
+            if (result.next()) {
+                if (!result.getString("admin_id").contentEquals(admin.AdminID)) {
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            new Log(e).Show();
+            return false;
+        }
+
         return true;
     }
 
