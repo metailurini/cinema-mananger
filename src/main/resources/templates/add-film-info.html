@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/add-film-info.css " />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/53a42bcb20.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/add-film-info.js" defer></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
+    />
+    <title>WINX | Thêm phim - Thêm thông tin phim</title>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark fixed-top"
+      style="height: 12vh; background-color: #000"
+    >
+      <div class="container">
+        <a class="custom-navbar-brand" onclick="history.back()">
+          <i class="fa-solid fa-arrow-left"></i> Quay lại</a
+        >
+      </div>
+    </nav>
+    <div class="container" style="margin-top: 12vh; padding-bottom: 30px">
+      <h2 style="color: #fff; margin-bottom: 30px">Thêm phim</h2>
+      <div class="top-container">
+        <form style="margin-top: 15px; text-align: center">
+          <div style="width: 50%; display: inline-block">
+            <div class="title-input-cover">
+              <label class="cus-label">Tên phim</label>
+              <input class="cus-input" placeholder="Nhập tên phim" required />
+            </div>
+            <div class="title-input-cover">
+              <label class="cus-label">Chủ đề</label>
+              <input class="cus-input" placeholder="Nhập chủ đề" required />
+            </div>
+            <div class="title-input-cover">
+              <label class="cus-label">Thời lượng</label>
+              <input class="cus-input" placeholder="Nhập thời lượng" required />
+            </div>
+            <div class="title-input-cover">
+              <label class="cus-label">Liên kết ảnh</label>
+              <input
+                class="cus-input"
+                placeholder="Nhập liên kết ảnh"
+                required
+              />
+            </div>
+            <div class="title-input-cover">
+              <label class="cus-label">Mô tả</label>
+              <textarea
+                style="resize: none; height: 150px"
+                class="cus-input"
+                placeholder="Nhập Mô tả"
+                required
+              ></textarea>
+            </div>
+            <div class="title-input-cover">
+              <label class="cus-label" for="start">Ngày bắt đầu</label>
+              <input
+                type="date"
+                id="start"
+                name="film-start"
+                value="2022-05-22"
+                min="2022-01-01"
+                max="2023-12-31"
+                class="cus-input"
+              />
+            </div>
+            <div class="title-input-cover">
+              <label class="cus-label" for="start">Ngày kết thúc</label>
+              <input
+                type="date"
+                id="end"
+                name="film-end"
+                value="2022-05-22"
+                min="2022-01-01"
+                max="2023-12-31"
+                class="cus-input"
+              />
+            </div>
+            <div class="title-input-cover">
+              <label class="cus-label">Giá vé</label>
+              <input class="cus-input" placeholder="Nhập giá vé" required />
+            </div>
+          </div>
+          <div style="text-align: center">
+            <a href="./add-film-schedule" class="btn-next">Tiếp theo</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
