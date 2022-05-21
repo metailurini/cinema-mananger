@@ -1,4 +1,4 @@
-arrTimes = [
+let arrTimes = [
   "00:00 - 01:30",
   "01:45 - 03:15",
   "03:30 - 05:00",
@@ -8,10 +8,45 @@ arrTimes = [
   "11:00 - 12:30",
 ];
 
-let arrDays = ["21-05-2022", "22-05-2022", "23-05-2022"];
+let arrDays = getDatesInRange("22-05-2022", "31-05-2022");
 
 let arrDayTimeChoosed = [];
 setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
+
+function getDatesInRange(startDate, endDate) {
+  startDate =
+    startDate.substring(6) +
+    "-" +
+    startDate.substring(3, 5) +
+    "-" +
+    startDate.substring(0, 2);
+
+  endDate =
+    endDate.substring(6) +
+    "-" +
+    endDate.substring(3, 5) +
+    "-" +
+    endDate.substring(0, 2);
+
+  const d1 = new Date(startDate);
+  const d2 = new Date(endDate);
+
+  const date = new Date(d1.getTime());
+  const dates = [];
+  date.setDate(date.getDate() + 1);
+  while (date <= d2) {
+    const tmpDate = new Date(date).toISOString().slice(0, 10);
+    dates.push(
+      tmpDate.substring(8) +
+        "-" +
+        tmpDate.substring(5, 7) +
+        "-" +
+        tmpDate.substring(0, 4)
+    );
+    date.setDate(date.getDate() + 1);
+  }
+  return dates;
+}
 
 function setCookie(name, value, days) {
   var expires = "";
