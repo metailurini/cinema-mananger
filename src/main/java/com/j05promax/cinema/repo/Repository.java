@@ -1,8 +1,8 @@
 package com.j05promax.cinema.repo;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.PreparedStatement;
 
 import com.j05promax.cinema.util.db.DBConnection;
 
@@ -14,12 +14,28 @@ public class Repository {
     private DBConnection conn;
     private PreparedStatement statement;
     private ResultSet result;
+
     public static class Perpage {
         public int maxInPage = 8;
         public int page;
 
         public Perpage(int page) {
             this.page = page;
+        }
+    }
+
+    public static class Error {
+        public String message;
+        public String code;
+        public static final String Unique = "23505";
+
+        public Error(String message, String codeString) {
+            this.message = message;
+            code = codeString;
+        }
+
+        public static Error CanNotUpdate() {
+            return new Error("không thể cập nhật dữ liệu", "1");
         }
     }
 
