@@ -11,9 +11,12 @@ public class Common {
     private static Common single_instance = null;
     public static Integer TokenExpired = 3600 * 3; // 3 hours
     public static Integer LenCodeRecoveryPassword = 6; // 7 days
+    public static Integer CodeExpiredTime = 15 * 60; // 7 days
+
 
     public JWTWrapper JWT;
-    public BcryptWrapper Bcrypt; public EmailEngine Gmail;
+    public BcryptWrapper Bcrypt;
+    public EmailEngine Gmail;
 
     private Common() {
         this.Bcrypt = new BcryptWrapper();

@@ -54,8 +54,8 @@ public class AdminRepo extends Repository {
         return true;
     }
 
-    public boolean Update(Admin admin) {
-        String query = "update  %s set password = ?, sec_code = ?, email = ?, updated_at = ? where admin_id = ? returning admin_id";
+    public Repository.Error Update(Admin admin) {
+        String query = "UPDATE %s set password = ?, sec_code = ?, email = ?, updated_at = ? where admin_id = ? RETURNING admin_id";
         try {
             ResultSet result = this.Query(
                     String.format(query, Admin.TableName()),
@@ -69,15 +69,15 @@ public class AdminRepo extends Repository {
 
             if (result.next()) {
                 if (!result.getString("admin_id").contentEquals(admin.AdminID)) {
-                    return false;
+                    return Repository.Error.CanNotUpdate();
                 }
             }
         } catch (SQLException e) {
             new Log(e).Show();
-            return false;
+            return new Repository.Error(e.getMessage(), e.getSQLState());
         }
 
-        return true;
+        return null;
     }
 
     public boolean Delete(String id) {
