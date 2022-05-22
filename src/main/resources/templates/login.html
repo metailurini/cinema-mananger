@@ -62,16 +62,16 @@
             name="password"
             required
           />
+          <div style="text-align: right; margin-top: 10px">
+            <a href="/auth/forgot-password" class="forgot-pass"
+              >Quên mật khẩu</a
+            >
+          </div>
         </div>
-
         <div style="text-align: center">
           <button class="cus-button">Đăng nhập</button>
-          <button
-              type="button"
-              style="display: none;"
-              id="liveToastBtn"
-          >
-              Show live toast
+          <button type="button" style="display: none" id="liveToastBtn">
+            Show live toast
           </button>
         </div>
       </form>
@@ -118,7 +118,9 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="toast-body" id="toastContext">Thông tin đăng nhập không chính xác</div>
+          <div class="toast-body" id="toastContext">
+            Thông tin đăng nhập không chính xác
+          </div>
         </div>
 
         <div

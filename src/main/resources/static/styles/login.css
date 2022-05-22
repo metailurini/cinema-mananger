@@ -76,7 +76,7 @@ label {
   color: #e5e5e5;
 }
 .cus-button {
-  margin-top: 50px !important;
+  margin-top: 20px !important;
   width: 50%;
   background-color: #fbca10;
   color: #fff;
@@ -91,4 +91,16 @@ label {
 .cus-button:hover {
   background-color: #fbd43f !important;
   transition: all 0.5s !important;
+}
+
+.forgot-pass {
+  text-align: right;
+
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+
+.forgot-pass:hover {
+  color: #999;
 }
