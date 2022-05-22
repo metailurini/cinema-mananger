@@ -13,7 +13,7 @@ public class User extends Entity {
     public String PhoneNumber = null;
     public String Email = null;
     public Timestamp CreatedAt = new Timestamp(new Date().getTime());
-    public Timestamp Updated = new Timestamp(new Date().getTime());
+    public Timestamp UpdatedAt = new Timestamp(new Date().getTime());
     public String Status = "Hoạt động";
 
     public static String TableName() {
@@ -28,7 +28,7 @@ public class User extends Entity {
         PhoneNumber = result.getString("phone_number");
         Email = result.getString("email");
         CreatedAt = result.getTimestamp("created_at");
-        Updated = result.getTimestamp("updated_at");
+        UpdatedAt = result.getTimestamp("updated_at");
         Status = result.getString("status");
         return this;
     }

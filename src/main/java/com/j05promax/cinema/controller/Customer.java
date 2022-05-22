@@ -18,7 +18,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -52,15 +51,15 @@ public class Customer {
     }
 
 
-    @PostMapping("/customer-detail/{id}")
+    @PostMapping("/update-customer/{id}")
     public String updateCustomer(
         HttpServletRequest request,
         HttpServletResponse response,
 
+        @PathVariable(value = "id") String id,
         @RequestParam(name = "username", required = false, defaultValue = "") String username,
-        @RequestParam(name = "number", required = false, defaultValue = "") String number,
-        @RequestParam(name = "status", required = false, defaultValue = "Hoạt động") String status,
-        @PathVariable String id
+        @RequestParam(name = "number", required = false, defaultValue = "") String phoneNumber,
+        @RequestParam(name = "status", required = false, defaultValue = "Hoạt động") String status
     ){
         Context ctx = new Context();
         ctx.request = request;
@@ -73,15 +72,14 @@ public class Customer {
         User user = new User();
         user.UserID = id;
         user.FullName = username;
-        user.PhoneNumber = number;
+        user.PhoneNumber = phoneNumber;
         user.Status = status;
-
 
         if (!repo.User.Update(user)) {
             return "error";
         }
 
-        return "redirect:/customer";
+        return "redirect:/customer-detail/" + user.UserID;
     }
 
 
