@@ -1,9 +1,10 @@
-const arrTimes = splitFilmDurationInDay(120 * 60); //film duration by seconds = minutes * 60
-let arrDays = getDatesInRange("22-05-2022", "31-05-2022"); //generate all day in range, get from film info
+const arrTimes = splitFilmDurationInDay(120); //film duration by seconds = minutes * 60
+let arrDays = getDatesInRange("23-05-2022", "28-05-2022"); //generate all day in range, get from film info
 let arrDayTimeChoosed = [];
 setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 
 function splitFilmDurationInDay(filmDuration) {
+  filmDuration *= 60;
   var closeTimeInSecons = 23 * 60 * 60;
   var arrFilmDurations = [];
   var temparrFilmDurations = [];
@@ -19,9 +20,9 @@ function splitFilmDurationInDay(filmDuration) {
   };
 
   for (
-    var t = 7 * 60 * 60;
-    t <= closeTimeInSecons - (closeTimeInSecons % filmDuration) + filmDuration;
-    t += filmDuration
+    let i = 0, t = 7 * 60 * 60;
+    i <= Math.floor(57600 / filmDuration);
+    i++, t += filmDuration
   ) {
     arrFilmDurations.push(conv(Math.min(t, closeTimeInSecons)));
   }
@@ -64,7 +65,7 @@ function getDatesInRange(startDate, endDate) {
 
   const date = new Date(d1.getTime());
   const dates = [];
-  date.setDate(date.getDate() + 1);
+  date.setDate(date.getDate());
   while (date <= d2) {
     const tmpDate = new Date(date).toISOString().slice(0, 10);
     dates.push(
