@@ -1,37 +1,4 @@
-const arrSeatsIndex = [
-  {
-    index: 1,
-    word: "A",
-  },
-  {
-    index: 2,
-    word: "B",
-  },
-  {
-    index: 3,
-    word: "C",
-  },
-  {
-    index: 4,
-    word: "D",
-  },
-  {
-    index: 5,
-    word: "E",
-  },
-  {
-    index: 6,
-    word: "F",
-  },
-  {
-    index: 7,
-    word: "G",
-  },
-  {
-    index: 8,
-    word: "H",
-  },
-];
+const arrSeatsIndex = ["A", "B", "C", "D", "E", "F", "G", "H"];
 let arrTempSeats = [];
 setCookie("_arr_seats", JSON.stringify(arrTempSeats), 1);
 
@@ -59,7 +26,7 @@ const arrSeatClass = ["seat-available", "seat-unvailable"];
 function initSeats() {
   for (let i = 0; i < 7; i++) {
     const seatRowContainer = document.createElement("div");
-    const rowTextIndex = arrSeatsIndex[i].word;
+    const rowTextIndex = arrSeatsIndex[i];
     seatRowContainer.className = "seat-row-container";
     seatRowContainer.id = "seatRowContainer";
     for (let j = 0; j < 7; j++) {
@@ -97,8 +64,8 @@ function addSeatChoosed(seatChoosed) {
   var showSeatGrandChild = document.createElement("div");
   var showSeatGrandChildTop = document.createElement("div");
   var showSeatGrandChildBottom = document.createElement("div");
-  var a = document.createElement("a");
-  var i = document.createElement("i");
+  // var a = document.createElement("a");
+  // var i = document.createElement("i");
   var seatName = document.createElement("h5");
   var filmName = document.createElement("h6");
   var seatPrice = document.createElement("h5");
@@ -120,8 +87,8 @@ function addSeatChoosed(seatChoosed) {
   showSeatGrandChild.style = "display: flex";
   showSeatGrandChildTop.className = "seat-choosing";
   showSeatGrandChildTop.style = "margin-right: 10px; width: 50px; height: 50px";
-  a.style = "cursor: pointer";
-  i.className = "fa-solid fa-square-xmark";
+  // a.style = "cursor: pointer";
+  // i.className = "fa-solid fa-square-xmark";
   seatName.style = "margin-top: 12px";
   seatPrice.style = "color: #fbca10";
   showSeatChild.id = "temp" + seatChoosed.id;
@@ -134,9 +101,9 @@ function addSeatChoosed(seatChoosed) {
   showSeatGrandChildBottom.appendChild(seatPrice);
   showSeatGrandChild.appendChild(showSeatGrandChildTop);
   showSeatGrandChild.appendChild(showSeatGrandChildBottom);
-  a.appendChild(i);
+  // a.appendChild(i);
   showSeatChild.appendChild(showSeatGrandChild);
-  showSeatChild.appendChild(a);
+  // showSeatChild.appendChild(a);
   showSeatFather.appendChild(showSeatChild);
 }
 

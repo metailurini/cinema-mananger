@@ -22,21 +22,24 @@ public class AdminService {
         return status;
     }
 
-    public boolean RecoverPassword(Admin admin) {
+    public boolean RequestCodeEmail(Admin admin) {
         Common cm = Common.getInstance();
+        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+
         admin.SecCode = cm.getRandomCode();
         admin.UpdatedAt = new Timestamp(new Date().getTime());
-        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
-        if(!repo.Admin.Update(admin)) {
+        if(repo.Admin.Update(admin) != null) {
             return false;
         }
+
+        System.out.println("code: " + admin.SecCode);
 
         cm.Gmail.Send(
             new Mail().blank()
             .to("Winx Staff", admin.Email)
             .withSubject("Winx Cinema - Password Recovery")
             .withHTMLText(String.format(
-                "LInk: localhost:8080/change-password?code=%s&email=%s",
+                "LInk: localhost:8080/auth/change-password?code=%s&email=%s",
                 admin.SecCode,
                 admin.Email
             ))

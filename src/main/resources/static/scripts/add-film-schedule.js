@@ -1,18 +1,48 @@
-let arrTimes = [
-  "07:00 - 08:45",
-  "09:00 - 10:45",
-  "11:00 - 12:45",
-  "13:00 - 14:45",
-  "15:00 - 16:45",
-  "17:00 - 18:45",
-  "19:00 - 20:45",
-  "21:00 - 22:45",
-];
-
-let arrDays = getDatesInRange("22-05-2022", "31-05-2022");
-
+const arrTimes = splitFilmDurationInDay(120 * 60); //film duration by seconds = minutes * 60
+let arrDays = getDatesInRange("22-05-2022", "31-05-2022"); //generate all day in range, get from film info
 let arrDayTimeChoosed = [];
 setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
+
+function splitFilmDurationInDay(filmDuration) {
+  var closeTimeInSecons = 23 * 60 * 60;
+  var arrFilmDurations = [];
+  var temparrFilmDurations = [];
+  var pad = function (num, size) {
+    return ("0" + num).slice(size * -1);
+  };
+  var conv = function (t) {
+    var time = parseFloat(t).toFixed(3),
+      hours = Math.floor(time / 60 / 60),
+      minutes = Math.floor(time / 60) % 60;
+
+    return pad(hours, 2) + ":" + pad(minutes, 2);
+  };
+
+  for (
+    var t = 7 * 60 * 60;
+    t <= closeTimeInSecons - (closeTimeInSecons % filmDuration) + filmDuration;
+    t += filmDuration
+  ) {
+    arrFilmDurations.push(conv(Math.min(t, closeTimeInSecons)));
+  }
+
+  for (let arrFilmDuration of arrFilmDurations) {
+    if (
+      arrFilmDurations.indexOf(arrFilmDuration) ==
+      arrFilmDurations.length - 1
+    ) {
+      break;
+    } else {
+      temparrFilmDurations.push(
+        arrFilmDuration +
+          " - " +
+          arrFilmDurations[arrFilmDurations.indexOf(arrFilmDuration) + 1]
+      );
+    }
+  }
+
+  return temparrFilmDurations.slice();
+}
 
 function getDatesInRange(startDate, endDate) {
   startDate =
@@ -74,7 +104,7 @@ function initDayTimeChoose() {
 
     for (let arrTime of arrTimes) {
       const childDayTime = document.createElement("h5");
-      childDayTime.id = arrDay + arrTime;
+      childDayTime.id = arrDay.replace(" ", "") + arrTime.replace(/\s/g, "");
       childDayTime.className = "choose-time-unactive";
       childDayTime.innerText = arrTime;
 
@@ -97,8 +127,8 @@ function initDayTimeChoose() {
 function addTimeChoosed(childDayTime) {
   childDayTime.className = "choose-time-active";
   arrDayTimeChoosed.push({
-    day: childDayTime.id.substring(0, 10).split(" ").join(""),
-    time: childDayTime.id.substring(10).split(" ").join(""),
+    day: childDayTime.id.substring(0, 10),
+    time: childDayTime.id.substring(10).replace(/\s/g, ""),
   });
   setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 }

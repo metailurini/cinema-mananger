@@ -3,6 +3,7 @@ package com.j05promax.cinema.controller;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.j05promax.cinema.entity.Admin;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
+import com.j05promax.cinema.repo.Repository;
 import com.j05promax.cinema.service.Service;
+import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
@@ -27,7 +30,7 @@ public class AuthController {
 		try {
 			mess = URLEncoder.encode(message, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-            new Log(e).Show();
+			new Log(e).Show();
 		}
 
 		error.setValue(mess);
@@ -109,7 +112,13 @@ public class AuthController {
 		}
 	}
 
-	@PostMapping("/auth/forgot-password")
+	@GetMapping("/auth/forgot-password")
+	public String forgotPassword() {
+		return "forgot-password";
+	}
+
+
+	@PostMapping("/auth/request-code")
 	public String forgotPassword(
 			HttpServletRequest request,
 			HttpServletResponse response,
@@ -131,14 +140,106 @@ public class AuthController {
 		}
 
 		// user not found
-		if (foundedAdmin == null ) {
+		if (foundedAdmin == null) {
+			AuthController.setError(ctx, "Tài khoản không tìm thấy");
+			return "redirect:/auth/login";
+		}
+
+		if (!service.Admin.RequestCodeEmail(foundedAdmin)) {
 			return "error";
 		}
 
-		if (!service.Admin.RecoverPassword(foundedAdmin)) {
-			return "error";
+		return "redirect:/";
+	}
+
+	@GetMapping("/auth/change-password")
+	public String recoverPassword(
+			HttpServletRequest request,
+			HttpServletResponse response,
+
+			@RequestParam(value = "email", defaultValue = "") String email,
+			@RequestParam(value = "code", defaultValue = "") String code) {
+
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
+
+		Admin admin = AuthController.authAdminWithEmailCode(email, code);
+		if (admin == null) {
+			AuthController.setError(ctx, "Mã xác thực hết hạn hoặc không tồn tại");
+			return "redirect:/auth/login";
 		}
 
+		Cookie emailC = ctx.getCookie("email");
+		emailC.setValue(email);
+		ctx.response.addCookie(emailC);
+		Cookie codeC = ctx.getCookie("code");
+		codeC.setValue(code);
+		ctx.response.addCookie(codeC);
+
+		// change password
+		return "change-password";
+	}
+
+	public static Admin authAdminWithEmailCode(String email, String code) {
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+
+		Admin admin = null;
+		try {
+			admin = repo.Admin.GetByEmail(email);
+		} catch (SQLException e) {
+			return null;
+		}
+
+		if (admin == null) {
+			return null;
+		}
+
+		boolean validCode = (admin.SecCode.contentEquals(code) &&
+				(new Date().getTime() - admin.UpdatedAt.getTime()) / 1000 < Common.CodeExpiredTime);
+		if (!validCode) {
+			return null;
+		}
+
+		return admin;
+	}
+
+	@PostMapping("/auth/update-password")
+	public String updatePassword(
+			HttpServletRequest request,
+			HttpServletResponse response,
+
+			@RequestParam(value = "password", defaultValue = "") String password) {
+
+        Context ctx = new Context();
+        ctx.request = request;
+        ctx.response = response;
+
+		Common cm = Common.getInstance();
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+
+		Cookie tmpC;
+		String email = "";
+		String code = "";
+
+		tmpC = ctx.getCookie("email");
+		email = tmpC.getValue();
+		tmpC = ctx.getCookie("code");
+		code = tmpC.getValue();
+
+		Admin admin = AuthController.authAdminWithEmailCode(email, code);
+		if (admin == null) {
+			AuthController.setError(ctx, "Mã xác thực hết hạn hoặc không tồn tại");
+			return "redirect:/auth/login";
+		}
+
+		admin.Password = cm.Bcrypt.HashPassword(password);
+		Repository.Error err = repo.Admin.Update(admin);
+		if (err != null) {
+			AuthController.setError(ctx, err.message);
+		}
+
+		Midleware.removeAuthToken(ctx);
 		return "redirect:/auth/login";
 	}
 }
