@@ -1,9 +1,11 @@
 package com.j05promax.cinema.entity;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Event extends Entity {
 
@@ -13,8 +15,8 @@ public class Event extends Entity {
     public String Title = null;
     public String Content = null;
     public String Thumnail = null;
-    public Timestamp CreatedAt;
-    public Timestamp Updated;
+    public Timestamp CreatedAt = new Timestamp(new Date().getTime());
+    public Timestamp Updated = new Timestamp(new Date().getTime());
     public String FormatCreatedAt;
     SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
 
