@@ -9,6 +9,7 @@ import java.util.List;
 import com.j05promax.cinema.entity.Event;
 import com.j05promax.cinema.entity.Image;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
+import com.j05promax.cinema.repo.Repository;
 import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
@@ -110,14 +111,33 @@ public class NewsController {
 		return "redirect:/news";
 	}
 
-	@PostMapping("/news/{id}")
-	public String UpdateNewsByID(
-		@PathVariable(value = "id") String id) {
-		return "news";
+	@PostMapping("/delete-news/{id}")
+	public String DeleteNewsByID(
+		HttpServletRequest request,
+        HttpServletResponse response,
+
+		@PathVariable(value = "id") String id
+		) {
+			Context ctx = new Context();
+        	ctx.request = request;
+        	ctx.response = response;
+
+        	ctx = Midleware.Authenticate(ctx);
+        	if (!ctx.SignedIn) return "redirect:/auth/login";
+
+			PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+			Event event = new Event();
+			Image image = new Image();
+			event.EventID = id;
+
+			if (!repo.Event.Delete(event, image)) {
+				return "error";
+			}
+			return "redirect:/news";
 	}
 
-	@DeleteMapping("/news/{id}")
-	public String DeleteNewsByID(
+	@PostMapping("/news/{id}")
+	public String UpdateNewsByID(
 		HttpServletRequest request,
         HttpServletResponse response,
 
@@ -136,14 +156,16 @@ public class NewsController {
         PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
 		Event event = new Event();
 		Image image = new Image();
+		event.EventID = id;
 		event.Title = tieude;
 		image.Url = lkanh;
 		event.Content = noidung;
 
-		// if (!repo.Event.Update(event, image)) {
-        //     return "error";
-        // }
+		Repository.Error err = repo.Event.Update(event,image);
+        if (err != null) {
+			AuthController.setError(ctx, err.message);
+        }
 
-		return "news";
+		return "redirect:/news";
 	}
 }

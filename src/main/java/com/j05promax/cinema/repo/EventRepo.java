@@ -123,6 +123,7 @@ public class EventRepo extends Repository {
                 statement.setString(1, event.Title);
                 statement.setString(2, event.Content);
                 statement.setTimestamp(3, event.Updated);
+                statement.setString(4, event.EventID);
             });
             if (resultSet.next()) {
                 if (!resultSet.getString("event_id").contentEquals(event.EventID)) {
@@ -137,7 +138,7 @@ public class EventRepo extends Repository {
 
         try{
             String query1 = "UPDATE %s SET url = ?, updated_at = ? WHERE image_id = ?;";
-            ResultSet resultSet = this.Query(String.format(query1,Event.TableName()),
+            ResultSet resultSet = this.Query(String.format(query1,Image.TableName()),
             (ParamSetter) (statement) -> {
                 statement.setString(1, image.Url);
                 statement.setTimestamp(2, image.Updated);
@@ -156,8 +157,40 @@ public class EventRepo extends Repository {
         return null;
     }
 
-    public boolean Delete(Event event) {
+    public boolean Delete(Event event, Image image) {
+        try{
+            String query = "DELETE FROM %s WHERE event_id = ? returning event_id;";
+            ResultSet result = this.Query(String.format(query,Event.TableName()),
+            (ParamSetter) (statement) -> {
+                statement.setString(1, event.EventID);
+            });
+            if (result.next()) {
+                if (result.getString("event_id").contentEquals("")) {
+                    return false;
+                }
+            }
+        }
+        catch (SQLException e) {
+            new Log(e).Show();
+            return false;
+        }
 
+        try{
+            String query1 = "DELETE FROM %s WHERE image_id = ? returning image_id;";
+            ResultSet result = this.Query(String.format(query1,Image.TableName()),
+            (ParamSetter) (statement) -> {
+                statement.setString(1, event.EventID);
+            });
+            if (result.next()) {
+                if (result.getString("image_id").contentEquals("")) {
+                    return false;
+                }
+            }
+        }
+        catch (SQLException e) {
+            new Log(e).Show();
+            return false;
+        }
         return true;
     }
 }
