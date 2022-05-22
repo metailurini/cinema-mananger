@@ -1,12 +1,11 @@
 package com.j05promax.cinema.repo;
 
 
-import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
-
 
 import com.j05promax.cinema.entity.User;
 import com.j05promax.cinema.util.common.Common;
@@ -23,9 +22,9 @@ public class UserRepo extends Repository {
         ArrayList<User> users = new ArrayList<User>();
         String perpageQuery = String.format("offset %d limit %d", perpage.maxInPage * perpage.page, perpage.maxInPage);
         
-        String query = "SELECT * FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ? ORDER BY created_at DESC");
+        String query = "SELECT * FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ? " + perpageQuery + " ORDER BY created_at DESC ");
         ResultSet result = this.Query(
-            String.format(query, User.TableName()) + perpageQuery,
+            String.format(query, User.TableName()),
             (ParamSetter)(statement) -> {
                 statement.setString(1, ("%" + search + "%").toLowerCase());
                 statement.setString(2, ("%" + search + "%").toLowerCase());
@@ -45,7 +44,7 @@ public class UserRepo extends Repository {
 
     public int CountCustomer(String search, String status) throws SQLException {
         int count_customer = 0;
-        String query = "SELECT count(*) as counted FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ?");
+        String query = "SELECT COUNT(*) as counted FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ?");
         ResultSet result = this.Query(
             String.format(query, User.TableName()),
             (ParamSetter)(statement) -> {
@@ -106,7 +105,7 @@ public class UserRepo extends Repository {
         return true;
     }
 
-    public boolean Update(User user) {
+    public Repository.Error Update(User user) {
         user.UpdatedAt = new Timestamp(new Date().getTime());
         try {
             String query = "UPDATE %s SET user_id = ?, full_name = ?, admin_id = ?, phone_number = ?, email = ?, created_at = ?, updated_at = ?, status = ? WHERE user_id = ? RETURNING user_id;";
@@ -124,16 +123,19 @@ public class UserRepo extends Repository {
                     });
             if (resultSet.next()) {
                 if (!resultSet.getString("user_id").contentEquals(user.UserID)) {
-                    return false;
+                    return Repository.Error.CanNotUpdate();
                 }
             }
         } catch (SQLException e) {
             new Log(e).Show();
-            return false;
+            if (e.getSQLState().contentEquals(Repository.Error.Unique)) {
+                return new Repository.Error("số điện thoại bị trùng", Repository.Error.Unique);
+            }
+            return new Repository.Error(e.getMessage(), e.getSQLState());
         }
 
 
-        return true;
+        return null;
     }
 
     public boolean Delete(String id) {

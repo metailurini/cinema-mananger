@@ -75,11 +75,12 @@ public class Customer {
         user.PhoneNumber = phoneNumber;
         user.Status = status;
 
-        if (!repo.User.Update(user)) {
-            return "error";
+        Repository.Error err = repo.User.Update(user);
+        if (err != null) {
+			AuthController.setError(ctx, err.message);
         }
 
-        return "redirect:/customer-detail/" + user.UserID;
+        return String.format("redirect:/customer-detail/%s", user.UserID);
     }
 
 

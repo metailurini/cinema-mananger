@@ -10,6 +10,7 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script
       src="https://kit.fontawesome.com/53a42bcb20.js"
       crossorigin="anonymous"
@@ -19,6 +20,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src="/scripts/utils.js" defer></script>
     <script src="/scripts/customer-detail.js" defer></script>
     <link
       rel="icon"
@@ -273,5 +275,95 @@
         </div>
       </div>
     </div>
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          style="
+            font-family: Roboto, sans-serif;
+            border-radius: 20px;
+            background-color: rgba(128, 128, 128, 0.7);
+            color: #fff;
+          "
+        >
+          <div
+            class="toast-header"
+            style="border-radius: 20px; background-color: #fff; color: #fff"
+          >
+            <div>
+              <img
+                src="https://res.cloudinary.com/baodang359/image/upload/v1652890417/java-project/logo_xhctkr.jpg"
+                style="height: 20px; width: 30px; border-radius: 4px"
+              />
+            </div>
+
+            <strong
+              class="me-auto"
+              style="
+                margin-left: 10px;
+                color: rgba(248, 39, 39, 0.7);
+                font-size: 17px;
+              "
+              >LỖI!</strong
+            >
+            <small class="text-muted" style="color: #fff">Bây giờ</small>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="toast-body" id="toastContext">Thông tin đăng nhập không chính xác</div>
+        </div>
+
+        <div
+          id="liveToast"
+          class="toast"
+          role="alert"
+          aria-live="assertive"
+          aria-atomic="true"
+          style="
+            font-family: Roboto, sans-serif;
+            border-radius: 20px;
+            background-color: rgba(128, 128, 128, 0.7);
+            color: #fff;
+          "
+        >
+          <div
+            class="toast-header"
+            style="
+              font-family: Roboto, sans-serif;
+              border-radius: 20px;
+              background-color: rgba(0, 0, 0, 0.3);
+              color: #fff;
+            "
+          >
+            <img src="..." class="rounded me-2" alt="..." />
+            <strong class="me-auto">Bootstrap</strong>
+            <small class="text-muted">2 seconds ago</small>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="toast"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <button
+              type="button"
+              style="display: none;"
+              id="liveToastBtn"
+          >
+              Show live toast
+          </button>
+          <div class="toast-body">
+            Heads up, toasts will stack automatically
+          </div>
+        </div>
+      </div>
   </body>
 </html>
