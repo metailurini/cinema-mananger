@@ -1,5 +1,5 @@
-const arrTimes = splitFilmDurationInDay(120 * 60); //film duration
-let arrDays = getDatesInRange("22-05-2022", "31-05-2022");
+const arrTimes = splitFilmDurationInDay(120 * 60); //film duration by seconds = minutes * 60
+let arrDays = getDatesInRange("22-05-2022", "31-05-2022"); //generate all day in range, get from film info
 let arrDayTimeChoosed = [];
 setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 

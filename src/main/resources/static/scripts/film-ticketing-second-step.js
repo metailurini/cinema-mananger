@@ -1,37 +1,4 @@
-const arrSeatsIndex = [
-  {
-    index: 1,
-    word: "A",
-  },
-  {
-    index: 2,
-    word: "B",
-  },
-  {
-    index: 3,
-    word: "C",
-  },
-  {
-    index: 4,
-    word: "D",
-  },
-  {
-    index: 5,
-    word: "E",
-  },
-  {
-    index: 6,
-    word: "F",
-  },
-  {
-    index: 7,
-    word: "G",
-  },
-  {
-    index: 8,
-    word: "H",
-  },
-];
+const arrSeatsIndex = ["A", "B", "C", "D", "E", "F", "G", "H"];
 let arrTempSeats = [];
 setCookie("_arr_seats", JSON.stringify(arrTempSeats), 1);
 
@@ -59,7 +26,7 @@ const arrSeatClass = ["seat-available", "seat-unvailable"];
 function initSeats() {
   for (let i = 0; i < 7; i++) {
     const seatRowContainer = document.createElement("div");
-    const rowTextIndex = arrSeatsIndex[i].word;
+    const rowTextIndex = arrSeatsIndex[i];
     seatRowContainer.className = "seat-row-container";
     seatRowContainer.id = "seatRowContainer";
     for (let j = 0; j < 7; j++) {
