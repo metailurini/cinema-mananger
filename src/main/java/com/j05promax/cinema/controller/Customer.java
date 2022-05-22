@@ -85,7 +85,7 @@ public class Customer {
 
 
     @GetMapping("/customer-detail/{id}")
-    public String getCustomers(
+    public String getCustomerById(
         HttpServletRequest request,
         HttpServletResponse response,
 

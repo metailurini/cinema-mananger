@@ -22,7 +22,8 @@ public class UserRepo extends Repository {
         ArrayList<User> users = new ArrayList<User>();
         String perpageQuery = String.format("offset %d limit %d", perpage.maxInPage * perpage.page, perpage.maxInPage);
         
-        String query = "SELECT * FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ? " + perpageQuery + " ORDER BY created_at DESC ");
+        String query = "SELECT * FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ? " + " ORDER BY created_at DESC ") + perpageQuery;
+        System.out.println("====" +String.format(query, User.TableName()));
         ResultSet result = this.Query(
             String.format(query, User.TableName()),
             (ParamSetter)(statement) -> {
