@@ -91,7 +91,7 @@ body {
 }
 
 .staff-cover {
-  margin-left: 80px;
+  margin-left: 30px;
   margin-top: 25px;
   text-align: center;
   display: block;
@@ -126,6 +126,7 @@ body {
   border-radius: 10px;
   width: 200px;
   cursor: pointer;
+  border: none;
 }
 .edit-delete-btn:hover {
   color: #000;
