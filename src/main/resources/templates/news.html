@@ -267,7 +267,7 @@
                     >
                     <input
                       type="text"
-                      name = "tieu-de"
+                      name="tieu-de"
                       class="form-control"
                       placeholder="Nhập tiêu đề"
                       required
@@ -278,7 +278,7 @@
                       >Liên kết ảnh</label
                     >
                     <input
-                      name = "lk-anh"
+                      name="lk-anh"
                       class="form-control"
                       placeholder="Nhập liên kết ảnh"
                       required
@@ -288,7 +288,7 @@
                     <label class="form-label">Nội dung</label>
                     <textarea
                       style="height: 250px; resize: none"
-                      name = "noi-dung"
+                      name="noi-dung"
                       class="form-control"
                       placeholder="Nhập nội dung"
                       required
@@ -381,14 +381,16 @@
                         Hủy
                       </a>
                       <form
-                      th:attr="action=${'/delete-news/' + event.EventID}"
-                      method="post"
+                        th:attr="action=${'/delete-news/' + event.EventID}"
+                        method="post"
                       >
                         <button
-                        type="submit"
-                        id="submit" 
-                        class="edit-delete-btn"> 
-                          Xác nhận </button>
+                          type="submit"
+                          id="submit"
+                          class="edit-delete-btn"
+                        >
+                          Xác nhận
+                        </button>
                       </form>
                     </div>
                   </div>
@@ -420,9 +422,9 @@
                       ></button>
                     </div>
                     <div class="modal-body" style="padding: 3rem">
-                      <form 
-                      th:attr="action=${'/news/' + event.EventID}"
-                      method="post"
+                      <form
+                        th:attr="action=${'/news/' + event.EventID}"
+                        method="post"
                       >
                         <div class="mb-3">
                           <h4 style="text-align: center; margin-top: -20px">
@@ -434,7 +436,7 @@
                             >
                             <input
                               type="text"
-                              name = "tieu-de"
+                              name="tieu-de"
                               class="form-control"
                               placeholder="Nhập tiêu đề"
                               required
@@ -447,7 +449,7 @@
                             >
                             <input
                               class="form-control"
-                              name = "lk-anh"
+                              name="lk-anh"
                               placeholder="Nhập liên kết ảnh"
                               required
                               th:attr="value= ${event.Thumnail}"
@@ -458,7 +460,7 @@
                             <textarea
                               style="height: 250px; resize: none"
                               class="form-control"
-                              name = "noi-dung"
+                              name="noi-dung"
                               placeholder="Nhập nội dung"
                               required
                               th:text="${event.Content}"
@@ -567,14 +569,6 @@
             </div>
           </tr>
         </div>
-        <!-- <button
-          id="button-see-more"
-          style="width: 110px; height: 50px; padding: 0; margin-top: -5px"
-          class="btn-add-cus"
-          onclick="more()"
-        >
-          Xem thêm
-        </button> -->
       </div>
     </div>
   </body>
