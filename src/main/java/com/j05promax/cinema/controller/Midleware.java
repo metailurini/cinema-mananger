@@ -9,6 +9,8 @@ import com.j05promax.cinema.entity.Admin;
 import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.log.Log;
 
+import org.apache.catalina.connector.OutputBuffer;
+
 
 public class Midleware {
 	private static String authKey = "_auth_token";
@@ -39,6 +41,14 @@ public class Midleware {
 
 		return ctx;
 	}
+
+	public static void removeAuthToken(Context ctx) {
+		Cookie authC = ctx.getCookie(authKey);
+		authC.setValue("");
+		authC.setMaxAge(-1);
+		ctx.response.addCookie(authC);
+	}
+
 
 	public static void SignInToken(Context ctx, Admin user) {
 		ctx.UserID = user.AdminID;
