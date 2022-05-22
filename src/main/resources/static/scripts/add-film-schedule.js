@@ -1,11 +1,12 @@
 let arrTimes = [
-  "00:00 - 01:30",
-  "01:45 - 03:15",
-  "03:30 - 05:00",
-  "05:15 - 06:45",
-  "07:00 - 08:30",
-  "09:00 - 10:30",
-  "11:00 - 12:30",
+  "07:00 - 08:45",
+  "09:00 - 10:45",
+  "11:00 - 12:45",
+  "13:00 - 14:45",
+  "15:00 - 16:45",
+  "17:00 - 18:45",
+  "19:00 - 20:45",
+  "21:00 - 22:45",
 ];
 
 let arrDays = getDatesInRange("22-05-2022", "31-05-2022");
@@ -96,8 +97,8 @@ function initDayTimeChoose() {
 function addTimeChoosed(childDayTime) {
   childDayTime.className = "choose-time-active";
   arrDayTimeChoosed.push({
-    day: childDayTime.id.substring(0, 10),
-    time: childDayTime.id.substring(10),
+    day: childDayTime.id.substring(0, 10).split(" ").join(""),
+    time: childDayTime.id.substring(10).split(" ").join(""),
   });
   setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 }
