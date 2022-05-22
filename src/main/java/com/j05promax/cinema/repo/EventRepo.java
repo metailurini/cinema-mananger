@@ -6,7 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import com.j05promax.cinema.entity.Event;
+import com.j05promax.cinema.entity.Image;
+import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.db.DBConnection;
+import com.j05promax.cinema.util.log.Log;
 
 public class EventRepo extends Repository {
 
@@ -62,15 +65,99 @@ public class EventRepo extends Repository {
         return new Event();
     }
 
-    public boolean Create(String id) {
+    public boolean Create(Event event, Image image) {
+        Common cm = Common.getInstance();
+        
+        event.EventID = cm.GetUID();
+        String query = "INSERT INTO %s (event_id,title,content,created_at) VALUES(?,?,?,?) RETURNING event_id;";
+
+        try{
+            ResultSet result = this.Query(
+                String.format(query,Event.TableName()),(ParamSetter)(statement) -> {
+                    statement.setString(1, event.EventID);
+                    statement.setString(2, event.Title);
+                    statement.setString(3, event.Content);
+                    statement.setTimestamp(4, event.CreatedAt);
+                });
+                if (result.next()) {
+                    if (result.getString("event_id").contentEquals("")) {
+                        return false;
+                    }
+                }
+        }
+        catch (SQLException e) {
+            new Log(e).Show();
+            return false;
+        }
+
+
+        image.ImageID = event.EventID;
+        String query1 = "INSERT INTO %s (url,image_type,image_id,created_at) VALUES(?,?,?,?) RETURNING image_id;";
+
+        try{
+            ResultSet result1 = this.Query(
+                String.format(query1,Image.TableName()),(ParamSetter)(statement) -> {
+                    statement.setString(1, image.Url);
+                    statement.setString(2, image.ImageType);
+                    statement.setString(3, image.ImageID);
+                    statement.setTimestamp(4, image.CreatedAt);
+                });
+                if (result1.next()) {
+                    if (result1.getString("image_id").contentEquals("")) {
+                        return false;
+                    }
+                }
+        }
+        catch (SQLException e) {
+            new Log(e).Show();
+            return false;
+        }
         return true;
     }
 
-    public boolean Update(String id, Event event) {
-        return true;
+    public Repository.Error Update(Event event, Image image) {
+        try{
+            String query = "UPDATE %s SET title = ?, content = ?, updated_at = ? WHERE event_id = ? RETURNING event_id;";
+            ResultSet resultSet = this.Query(String.format(query,Event.TableName()),
+            (ParamSetter) (statement) -> {
+                statement.setString(1, event.Title);
+                statement.setString(2, event.Content);
+                statement.setTimestamp(3, event.Updated);
+            });
+            if (resultSet.next()) {
+                if (!resultSet.getString("event_id").contentEquals(event.EventID)) {
+                    return Repository.Error.CanNotUpdate();
+                }
+            }
+        }
+        catch(SQLException e){
+            new Log(e).Show();
+            return new Repository.Error(e.getMessage(), e.getSQLState());
+        }
+
+        try{
+            String query1 = "UPDATE %s SET url = ?, updated_at = ? WHERE image_id = ?;";
+            ResultSet resultSet = this.Query(String.format(query1,Event.TableName()),
+            (ParamSetter) (statement) -> {
+                statement.setString(1, image.Url);
+                statement.setTimestamp(2, image.Updated);
+                statement.setString(3, event.EventID);
+            });
+            if (resultSet.next()) {
+                if (!resultSet.getString("image_id").contentEquals(image.ImageID)) {
+                    return Repository.Error.CanNotUpdate();
+                }
+            }
+        }
+        catch(SQLException e){
+            new Log(e).Show();
+            return new Repository.Error(e.getMessage(), e.getSQLState());
+        }
+        return null;
     }
 
-    public boolean Delete(String id) {
+    public boolean Delete(Event event) {
+
         return true;
     }
 }

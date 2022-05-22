@@ -256,7 +256,7 @@
               ></button>
             </div>
             <div class="modal-body" style="padding: 3rem">
-              <form>
+              <form action="/news" method="post">
                 <div class="mb-3">
                   <h4 style="text-align: center; margin-top: -20px">
                     Thêm sự kiện
@@ -267,6 +267,7 @@
                     >
                     <input
                       type="text"
+                      name = "tieu-de"
                       class="form-control"
                       placeholder="Nhập tiêu đề"
                       required
@@ -277,6 +278,7 @@
                       >Liên kết ảnh</label
                     >
                     <input
+                      name = "lk-anh"
                       class="form-control"
                       placeholder="Nhập liên kết ảnh"
                       required
@@ -286,6 +288,7 @@
                     <label class="form-label">Nội dung</label>
                     <textarea
                       style="height: 250px; resize: none"
+                      name = "noi-dung"
                       class="form-control"
                       placeholder="Nhập nội dung"
                       required
@@ -408,7 +411,9 @@
                       ></button>
                     </div>
                     <div class="modal-body" style="padding: 3rem">
-                      <form>
+                      <form 
+                      th:attr="action=${'/news/' + event.EventID}"
+                      >
                         <div class="mb-3">
                           <h4 style="text-align: center; margin-top: -20px">
                             Chỉnh sửa sự kiện
@@ -419,6 +424,7 @@
                             >
                             <input
                               type="text"
+                              name = "tieu-de"
                               class="form-control"
                               placeholder="Nhập tiêu đề"
                               required
@@ -431,6 +437,7 @@
                             >
                             <input
                               class="form-control"
+                              name = "lk-anh"
                               placeholder="Nhập liên kết ảnh"
                               required
                               th:attr="value= ${event.Thumnail}"
@@ -441,6 +448,7 @@
                             <textarea
                               style="height: 250px; resize: none"
                               class="form-control"
+                              name = "noi-dung"
                               placeholder="Nhập nội dung"
                               required
                               th:text="${event.Content}"
