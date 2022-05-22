@@ -23,7 +23,7 @@ public class UserRepo extends Repository {
         ArrayList<User> users = new ArrayList<User>();
         String perpageQuery = String.format("offset %d limit %d", perpage.maxInPage * perpage.page, perpage.maxInPage);
         
-        String query = "SELECT * FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ?");
+        String query = "SELECT * FROM %s WHERE (LOWER(full_name) LIKE ? OR phone_number LIKE ?) " + (status.equals("") ? "" : " AND status LIKE ? ORDER BY created_at DESC");
         ResultSet result = this.Query(
             String.format(query, User.TableName()) + perpageQuery,
             (ParamSetter)(statement) -> {
@@ -106,32 +106,33 @@ public class UserRepo extends Repository {
         return true;
     }
 
-    public boolean Update( User user) {
-        Common cm = Common.getInstance();
-        user.UserID = cm.GetUID();
-        user.Updated = new Timestamp(new Date().getTime());
-        System.out.println(user.UserID);
-        String query = "UPDATE %s SET full_name = ?, phone_number = ?, status = ?, updated_at = ? WHERE user_id = ? RETURNING user_id;";
-        try{
-            ResultSet result = this.Query(
-                String.format(query,User.TableName()),(ParamSetter)(statement) -> {
-                    statement.setString(1, user.FullName);
-                    statement.setString(2, user.PhoneNumber);
-                    statement.setString(3, user.Status);
-                    statement.setTimestamp(4, user.Updated);
-                    statement.setString(5, user.UserID);
-                });
-            if (result.next()) {
-                if (!result.getString("user_id").contentEquals(user.UserID)) {
+    public boolean Update(User user) {
+        user.UpdatedAt = new Timestamp(new Date().getTime());
+        try {
+            String query = "UPDATE %s SET user_id = ?, full_name = ?, admin_id = ?, phone_number = ?, email = ?, created_at = ?, updated_at = ?, status = ? WHERE user_id = ? RETURNING user_id;";
+            ResultSet resultSet = this.Query(String.format(query, User.TableName()),
+                    (ParamSetter) (statement) -> {
+                        statement.setString(1, user.UserID);
+                        statement.setString(2, user.FullName);
+                        statement.setString(3, user.AdminID);
+                        statement.setString(4, user.PhoneNumber);
+                        statement.setString(5, user.Email);
+                        statement.setTimestamp(6, user.CreatedAt);
+                        statement.setTimestamp(7, user.UpdatedAt);
+                        statement.setString(8, user.Status);
+                        statement.setString(9, user.UserID);
+                    });
+            if (resultSet.next()) {
+                if (!resultSet.getString("user_id").contentEquals(user.UserID)) {
                     return false;
                 }
             }
-        }
-
-        catch (SQLException e) {
+        } catch (SQLException e) {
             new Log(e).Show();
             return false;
         }
+
+
         return true;
     }
 
