@@ -25,7 +25,7 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
-    <title>WINX | Thêm phim - Thêm thông tin phim</title>
+    <title>WINX | Thêm phim - Thông tin phim</title>
   </head>
   <body>
     <nav
@@ -82,6 +82,7 @@
                 min="2022-01-01"
                 max="2023-12-31"
                 class="cus-input"
+                required
               />
             </div>
             <div class="title-input-cover">
@@ -94,6 +95,7 @@
                 min="2022-01-01"
                 max="2023-12-31"
                 class="cus-input"
+                required
               />
             </div>
             <div class="title-input-cover">
@@ -102,7 +104,14 @@
             </div>
           </div>
           <div style="text-align: center">
-            <a href="./add-film-schedule" class="btn-next">Tiếp theo</a>
+            <button
+              type="submit"
+              id="submit"
+              href="./add-film-schedule"
+              class="btn-next"
+            >
+              Tiếp theo
+            </button>
           </div>
         </form>
       </div>

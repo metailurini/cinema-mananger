@@ -88,7 +88,7 @@
                 aria-labelledby="navbarDarkDropdownMenuLink"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Thêm phim</a>
+                  <a class="dropdown-item" href="/add-film-info">Thêm phim</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="/revenue">Quản lý doanh thu</a>
@@ -278,13 +278,12 @@
           </label>
           <select
             style="
-              margin-left: 5px;
-              margin-top: 1px;
               width: 130px;
-              height: 33.8px;
-              border-top-left-radius: 10px;
-              border-bottom-left-radius: 10px;
+              height: 35px;
+              border-radius: 10px;
               border: none;
+              margin-left: 10px;
+              padding-left: 10px;
             "
             id="statusSelection"
             name="status"
@@ -293,28 +292,6 @@
             <option value="Hoạt động">Hoạt động</option>
             <option value="Bị khóa">Bị khóa</option>
           </select>
-          <button
-            type="submit"
-            id="submit"
-            style="
-              background-color: #fbca10;
-              border: 1px solid #fbca10;
-              border-top-right-radius: 10px;
-              border-bottom-right-radius: 10px;
-              margin-left: -6px;
-            "
-          >
-            <i
-              class="input-group-text fa-solid fa-magnifying-glass"
-              id="basic-addon2"
-              style="
-                color: #000;
-                background-color: #fbca10;
-                border: 1px solid #fbca10;
-              "
-              ;
-            ></i>
-          </button>
         </div>
         <div style="display: flex">
           <input
@@ -404,7 +381,7 @@
         </div>
       </div>
       <div
-        class="table-responsive"
+        class="table-responsive;"
         style="
           display: block;
           justify-content: space-between;
@@ -452,7 +429,8 @@
                 <a
                   class="see-history"
                   th:attr="href=${'/customer-detail/' + users.UserID}"
-                >Xem chi tiết</a>
+                  >Xem chi tiết</a
+                >
               </td>
             </tr>
           </tbody>
@@ -460,15 +438,15 @@
         <div style="text-align: center">
           <nav aria-label="..." style="display: inline-block">
             <ul class="pagination">
-                <li
-                    th:each="page, state: ${pages}"
-                    th:attr="class=${'page-item ' + (page ? 'active': '')},aria-current=page"
-                >
-                    <a
-                        th:text="${state.index + 1}"
-                        th:attr="class=${'page-link ' + (page ? 'page-active': 'page-unactive')},href=${'?page=' + state.index}"
-                    ></a>
-                </li>
+              <li
+                th:each="page, state: ${pages}"
+                th:attr="class=${'page-item ' + (page ? 'active': '')},aria-current=page"
+              >
+                <a
+                  th:text="${state.index + 1}"
+                  th:attr="class=${'page-link ' + (page ? 'page-active': 'page-unactive')},href=${'?page=' + state.index}"
+                ></a>
+              </li>
             </ul>
           </nav>
           <!-- <button type="button" class="btn btn-primary" id="liveToastBtn">

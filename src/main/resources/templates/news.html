@@ -89,7 +89,7 @@
                 aria-labelledby="navbarDarkDropdownMenuLink"
               >
                 <li>
-                  <a class="dropdown-item" href="#">Thêm phim</a>
+                  <a class="dropdown-item" href="/add-film-info">Thêm phim</a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="/revenue">Quản lý doanh thu</a>
@@ -179,7 +179,25 @@
             id="nbr"
           ></h5>
         </div>
-        <form style="height: 38px; width: 350px; margin-top: 5px">
+
+        <button
+          type="button"
+          class="btn-add-cus"
+          data-bs-toggle="modal"
+          data-bs-target="#addEventModal"
+        >
+          + Thêm sự kiện
+        </button>
+      </div>
+      <div style="text-align: right; margin-top: 30px">
+        <form
+          style="
+            height: 38px;
+            width: 350px;
+            margin-top: 5px;
+            display: inline-block;
+          "
+        >
           <div class="input-group mb-3">
             <input
               type="text"
@@ -381,7 +399,7 @@
                     class="modal-content"
                     style="border-radius: 20px; height: 700px"
                   >
-                    <div class="modal-header">
+                    <div class="modal-header" style="border: none">
                       <button
                         type="button"
                         class="btn-close"
@@ -429,7 +447,7 @@
                             ></textarea>
                           </div>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer" style="border: none">
                           <a
                             type="button"
                             class="cus-cancel"
@@ -466,7 +484,7 @@
               >
                 <img
                   th:attr="src=${event.Thumnail}"
-                  onerror="this.onerror=null;this.src='https://u.today/sites/default/files/styles/1600x900/public/2021-09/AdobeStock_312349880.jpeg';"
+                  onerror="this.onerror=null;this.src='https://previews.123rf.com/images/tkacchuk/tkacchuk2004/tkacchuk200400020/144020615-icono-de-error-de-imagen-esquema-vectorial-editable-.jpg';"
                   class="img-fluid"
                   style="
                     width: 225px;

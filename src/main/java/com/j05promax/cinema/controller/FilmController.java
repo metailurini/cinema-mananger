@@ -56,7 +56,7 @@ public class FilmController {
 
 		model.addAttribute("films", films);
 		model.addAttribute("countedFilm", counted);
-		model.addAttribute("staffName", "Staff's name");
+		model.addAttribute("staffName", ctx.UserEmail);
 		return "film";
 	}
 

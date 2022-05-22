@@ -2,6 +2,7 @@ package com.j05promax.cinema.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.ui.Model;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,8 @@ public class StaffController {
 	@GetMapping("/staff")
 	public String GetAllStaffs(
 			HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response,
+			Model model) {
 
 		Context ctx = new Context();
 		ctx.request = request;
@@ -26,6 +28,7 @@ public class StaffController {
 		if (!ctx.SignedIn) {
 			return "redirect:/auth/login";
 		}
+		model.addAttribute("staffName", ctx.UserEmail);
 
 		return "staff";
 	}
@@ -53,12 +56,11 @@ public class StaffController {
 	public String CreateStaff() {
 		return "staff";
 	}
-	
+
 	@PutMapping("/staff/{id}")
 	public String UpdateStaffByID(@PathVariable String id) {
 		return "staff";
 	}
-
 
 	@DeleteMapping("/staff/{id}")
 	public String DeleteStaffByID(@PathVariable String id) {

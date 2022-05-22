@@ -56,7 +56,7 @@ public class NewsController {
 
 		model.addAttribute("events", events);
 		model.addAttribute("countedEvent", counted);
-		model.addAttribute("staffName", "Staff's name");
+		model.addAttribute("staffName", ctx.UserEmail);
 		return "news";
 	}
 
