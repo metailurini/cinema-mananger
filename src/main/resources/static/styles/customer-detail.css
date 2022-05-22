@@ -194,3 +194,25 @@ input[type="radio"]:checked:after {
   font-weight: 500;
   border: none !important;
 }
+
+.edit-delete-btn {
+  padding: 0.1em 0em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 26px;
+  color: #000;
+  background-color: #fbca10;
+  text-align: center;
+  transition: all 0.3s;
+  border-radius: 10px;
+  width: 200px;
+  cursor: pointer;
+  border: none !important;
+}
+.edit-delete-btn:hover {
+  color: #000;
+  opacity: 0.6;
+  background-color: #fbd43f;
+  transition: all 0.5s;
+}
