@@ -1,4 +1,7 @@
-const arrTimes = splitFilmDurationInDay(130 * 60);
+const arrTimes = splitFilmDurationInDay(120 * 60); //film duration
+let arrDays = getDatesInRange("22-05-2022", "31-05-2022");
+let arrDayTimeChoosed = [];
+setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 
 function splitFilmDurationInDay(filmDuration) {
   var closeTimeInSecons = 23 * 60 * 60;
@@ -14,9 +17,10 @@ function splitFilmDurationInDay(filmDuration) {
 
     return pad(hours, 2) + ":" + pad(minutes, 2);
   };
+
   for (
     var t = 7 * 60 * 60;
-    t < closeTimeInSecons + filmDuration;
+    t <= closeTimeInSecons - (closeTimeInSecons % filmDuration) + filmDuration;
     t += filmDuration
   ) {
     arrFilmDurations.push(conv(Math.min(t, closeTimeInSecons)));
@@ -39,11 +43,6 @@ function splitFilmDurationInDay(filmDuration) {
 
   return temparrFilmDurations.slice();
 }
-
-let arrDays = getDatesInRange("22-05-2022", "31-05-2022");
-
-let arrDayTimeChoosed = [];
-setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
 
 function getDatesInRange(startDate, endDate) {
   startDate =
