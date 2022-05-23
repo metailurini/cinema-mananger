@@ -25,6 +25,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Thêm phim - Lịch chiếu</title>
   </head>
   <body>
@@ -42,8 +44,11 @@
       class="container table-responsive"
       style="margin-top: 12vh; max-height: 800px"
     >
-      <h2 style="color: #fff; margin-bottom: 30px">Chọn suất chiếu</h2>
+      <h2 data-aos="flip-right" style="color: #fff; margin-bottom: 30px">
+        Chọn suất chiếu
+      </h2>
       <div
+        data-aos="zoom-in-down"
         class="row g-0"
         style="
           background: rgba(255, 255, 255, 0.3);
@@ -101,7 +106,7 @@
           </div>
         </div>
       </div>
-      <div class="bottom-container" id="bottomDayTime">
+      <div data-aos="zoom-in-up" class="bottom-container" id="bottomDayTime">
         <!-- <div class="choose-time-cover">
           <h2>Thứ 2</h2>
           <div class="row" id="father" style="margin-top: 20px">
@@ -163,4 +168,7 @@
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>

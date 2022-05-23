@@ -38,7 +38,9 @@
       style="height: 12vh; background-color: #000"
     >
       <div class="container">
-        <a class="custom-navbar-brand" href="./main-page">WINX</a>
+        <a class="custom-navbar-brand" href="./main-page" data-aos="fade-right"
+          >WINX</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -50,7 +52,11 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarResponsive"
+          data-aos="fade-down"
+        >
           <ul class="navbar-nav ms-auto">
             <li class="nav-item active">
               <a class="nav-link header-nav-link" href="./main-page"
@@ -101,7 +107,7 @@
               </ul>
             </li>
           </ul>
-          <div class="staff-cover">
+          <div class="staff-cover" data-aos="fade-left">
             <div
               style="
                 display: flex;
@@ -166,7 +172,7 @@
     </nav>
     <div class="container" style="margin-top: 12vh">
       <div style="display: flex; justify-content: space-between">
-        <div style="display: flex">
+        <div data-aos="flip-up" style="display: flex">
           <h3 style="color: #fff; font-size: 20">Khách hàng</h3>
           <h5
             style="
@@ -180,7 +186,7 @@
             id="nbr"
           ></h5>
         </div>
-        <div>
+        <div data-aos="flip-up">
           <button
             type="button"
             class="btn-add-cus"
@@ -273,6 +279,7 @@
         "
         action="/customer"
         method="get"
+        data-aos="flip-up"
       >
         <div>
           <label for="status" style="color: #fff; font-size: 18px"
@@ -397,6 +404,7 @@
         "
       >
         <table
+          data-aos="zoom-in"
           class="table table-dark"
           style="
             --bs-table-bg: none;
@@ -458,4 +466,7 @@
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>

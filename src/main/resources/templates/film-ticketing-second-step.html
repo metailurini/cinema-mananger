@@ -26,6 +26,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Xuất vé phim - Chỗ ngồi & số lượng</title>
   </head>
   <body>
@@ -43,7 +45,7 @@
       <div
         style="justify-content: space-between; display: flex; margin-top: 20px"
       >
-        <div class="top-container">
+        <div class="top-container" data-aos="fade-down-right">
           <h5 style="margin-bottom: 30px">Xuất vé phim</h5>
           <h3>Chọn ghế ngồi, điền thông tin</h3>
           <div
@@ -61,7 +63,7 @@
           </div>
           <h5 class="progress-value" style="margin-top: 20px">Bước 2</h5>
         </div>
-        <div class="top-container">
+        <div class="top-container" data-aos="fade-down-left">
           <div class="row g-0">
             <div
               class="col-md-4"
@@ -110,7 +112,7 @@
           width: 100%;
         "
       >
-        <div class="top-container" style="width: 58%">
+        <div data-aos="fade-up-right" class="top-container" style="width: 58%">
           <div
             style="
               text-align: center;
@@ -165,7 +167,7 @@
             </div>
           </div>
         </div>
-        <div class="top-container" style="width: 40%">
+        <div data-aos="fade-up-left" class="top-container" style="width: 40%">
           <div style="border-bottom: 1px solid #fff">
             <h5>Vé đang chọn</h5>
           </div>
@@ -266,4 +268,7 @@
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>

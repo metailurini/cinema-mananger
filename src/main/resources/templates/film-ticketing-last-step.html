@@ -25,6 +25,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Xuất vé phim - Xác nhận & xuất vé</title>
   </head>
   <body>
@@ -42,7 +44,7 @@
       <div
         style="justify-content: space-between; display: flex; margin-top: 20px"
       >
-        <div class="top-container">
+        <div data-aos="fade-down-right" class="top-container">
           <h5 style="margin-bottom: 30px">Xuất vé phim</h5>
           <h3>Xác nhận giao dịch</h3>
           <div
@@ -60,7 +62,7 @@
           </div>
           <h5 class="progress-value" style="margin-top: 20px">Bước 3</h5>
         </div>
-        <div class="top-container">
+        <div data-aos="fade-down-left" class="top-container">
           <div class="row g-0">
             <div
               class="col-md-4"
@@ -104,7 +106,7 @@
       <div
         style="justify-content: space-between; display: flex; margin-top: 20px"
       >
-        <div class="top-container" style="width: 68%">
+        <div data-aos="fade-up-right" class="top-container" style="width: 68%">
           <h5
             style="
               text-align: center;
@@ -166,6 +168,7 @@
           </div>
         </div>
         <div
+          data-aos="fade-up-left"
           class="top-container table-responsive"
           style="width: 30%; max-height: 600px"
           id="father"
@@ -287,4 +290,7 @@
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>
