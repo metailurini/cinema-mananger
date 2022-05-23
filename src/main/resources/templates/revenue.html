@@ -26,6 +26,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Quản lý doanh thu</title>
   </head>
 
@@ -55,7 +57,7 @@
         action="/customer"
         method="get"
       >
-        <div style="display: flex">
+        <div data-aos="zoom-out-right" style="display: flex">
           <h3 style="color: #fff; font-size: 20">Giao dịch</h3>
           <h5
             style="
@@ -70,7 +72,7 @@
             108
           </h5>
         </div>
-        <div style="display: flex">
+        <div data-aos="zoom-out-left" style="display: flex">
           <input
             type="text"
             class="form-control"
@@ -110,6 +112,7 @@
         </div>
       </form>
       <div
+        data-aos="slide-down"
         class="table-responsive"
         style="
           display: block;
@@ -201,19 +204,22 @@
           padding-bottom: 50px;
         "
       >
-        <div class="revenue-cover">
+        <div data-aos="fade-up-right" class="revenue-cover">
           <h5 class="revenue-title">Doanh thu hôm nay</h5>
           <h2 id="nbrRevenueToday" class="revenue-amount">5000000</h2>
         </div>
-        <div class="revenue-cover">
+        <div data-aos="fade-up" class="revenue-cover">
           <h5 class="revenue-title">Doanh thu tháng này</h5>
           <h2 id="nbrRevenueThisMonth" class="revenue-amount">5000000</h2>
         </div>
-        <div class="revenue-cover">
+        <div data-aos="fade-up-left" class="revenue-cover">
           <h5 class="revenue-title">Doanh thu năm nay</h5>
           <h2 id="nbrRevenueThisYear" class="revenue-amount">5000000</h2>
         </div>
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>
