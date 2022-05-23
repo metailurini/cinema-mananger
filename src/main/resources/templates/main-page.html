@@ -25,6 +25,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <title>WINX</title>
   </head>
 
@@ -34,19 +36,14 @@
       style="height: 12vh; background-color: blur"
     >
       <div class="container">
-        <a class="custom-navbar-brand" href="./main-page">WINX</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+        <a class="custom-navbar-brand" href="./main-page" data-aos="fade-right"
+          >WINX</a
         >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarResponsive"
+          data-aos="fade-down"
+        >
           <ul class="navbar-nav ms-auto">
             <li class="nav-item active">
               <a
@@ -85,7 +82,9 @@
                 class="dropdown-menu dropdown-menu-dark"
                 aria-labelledby="navbarDarkDropdownMenuLink"
               >
-                <li><a class="dropdown-item" href="/add-film-info">Thêm phim</a></li>
+                <li>
+                  <a class="dropdown-item" href="/add-film-info">Thêm phim</a>
+                </li>
                 <li>
                   <a class="dropdown-item" href="/revenue">Quản lý doanh thu</a>
                 </li>
@@ -95,7 +94,7 @@
               </ul>
             </li>
           </ul>
-          <div class="staff-cover">
+          <div class="staff-cover" data-aos="fade-left">
             <div
               style="
                 display: flex;
@@ -198,7 +197,11 @@
                   background-image: url('https://res.cloudinary.com/baodang359/image/upload/v1652623165/java-project/gozilla_pbkgee.jpg');
                 "
               ></div>
-              <div class="custom-carousel-caption" style="top: 9rem">
+              <div
+                data-aos="fade-right"
+                class="custom-carousel-caption"
+                style="top: 9rem"
+              >
                 <h5
                   style="color: #fbca10; font-size: 36px; margin-bottom: 10px"
                 >
@@ -219,7 +222,7 @@
                     Thời lượng: 131 phút
                   </h5>
                 </div>
-                <div style="margin-top: 35px">
+                <div style="margin-top: 35px" data-aos="fade-up">
                   <a href="./film" class="carousel-btn">Xem thông tin</a>
                   <a href="./film" class="issue-ticket">Xuất vé</a>
                 </div>
@@ -346,4 +349,8 @@
       </div>
     </header>
   </body>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </html>
