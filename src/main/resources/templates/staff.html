@@ -25,6 +25,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Quản lý tài khoản</title>
   </head>
   <body>
@@ -40,8 +42,10 @@
     </nav>
     <div class="container" style="margin-top: 12vh; padding-bottom: 30px">
       <div>
-        <h2 style="color: #fff; margin-bottom: 30px">Admin</h2>
-        <div class="top-container">
+        <h2 data-aos="fade-right" style="color: #fff; margin-bottom: 30px">
+          Admin
+        </h2>
+        <div data-aos="flip-down" class="top-container">
           <div style="margin-top: 15px; text-align: center">
             <div style="width: 35%; display: inline-block; text-align: left">
               <h5 style="text-align: center">Thông tin tài khoản</h5>
@@ -54,16 +58,18 @@
                 <div class="admin-info-cover">
                   <p class="admin-info-text">***********</p>
                 </div>
-                <a href="/auth/forgot-password">
-                  <p class="forgot-pass">Đổi mật khẩu</p>
-                </a>
+                <div style="text-align: right; margin-top: 15px">
+                  <a class="forgot-pass" href="/auth/forgot-password">
+                    Đổi mật khẩu
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
       <div style="margin-top: 50px">
-        <div style="display: flex; margin-bottom: 30px">
+        <div data-aos="fade-right" style="display: flex; margin-bottom: 30px">
           <h3 style="color: #fff; font-size: 20">Nhân viên</h3>
           <h5
             style="
@@ -142,10 +148,46 @@
                       <h5 style="font-weight: 500; font-size: 32px">
                         Đổi trạng thái
                       </h5>
-                      <p>
+                      <!-- <p>
                         Bạn có muốn thay đổi trạng thái của nhân viên này hay
                         không?
-                      </p>
+                      </p> -->
+                      <div
+                        class="body-status"
+                        style="
+                          border-radius: 10px;
+                          height: 50px;
+                          width: 250px;
+                          border: 1px solid #fff;
+                          display: inline-block;
+                          /* text-align: center; */
+                          vertical-align: middle;
+                          padding: 10px;
+                        "
+                      >
+                        <input
+                          type="radio"
+                          id="work"
+                          name="status"
+                          value="Hoạt động"
+                          style="
+                            margin-right: 2px;
+                            margin-left: 10px;
+                            width: 15px;
+                            height: 15px;
+                          "
+                        />
+                        <label for="work">Hoạt động</label>
+
+                        <input
+                          type="radio"
+                          id="ban"
+                          name="status"
+                          value="Bị khóa"
+                          style="margin-left: 30px; width: 15px; height: 15px"
+                        />
+                        <label for="age2">Bị khóa</label>
+                      </div>
                     </div>
                     <div
                       class="modal-footer"
@@ -175,4 +217,7 @@
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>

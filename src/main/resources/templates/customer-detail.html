@@ -27,6 +27,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Chi tiết khách hàng</title>
   </head>
   <body>
@@ -42,6 +44,7 @@
     </nav>
     <div class="container" style="margin-top: 12vh">
       <form
+        data-aos="zoom-out"
         th:attr="action=${'/update-customer/' + user.UserID}"
         method="POST"
         class="info"
@@ -215,7 +218,6 @@
           display: block;
           justify-content: space-between;
           background-color: rgba(128, 128, 128, 0.7);
-          vertical-align: middle;
           align-items: center;
           padding: 20px;
           border-radius: 10px;
@@ -225,6 +227,7 @@
       >
         <div class="table-responsive" style="text-align: center">
           <table
+            data-aos="zoom-in"
             class="table table-dark"
             style="
               --bs-table-bg: none;
@@ -275,95 +278,94 @@
         </div>
       </div>
     </div>
-      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        style="
+          font-family: Roboto, sans-serif;
+          border-radius: 20px;
+          background-color: rgba(128, 128, 128, 0.7);
+          color: #fff;
+        "
+      >
         <div
-          id="liveToast"
-          class="toast"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          style="
-            font-family: Roboto, sans-serif;
-            border-radius: 20px;
-            background-color: rgba(128, 128, 128, 0.7);
-            color: #fff;
-          "
+          class="toast-header"
+          style="border-radius: 20px; background-color: #fff; color: #fff"
         >
-          <div
-            class="toast-header"
-            style="border-radius: 20px; background-color: #fff; color: #fff"
-          >
-            <div>
-              <img
-                src="https://res.cloudinary.com/baodang359/image/upload/v1652890417/java-project/logo_xhctkr.jpg"
-                style="height: 20px; width: 30px; border-radius: 4px"
-              />
-            </div>
-
-            <strong
-              class="me-auto"
-              style="
-                margin-left: 10px;
-                color: rgba(248, 39, 39, 0.7);
-                font-size: 17px;
-              "
-              >LỖI!</strong
-            >
-            <small class="text-muted" style="color: #fff">Bây giờ</small>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="toast"
-              aria-label="Close"
-            ></button>
+          <div>
+            <img
+              src="https://res.cloudinary.com/baodang359/image/upload/v1652890417/java-project/logo_xhctkr.jpg"
+              style="height: 20px; width: 30px; border-radius: 4px"
+            />
           </div>
-          <div class="toast-body" id="toastContext">Thông tin đăng nhập không chính xác</div>
-        </div>
 
-        <div
-          id="liveToast"
-          class="toast"
-          role="alert"
-          aria-live="assertive"
-          aria-atomic="true"
-          style="
-            font-family: Roboto, sans-serif;
-            border-radius: 20px;
-            background-color: rgba(128, 128, 128, 0.7);
-            color: #fff;
-          "
-        >
-          <div
-            class="toast-header"
+          <strong
+            class="me-auto"
             style="
-              font-family: Roboto, sans-serif;
-              border-radius: 20px;
-              background-color: rgba(0, 0, 0, 0.3);
-              color: #fff;
+              margin-left: 10px;
+              color: rgba(248, 39, 39, 0.7);
+              font-size: 17px;
             "
+            >LỖI!</strong
           >
-            <img src="..." class="rounded me-2" alt="..." />
-            <strong class="me-auto">Bootstrap</strong>
-            <small class="text-muted">2 seconds ago</small>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="toast"
-              aria-label="Close"
-            ></button>
-          </div>
-
+          <small class="text-muted" style="color: #fff">Bây giờ</small>
           <button
-              type="button"
-              style="display: none;"
-              id="liveToastBtn"
-          >
-              Show live toast
-          </button>
-          <div class="toast-body">
-            Heads up, toasts will stack automatically
-          </div>
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body" id="toastContext">
+          Thông tin đăng nhập không chính xác
         </div>
       </div>
+
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+        style="
+          font-family: Roboto, sans-serif;
+          border-radius: 20px;
+          background-color: rgba(128, 128, 128, 0.7);
+          color: #fff;
+        "
+      >
+        <div
+          class="toast-header"
+          style="
+            font-family: Roboto, sans-serif;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #fff;
+          "
+        >
+          <img src="..." class="rounded me-2" alt="..." />
+          <strong class="me-auto">Bootstrap</strong>
+          <small class="text-muted">2 seconds ago</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <button type="button" style="display: none" id="liveToastBtn">
+          Show live toast
+        </button>
+        <div class="toast-body">Heads up, toasts will stack automatically</div>
+      </div>
+    </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>

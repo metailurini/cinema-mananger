@@ -26,6 +26,10 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <title>WINX | Đăng nhập</title>
   </head>
 
@@ -37,10 +41,18 @@
     "
   >
     <div class="container">
-      <h1 style="color: white; text-align: center; margin-top: 100px">
+      <h1
+        style="color: white; text-align: center; margin-top: 100px"
+        data-aos="fade-down"
+      >
         Chào mừng đến với WINX
       </h1>
-      <form class="cus-form" action="/auth/auth" method="post">
+      <form
+        data-aos="flip-left"
+        class="cus-form"
+        action="/auth/auth"
+        method="post"
+      >
         <h2 style="text-align: center">Đăng Nhập</h2>
         <div style="width: 80%; margin-left: 10%">
           <label for="email">Email</label>
@@ -69,7 +81,7 @@
           </div>
         </div>
         <div style="text-align: center">
-          <button class="cus-button">Đăng nhập</button>
+          <button data-aos="fade-up" class="cus-button">Đăng nhập</button>
           <button type="button" style="display: none" id="liveToastBtn">
             Show live toast
           </button>

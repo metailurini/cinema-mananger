@@ -37,3 +37,5 @@ if (decodeURI(getCookie('error')) != "") {
   toastTrigger.click();
   setCookie('error', '', 0.1);
 }
+
+AOS.init();

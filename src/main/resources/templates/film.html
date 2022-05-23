@@ -25,6 +25,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Xuất vé phim - Chọn phim</title>
   </head>
 
@@ -34,7 +36,9 @@
       style="height: 12vh; background-color: #000"
     >
       <div class="container">
-        <a class="custom-navbar-brand" href="./main-page">WINX</a>
+        <a class="custom-navbar-brand" href="./main-page" data-aos="fade-right"
+          >WINX</a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -46,7 +50,11 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarResponsive"
+          data-aos="fade-down"
+        >
           <ul class="navbar-nav ms-auto">
             <li class="nav-item active">
               <a class="nav-link header-nav-link" href="./main-page"
@@ -99,7 +107,7 @@
               </ul>
             </li>
           </ul>
-          <div class="staff-cover">
+          <div class="staff-cover" data-aos="fade-left">
             <div
               style="
                 display: flex;
@@ -137,7 +145,7 @@
                 >
                   <div style="margin-bottom: 10px">
                     <i class="fa-solid fa-key" style="margin-right: 10px"></i>
-                    <a class="img-avatar-drop" href="#"> Đổi mật khẩu </a>
+                    <a class="img-avatar-drop" href="/auth/forgot-password"> Đổi mật khẩu </a>
                   </div>
                   <div>
                     <i
@@ -164,7 +172,7 @@
     </nav>
     <div class="container" style="margin-top: 12vh">
       <div style="display: flex; justify-content: space-between">
-        <div style="display: flex">
+        <div data-aos="fade-right" style="display: flex">
           <h3 style="color: #fff; font-size: 20">Danh sách chiếu hiện tại</h3>
           <h5
             style="
@@ -178,7 +186,7 @@
             id="nbr"
           ></h5>
         </div>
-        <form style="height: 38px; width: 350px">
+        <form data-aos="fade-left" style="height: 38px; width: 350px">
           <div class="input-group mb-3">
             <input
               type="text"
@@ -230,6 +238,7 @@
         <div style="margin-top: 30px; margin-right: 10px">
           <tr th:each="films: ${films}">
             <div
+              data-aos="flip-up"
               id="child"
               class="row g-0"
               style="
@@ -336,4 +345,7 @@
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>

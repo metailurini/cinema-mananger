@@ -19,6 +19,8 @@
       type="image/x-icon"
       href="https://res.cloudinary.com/baodang359/image/upload/v1653066110/java-project/favicon_cse14f.png"
     />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>WINX | Lỗi</title>
   </head>
 
@@ -52,6 +54,7 @@
       >
         <div style="text-align: center; height: 100%">
           <h1
+            data-aos="zoom-in"
             style="
               font-weight: 500;
               font-size: 128px;
@@ -62,17 +65,25 @@
           >
             LỖI
           </h1>
-          <h1 style="color: #fbca10; margin-top: 30px; margin-bottom: 50px">
+          <h1
+            data-aos="fade-up"
+            style="color: #fbca10; margin-top: 30px; margin-bottom: 50px"
+          >
             WINX
           </h1>
-          <h3>Trang này không hiển thị</h3>
-          <h3>
-            Có thể liên kết đã hỏng hoặc trang đã bị gỡ. Hãy kiểm tra xem liên
-            kết mà bạn đang cố mở có chính xác không.
-          </h3>
-          <a href="/main-page" class="cus-button"> Về trang chủ </a>
+          <div data-aos="flip-right">
+            <h3>Trang này không hiển thị.</h3>
+            <h3 style="margin-top: 20px">
+              Có thể liên kết đã hư hại hoặc trang đã bị gỡ. Hãy kiểm tra xem
+              liên kết mà bạn đang cố mở có chính xác không.
+            </h3>
+            <a href="/main-page" class="cus-button"> Về trang chủ </a>
+          </div>
         </div>
       </div>
     </div>
   </body>
+  <script>
+    AOS.init();
+  </script>
 </html>
