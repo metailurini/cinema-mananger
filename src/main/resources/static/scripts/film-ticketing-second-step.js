@@ -22,8 +22,8 @@ function getCookie(name) {
   return null;
 }
 
-const arrSeatClass = ["seat-available", "seat-unvailable"];
 function initSeats() {
+  const arrSeatClass = ["seat-available", "seat-unvailable"];
   for (let i = 0; i < 7; i++) {
     const seatRowContainer = document.createElement("div");
     const rowTextIndex = arrSeatsIndex[i];
@@ -84,6 +84,7 @@ function addSeatChoosed(seatChoosed) {
   );
 
   showSeatChild.style = "display: flex; justify-content: space-between";
+  showSeatChild.setAttribute("data-aos", "fade-right");
   showSeatGrandChild.style = "display: flex";
   showSeatGrandChildTop.className = "seat-choosing";
   showSeatGrandChildTop.style = "margin-right: 10px; width: 50px; height: 50px";
@@ -108,7 +109,7 @@ function addSeatChoosed(seatChoosed) {
 }
 
 function deleteSeatChoosed(seatChoosed) {
-  const seatDelete = document.getElementById("temp" + seatChoosed.id);
+  const showSeatFather = document.getElementById("temp" + seatChoosed.id);
   var index = arrTempSeats.indexOf(seatChoosed.id);
   if (index > -1) {
     arrTempSeats.splice(index, 1);
@@ -118,7 +119,7 @@ function deleteSeatChoosed(seatChoosed) {
     "seat-choosing",
     "seat-available"
   );
-  seatDelete.remove();
+  showSeatFather.remove();
 }
 
 initSeats();
