@@ -82,7 +82,7 @@
               <a class="nav-link header-nav-link" href="./news">Sự kiện</a>
             </li>
           </ul>
-          <ul class="navbar-nav">
+          <ul th:if="${staffRole} == 'Quản Trị Viên'" class="navbar-nav">
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"

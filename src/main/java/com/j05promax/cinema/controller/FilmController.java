@@ -40,23 +40,24 @@ public class FilmController {
 
 		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
 
-		int counted = 0;
+		int countedFilm = 0;
 		try {
-			counted = repo.Film.CountFilmActive();
+			countedFilm = repo.Film.CountFilmActive();
 		} catch (SQLException e) {
-            new Log(e).Show();
+			new Log(e).Show();
 		}
 
 		List<Film> films = new ArrayList<>();
 		try {
 			films = repo.Film.GetAll(search.strip());
 		} catch (SQLException e) {
-            new Log(e).Show();
+			new Log(e).Show();
 		}
 
 		model.addAttribute("films", films);
-		model.addAttribute("countedFilm", counted);
-		model.addAttribute("staffName", ctx.UserEmail);
+		model.addAttribute("staffRole", ctx.UserGroup);
+		model.addAttribute("staffName", ctx.UserEmail.replace("@gmail.com", "") + " (" + ctx.UserGroup + ")");
+		model.addAttribute("countedFilm", countedFilm);
 		return "film";
 	}
 
