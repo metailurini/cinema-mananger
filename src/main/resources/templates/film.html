@@ -36,7 +36,11 @@
       style="height: 12vh; background-color: #000"
     >
       <div class="container">
-        <a class="custom-navbar-brand" href="./main-page" data-aos="fade-right"
+        <a
+          class="custom-navbar-brand"
+          style="transition: all 0.3s"
+          href="./main-page"
+          data-aos="fade-right"
           >WINX</a
         >
         <button
@@ -78,7 +82,7 @@
               <a class="nav-link header-nav-link" href="./news">Sự kiện</a>
             </li>
           </ul>
-          <ul class="navbar-nav">
+          <ul th:if="${staffRole} == 'Quản Trị Viên'" class="navbar-nav">
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -145,7 +149,9 @@
                 >
                   <div style="margin-bottom: 10px">
                     <i class="fa-solid fa-key" style="margin-right: 10px"></i>
-                    <a class="img-avatar-drop" href="/auth/forgot-password"> Đổi mật khẩu </a>
+                    <a class="img-avatar-drop" href="/auth/forgot-password">
+                      Đổi mật khẩu
+                    </a>
                   </div>
                   <div>
                     <i
@@ -235,10 +241,9 @@
           margin-bottom: 15px;
         "
       >
-        <div style="margin-top: 30px; margin-right: 10px">
+        <div data-aos="flip-up" style="margin-top: 30px; margin-right: 10px">
           <tr th:each="films: ${films}">
             <div
-              data-aos="flip-up"
               id="child"
               class="row g-0"
               style="

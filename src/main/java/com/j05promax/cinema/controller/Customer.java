@@ -172,7 +172,8 @@ public class Customer {
        
         model.addAttribute("countedCustomer", counted);
         model.addAttribute("pages", listActivepage);
-        model.addAttribute("staffName", ctx.UserEmail);
+        model.addAttribute("staffRole", ctx.UserGroup);
+		model.addAttribute("staffName", ctx.UserEmail.replace("@gmail.com", "") + " (" + ctx.UserGroup + ")");
         model.addAttribute("users", users);
         return "customer";
     }

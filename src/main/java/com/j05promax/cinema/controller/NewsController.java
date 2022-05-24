@@ -44,19 +44,20 @@ public class NewsController {
 		try {
 			events = repo.Event.GetAll(search.strip());
 		} catch (SQLException e) {
-            new Log(e).Show();
+			new Log(e).Show();
 		}
 
-		int counted = 0;
+		int countedEvent = 0;
 		try {
-			counted = repo.Event.CountEvent();
+			countedEvent = repo.Event.CountEvent();
 		} catch (SQLException e) {
-            new Log(e).Show();
+			new Log(e).Show();
 		}
 
 		model.addAttribute("events", events);
-		model.addAttribute("countedEvent", counted);
-		model.addAttribute("staffName", ctx.UserEmail);
+		model.addAttribute("staffRole", ctx.UserGroup);
+		model.addAttribute("staffName", ctx.UserEmail.replace("@gmail.com", "") + " (" + ctx.UserGroup + ")");
+		model.addAttribute("countedEvent", countedEvent);
 		return "news";
 	}
 
@@ -81,21 +82,21 @@ public class NewsController {
 
 	@PostMapping("/news")
 	public String CreateNews(
-		HttpServletRequest request,
-        HttpServletResponse response,
+			HttpServletRequest request,
+			HttpServletResponse response,
 
-		@RequestParam(name = "tieu-de", required = false, defaultValue = "") String tieude,
-		@RequestParam(name = "lk-anh", required = false, defaultValue = "") String lkanh,
-		@RequestParam(name = "noi-dung", required = false, defaultValue = "") String noidung
-	) {
+			@RequestParam(name = "tieu-de", required = false, defaultValue = "") String tieude,
+			@RequestParam(name = "lk-anh", required = false, defaultValue = "") String lkanh,
+			@RequestParam(name = "noi-dung", required = false, defaultValue = "") String noidung) {
 		Context ctx = new Context();
-        ctx.request = request;
-        ctx.response = response;
+		ctx.request = request;
+		ctx.response = response;
 
 		ctx = Midleware.Authenticate(ctx);
-        if (!ctx.SignedIn) return "redirect:/auth/login";
+		if (!ctx.SignedIn)
+			return "redirect:/auth/login";
 
-        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
 		Event event = new Event();
 		Image image = new Image();
 		event.Title = tieude;
@@ -104,55 +105,55 @@ public class NewsController {
 		image.ImageType = "events";
 
 		if (!repo.Event.Create(event, image)) {
-            return "error";
-        }
+			return "error";
+		}
 
 		return "redirect:/news";
 	}
 
 	@PostMapping("/delete-news/{id}")
 	public String DeleteNewsByID(
-		HttpServletRequest request,
-        HttpServletResponse response,
+			HttpServletRequest request,
+			HttpServletResponse response,
 
-		@PathVariable(value = "id") String id
-		) {
-			Context ctx = new Context();
-        	ctx.request = request;
-        	ctx.response = response;
+			@PathVariable(value = "id") String id) {
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
 
-        	ctx = Midleware.Authenticate(ctx);
-        	if (!ctx.SignedIn) return "redirect:/auth/login";
+		ctx = Midleware.Authenticate(ctx);
+		if (!ctx.SignedIn)
+			return "redirect:/auth/login";
 
-			PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
-			Event event = new Event();
-			Image image = new Image();
-			event.EventID = id;
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+		Event event = new Event();
+		Image image = new Image();
+		event.EventID = id;
 
-			if (!repo.Event.Delete(event, image)) {
-				return "error";
-			}
-			return "redirect:/news";
+		if (!repo.Event.Delete(event, image)) {
+			return "error";
+		}
+		return "redirect:/news";
 	}
 
 	@PostMapping("/news/{id}")
 	public String UpdateNewsByID(
-		HttpServletRequest request,
-        HttpServletResponse response,
+			HttpServletRequest request,
+			HttpServletResponse response,
 
-		@PathVariable(value = "id") String id,
-		@RequestParam(name = "tieu-de", required = false, defaultValue = "") String tieude,
-		@RequestParam(name = "lk-anh", required = false, defaultValue = "") String lkanh,
-		@RequestParam(name = "noi-dung", required = false, defaultValue = "") String noidung
-		) {
+			@PathVariable(value = "id") String id,
+			@RequestParam(name = "tieu-de", required = false, defaultValue = "") String tieude,
+			@RequestParam(name = "lk-anh", required = false, defaultValue = "") String lkanh,
+			@RequestParam(name = "noi-dung", required = false, defaultValue = "") String noidung) {
 		Context ctx = new Context();
-        ctx.request = request;
-        ctx.response = response;
+		ctx.request = request;
+		ctx.response = response;
 
-        ctx = Midleware.Authenticate(ctx);
-        if (!ctx.SignedIn) return "redirect:/auth/login";
+		ctx = Midleware.Authenticate(ctx);
+		if (!ctx.SignedIn)
+			return "redirect:/auth/login";
 
-        PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
 		Event event = new Event();
 		Image image = new Image();
 		event.EventID = id;
@@ -160,10 +161,10 @@ public class NewsController {
 		image.Url = lkanh;
 		event.Content = noidung;
 
-		Repository.Error err = repo.Event.Update(event,image);
-        if (err != null) {
+		Repository.Error err = repo.Event.Update(event, image);
+		if (err != null) {
 			AuthController.setError(ctx, err.message);
-        }
+		}
 
 		return "redirect:/news";
 	}

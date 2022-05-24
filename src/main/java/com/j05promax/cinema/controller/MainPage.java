@@ -25,8 +25,9 @@ public class MainPage {
 		ctx = Midleware.Authenticate(ctx);
 		if (!Midleware.IsSignedIn(ctx)) {
 			return "redirect:/auth/login";
-        }
-		model.addAttribute("staffName", ctx.UserEmail);
+		}
+		model.addAttribute("staffRole", ctx.UserGroup);
+		model.addAttribute("staffName", ctx.UserEmail.replace("@gmail.com", "") + " (" + ctx.UserGroup + ")");
 		return "main-page";
 	}
 }
