@@ -7,9 +7,10 @@ import java.text.SimpleDateFormat;
 
 public class Film extends Entity {
 
-    public String FilmID = null;
-    public String Name = null;
-    public String Details = null;
+    public String FilmID = "";
+    public String Name = "";
+    public String Details = "";
+    public String Status = Film.Active;
     public float Price = 0;
     public int Duration = 0;
     public String Thumnail = null;
@@ -17,13 +18,13 @@ public class Film extends Entity {
     public Timestamp Updated;
     public String Category;
     public String FormatCreatedAt;
-    SimpleDateFormat dateFormat= new SimpleDateFormat("dd/MM/yyyy");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     public static final String Active = "Đang chiếu";
     public static final String Archived = "Đã lưu trữ";
 
     public static String TableName() {
- 
+
         return "films";
     };
 
@@ -33,6 +34,7 @@ public class Film extends Entity {
         Details = result.getString("details");
         Price = result.getFloat("price");
         Duration = result.getInt("duration");
+        Status = result.getString("status");
         Thumnail = result.getString("url");
         CreatedAt = result.getTimestamp("created_at");
         FormatCreatedAt = dateFormat.format(CreatedAt);
@@ -43,6 +45,7 @@ public class Film extends Entity {
 
     @Override
     public String toString() {
-        return String.format("[film]: id-> %s; name-> %s; details-> %s; price-> %s; duration-> %s; category-> %s;", FilmID, Name, Details, Price, Duration, Category);
+        return String.format("[film]: id-> %s; name-> %s; details-> %s; price-> %s; duration-> %s; category-> %s;",
+                FilmID, Name, Details, Price, Duration, Category);
     }
 }

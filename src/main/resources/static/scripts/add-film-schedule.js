@@ -1,7 +1,29 @@
-const arrTimes = splitFilmDurationInDay(120); //film duration by seconds = minutes * 60
-let arrDays = getDatesInRange("23-05-2022", "28-05-2022"); //generate all day in range, get from film info
+let duration = 120;
+duration = parseInt(decodeURI(getCookie('duration')));
+const arrTimes = splitFilmDurationInDay(duration); //film duration by seconds = minutes * 60
+const start = new Date(Date.parse(getCookie('start')));
+const end = new Date(Date.parse(getCookie('end')));
+function format(inputDate) {
+  let date, month, year;
+
+  date = inputDate.getDate();
+  month = inputDate.getMonth() + 1;
+  year = inputDate.getFullYear();
+
+  date = date
+    .toString()
+    .padStart(2, '0');
+
+  month = month
+    .toString()
+    .padStart(2, '0');
+
+  return `${date}/${month}/${year}`;
+}
+
+let arrDays = getDatesInRange(format(start), format(end)); //generate all day in range, get from film info
 let arrDayTimeChoosed = [];
-setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
+setCookie("datetimes", compineJSONData(arrDayTimeChoosed), null);
 
 function splitFilmDurationInDay(filmDuration) {
   filmDuration *= 60;
@@ -36,8 +58,8 @@ function splitFilmDurationInDay(filmDuration) {
     } else {
       temparrFilmDurations.push(
         arrFilmDuration +
-          " - " +
-          arrFilmDurations[arrFilmDurations.indexOf(arrFilmDuration) + 1]
+        " - " +
+        arrFilmDurations[arrFilmDurations.indexOf(arrFilmDuration) + 1]
       );
     }
   }
@@ -70,10 +92,10 @@ function getDatesInRange(startDate, endDate) {
     const tmpDate = new Date(date).toISOString().slice(0, 10);
     dates.push(
       tmpDate.substring(8) +
-        "-" +
-        tmpDate.substring(5, 7) +
-        "-" +
-        tmpDate.substring(0, 4)
+      "-" +
+      tmpDate.substring(5, 7) +
+      "-" +
+      tmpDate.substring(0, 4)
     );
     date.setDate(date.getDate() + 1);
   }
@@ -131,7 +153,7 @@ function addTimeChoosed(childDayTime) {
     day: childDayTime.id.substring(0, 10),
     time: childDayTime.id.substring(10).replace(/\s/g, ""),
   });
-  setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
+  setCookie("datetimes", compineJSONData(arrDayTimeChoosed), null);
 }
 
 function deleteTimeChoosed(childDayTime) {
@@ -141,8 +163,18 @@ function deleteTimeChoosed(childDayTime) {
   });
   if (index > -1) {
     arrDayTimeChoosed.splice(index, 1);
-    setCookie("_arr_day_time", JSON.stringify(arrDayTimeChoosed), 1);
+    setCookie("datetimes", compineJSONData(arrDayTimeChoosed), null);
   }
 }
 
+function compineJSONData(data) {
+  return data.map(i => `${i['day']}#${i['time']}`).join('@');
+}
+
 initDayTimeChoose();
+
+document.querySelector("#film-name").innerText = decodeURI(getCookie('name'))
+document.querySelector("#film-category").innerText = decodeURI(getCookie('category'))
+document.querySelector("#film-duration").innerText = decodeURI(getCookie('duration'))
+document.querySelector("#film-details").innerText = decodeURI(getCookie('details'))
+document.querySelector("#film-thumbnail").src = decodeURI(getCookie('thumbnail'))
