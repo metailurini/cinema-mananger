@@ -12,11 +12,9 @@ public class Calendar extends Entity {
     public String RoomID = null;
     public String FilmID = null;
     public Timestamp CreatedAt;
-    public Timestamp Updated;
-
+    public Timestamp UpdatedAt;
 
     public static String TableName() {
- 
         return "calendars";
     };
 
@@ -27,7 +25,7 @@ public class Calendar extends Entity {
         RoomID = result.getString("room_id");
         FilmID = result.getString("film_id");
         CreatedAt = result.getTimestamp("created_at");
-        Updated = result.getTimestamp("updated_at");
+        UpdatedAt = result.getTimestamp("updated_at");
         return this;
     }
 }

@@ -19,6 +19,7 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script src="/scripts/utils.js" defer></script>
     <script src="/scripts/add-film-schedule.js" defer></script>
     <link
       rel="icon"
@@ -65,6 +66,7 @@
             src="https://genk.mediacdn.vn/139269124445442048/2021/4/3/screen-shot-2021-04-03-at-112351-am-16174239799661809991699.png"
             onerror="this.onerror=null;this.src='https://previews.123rf.com/images/tkacchuk/tkacchuk2004/tkacchuk200400020/144020615-icono-de-error-de-imagen-esquema-vectorial-editable-.jpg';"
             class="img-fluid"
+            id="film-thumbnail"
             style="
               width: 80%;
               height: 320px;
@@ -78,10 +80,10 @@
         </div>
         <div class="col-md-8" style="width: 60%">
           <div class="card-body" style="margin-left: -20px; color: #fff">
-            <h5 class="card-title" style="font-weight: 600; font-size: 32px">
+            <h5 class="card-title" style="font-weight: 600; font-size: 32px" id="film-name">
               GODZILLA: KING OF THE MONSTER
             </h5>
-            <p class="card-text" style="font-weight: 500; font-size: 24px">
+            <p class="card-text" style="font-weight: 500; font-size: 24px" id="film-category">
               Phiêu lưu - Hành động, Khoa học - Viễn tưởng
             </p>
             <div style="display: inline-flex">
@@ -94,10 +96,10 @@
                   font-size: 24px;
                 "
               >
-                Thời lượng: 122 phút
+                Thời lượng: <span id="film-duration">122</span> phút
               </h5>
             </div>
-            <p class="card-text" style="font-weight: 400; font-size: 24px">
+            <p class="card-text" style="font-weight: 400; font-size: 24px" id="film-details">
               Giới thiệu: Chúa tể Godzilla kể về Sự xuất hiện của Godzilla trong
               quá khứ khiến con người phát hiện ra những sinh vật cổ đại Titan
               khổng lồ vẫn còn tồn tại trên Trái Đất. Sau trận chiến đánh bại kẻ
@@ -153,7 +155,9 @@
               class="modal-footer"
               style="justify-content: center; border: none"
             >
-              <a class="btn-next" href="./add-film-info"> Hoàn tất </a>
+              <form action="/film" method="post">
+              <button class="btn-next" type="submit"> Hoàn tất </button>
+              </form>
             </div>
           </div>
         </div>

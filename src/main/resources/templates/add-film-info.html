@@ -45,25 +45,26 @@
         Thêm phim
       </h2>
       <div class="top-container">
-        <form style="margin-top: 15px; text-align: center">
+        <form style="margin-top: 15px; text-align: center" action="/store-film-info" method="post">
           <div data-aos="fade-down" style="width: 50%; display: inline-block">
             <div class="title-input-cover">
               <label class="cus-label">Tên phim</label>
-              <input class="cus-input" placeholder="Nhập tên phim" required />
+              <input class="cus-input" placeholder="Nhập tên phim" name="name" required />
             </div>
             <div class="title-input-cover">
               <label class="cus-label">Chủ đề</label>
-              <input class="cus-input" placeholder="Nhập chủ đề" required />
+              <input class="cus-input" placeholder="Nhập chủ đề" name="category" required />
             </div>
             <div class="title-input-cover">
               <label class="cus-label">Thời lượng</label>
-              <input class="cus-input" placeholder="Nhập thời lượng" required />
+              <input class="cus-input" placeholder="Nhập thời lượng" name="duration" required />
             </div>
             <div class="title-input-cover">
               <label class="cus-label">Liên kết ảnh</label>
               <input
                 class="cus-input"
                 placeholder="Nhập liên kết ảnh"
+                name="thumbnail"
                 required
               />
             </div>
@@ -73,6 +74,7 @@
                 style="resize: none; height: 150px"
                 class="cus-input"
                 placeholder="Nhập Mô tả"
+                name="details"
                 required
               ></textarea>
             </div>
@@ -104,7 +106,7 @@
             </div>
             <div class="title-input-cover">
               <label class="cus-label">Giá vé</label>
-              <input class="cus-input" placeholder="Nhập giá vé" required />
+              <input class="cus-input" placeholder="Nhập giá vé" name="price" required />
             </div>
           </div>
           <div style="text-align: center">

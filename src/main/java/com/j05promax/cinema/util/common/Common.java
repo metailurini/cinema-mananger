@@ -3,9 +3,13 @@ package com.j05promax.cinema.util.common;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.j05promax.cinema.util.common.mail.EmailEngine;
 import com.j05promax.cinema.util.common.mail.GmailEngine;
+import com.j05promax.cinema.util.log.Log;
 
 public class Common {
     private static Common single_instance = null;
@@ -21,7 +25,7 @@ public class Common {
         this.Bcrypt = new BcryptWrapper();
         this.JWT = new JWTWrapper(
                 "secret",
-                Common.TokenExpired * 1000, 
+                Common.TokenExpired * 1000,
                 "winx-cinema",
                 "winx-user",
                 "token-validate");
@@ -41,21 +45,23 @@ public class Common {
         return single_instance;
     }
 
-	public String GetUID() {
-		String currentTime = String.valueOf(System.currentTimeMillis() / 100000L);
-		String mess = currentTime + currentTime + currentTime + currentTime;
-		String hashtext = "";
+    public String GetUID() {
+        String currentTime = String.valueOf((System.currentTimeMillis() + Math.random() + Math.random()) / 100000L),
+                mess = currentTime + currentTime + currentTime + currentTime,
+                hashtext = "";
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(mess.getBytes());
             BigInteger no = new BigInteger(1, messageDigest);
             hashtext = no.toString(16);
+
             while (hashtext.length() < 32) {
                 hashtext = "0" + hashtext;
             }
-        } catch (NoSuchAlgorithmException e) { }
+        } catch (NoSuchAlgorithmException e) {
+        }
 
-		return hashtext.toUpperCase();
+        return hashtext.toUpperCase();
     }
 
     public String getRandomCode() {
@@ -71,5 +77,18 @@ public class Common {
         }
 
         return sb.toString();
+    }
+
+    public Date parseWithFormat(String datetime, String format) {
+        Date date = new Date();
+        DateFormat formatter = new SimpleDateFormat(format);
+
+        try {
+            date = formatter.parse(datetime);
+        } catch (java.text.ParseException e) {
+            new Log(e).Show();
+        }
+
+        return date;
     }
 }
