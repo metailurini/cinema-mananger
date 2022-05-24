@@ -49,9 +49,15 @@ public class AuthController {
 		ctx.response = response;
 
 		ctx = Midleware.Authenticate(ctx);
-		if (!ctx.SignedIn) {
+
+		if (!Midleware.IsSignedIn(ctx)) {
 			return "redirect:/auth/login";
 		}
+
+		// if (!Midleware.IsManager(ctx)) {
+		// 	return "permission-denied";
+		// }
+
 		return "redirect:/main-page";
 	}
 
@@ -239,7 +245,7 @@ public class AuthController {
 			AuthController.setError(ctx, err.message);
 		}
 
-		Midleware.removeAuthToken(ctx);
+		Midleware.SignOutToken(ctx);
 		return "redirect:/auth/login";
 	}
 }

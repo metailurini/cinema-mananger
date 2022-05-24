@@ -16,7 +16,7 @@ public class AddFilmInfo {
         ctx.response = response;
 
         ctx = Midleware.Authenticate(ctx);
-        if (!ctx.SignedIn) {
+        if (!Midleware.IsSignedIn(ctx)) {
             return "redirect:/auth/login";
         }
         return "add-film-info";

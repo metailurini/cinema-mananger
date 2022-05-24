@@ -16,8 +16,8 @@ public class FilmTicketingSecondStep {
         ctx.response = response;
 
         ctx = Midleware.Authenticate(ctx);
-        if (!ctx.SignedIn) {
-            return "redirect:/auth/login";
+		if (!Midleware.IsSignedIn(ctx)) {
+			return "redirect:/auth/login";
         }
         return "film-ticketing-second-step";
     }

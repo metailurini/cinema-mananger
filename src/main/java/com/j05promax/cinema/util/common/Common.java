@@ -13,7 +13,6 @@ public class Common {
     public static Integer LenCodeRecoveryPassword = 6; // 7 days
     public static Integer CodeExpiredTime = 15 * 60; // 7 days
 
-
     public JWTWrapper JWT;
     public BcryptWrapper Bcrypt;
     public EmailEngine Gmail;
