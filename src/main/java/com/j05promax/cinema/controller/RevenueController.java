@@ -23,9 +23,9 @@ public class RevenueController {
 		ctx.response = response;
 
 		ctx = Midleware.Authenticate(ctx);
-		if (!ctx.SignedIn) {
+		if (!Midleware.IsSignedIn(ctx)) {
 			return "redirect:/auth/login";
-		}
+        }
 		
 		switch(type) {
 		case "month":

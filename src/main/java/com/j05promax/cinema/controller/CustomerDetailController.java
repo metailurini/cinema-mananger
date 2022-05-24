@@ -17,7 +17,7 @@ public class CustomerDetailController {
         ctx.response = response;
 
         ctx = Midleware.Authenticate(ctx);
-        if (!ctx.SignedIn) {
+        if (!Midleware.IsSignedIn(ctx)) {
             return "redirect:/auth/login";
         }
         model.addAttribute("staffName", "Staff's name");

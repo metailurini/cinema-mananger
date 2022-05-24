@@ -9,12 +9,18 @@ import com.j05promax.cinema.entity.Admin;
 import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.log.Log;
 
-import org.apache.catalina.connector.OutputBuffer;
-
 
 public class Midleware {
 	private static String authKey = "_auth_token";
 	protected static String TokenDetailsKey = "tdk";
+
+	public static boolean IsSignedIn(Context ctx) {
+		return ctx.SignedIn;
+	}
+
+	public static boolean IsManager(Context ctx) {
+		return ctx.UserGroup.contentEquals(Admin.Manager);
+	}
 
 	public static Context Authenticate(Context ctx) {
 		Cookie cookie = ctx.getCookie(authKey);
@@ -42,17 +48,17 @@ public class Midleware {
 		return ctx;
 	}
 
-	public static void removeAuthToken(Context ctx) {
+	public static void SignOutToken(Context ctx) {
 		Cookie authC = ctx.getCookie(authKey);
 		authC.setValue("");
 		authC.setMaxAge(-1);
 		ctx.response.addCookie(authC);
 	}
 
-
 	public static void SignInToken(Context ctx, Admin user) {
 		ctx.UserID = user.AdminID;
 		ctx.UserEmail = user.Email;
+		ctx.UserGroup = user.UserGroup;
 		Common cm = Common.getInstance();
 		Cookie cookie = ctx.getCookie(authKey);
 

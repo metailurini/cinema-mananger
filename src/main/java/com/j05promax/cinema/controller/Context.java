@@ -14,14 +14,16 @@ import org.yaml.snakeyaml.util.UriEncoder;
 public class Context {
 	protected HttpServletRequest request;
 	protected HttpServletResponse response;
-	protected String UserID;
-	protected String UserEmail;
+	protected String UserID = "";
+	protected String UserEmail = "";
+	protected String UserGroup = "";
 	protected boolean SignedIn = false;
 
 	public Context LoadFromClaim(Map<String, ?> claim) {
 		Map<String, ?> details = ((Claim) claim.get(Midleware.TokenDetailsKey)).asMap();
 		this.UserID = (String) details.get("user-id");
 		this.UserEmail = (String) details.get("user-email");
+		this.UserGroup = (String) details.get("user-group");
 		return this;
 	}
 
@@ -30,7 +32,8 @@ public class Context {
 				Midleware.TokenDetailsKey,
 				Map.of(
 					"user-id", this.UserID,
-					"user-email", this.UserEmail
+					"user-email", this.UserEmail,
+					"user-group", this.UserGroup
 				)
 			);
 	}
@@ -54,4 +57,4 @@ public class Context {
 		response.addCookie(cookie);
 		return cookie;
 	}
-}
+} 
