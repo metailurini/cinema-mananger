@@ -54,3 +54,11 @@ const chooseTime = () => {
 
 chooseDay();
 chooseTime();
+
+cals = getCookie('calendar-dates').split('-').map(i => new Date(parseInt(i)));
+days = {}
+for(let i = 0; i < cals.length; i ++) {
+    key = `${cals[i].getDate()}-${cals[i].getMonth()}-${cals[i].getYear()}`
+    if(days[key] == undefined){days[key] = []}
+    days[key] = days[key].concat(cals[i])
+}

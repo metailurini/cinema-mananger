@@ -38,7 +38,6 @@ public class FilmTicketingController {
 
         try {
             calendars = repo.Calendar.GetAll(id);
-            System.out.println(":: " +calendars.size());
         } catch (SQLException e) {
             new Log(e).Show();
         }
@@ -48,7 +47,7 @@ public class FilmTicketingController {
             dates.add(String.valueOf(cal.StartTime.getTime()));
         }
 
-        ctx.SetUnicodeCookie("calendar-dates", String.join(".", dates), "/");
+        ctx.SetUnicodeCookie("calendar-dates", String.join("-", dates), "/");
         model.addAttribute("staffName", ctx.UserEmail);
         return "film-ticketing";
     }
