@@ -67,24 +67,24 @@ public class FilmController {
 		return "film";
 	}
 
-	@GetMapping("/film/{id}")
-	public String GetFilmByID(
-			HttpServletRequest request,
-			HttpServletResponse response,
+	// @GetMapping("/film/{id}")
+	// public String GetFilmByID(
+	// 		HttpServletRequest request,
+	// 		HttpServletResponse response,
 
-			@PathVariable String id) {
+	// 		@PathVariable String id) {
 
-		Context ctx = new Context();
-		ctx.request = request;
-		ctx.response = response;
+	// 	Context ctx = new Context();
+	// 	ctx.request = request;
+	// 	ctx.response = response;
 
-		ctx = Midleware.Authenticate(ctx);
-		if (!ctx.SignedIn) {
-			return "redirect:/auth/login";
-		}
+	// 	ctx = Midleware.Authenticate(ctx);
+	// 	if (!ctx.SignedIn) {
+	// 		return "redirect:/auth/login";
+	// 	}
 
-		return "film";
-	}
+	// 	return "film";
+	// }
 
 	@GetMapping("add-film-info")
 	public String addFilmInfo(
@@ -210,10 +210,8 @@ public class FilmController {
 		}
 
 		ArrayList<Calendar> calendars = new ArrayList<Calendar>();
-		Calendar calendar = new Calendar();
 
 		tmpC = ctx.getCookie("datetimes");
-		Date start = new Date(), end = new Date();
 		String[] dates = new String[] {},
 				dateAndTimes = new String[] {},
 				times = new String[] {};
@@ -225,6 +223,9 @@ public class FilmController {
 		}
 
 		for (int index = 0; index < dates.length; index++) {
+			Date start = new Date(), end = new Date();
+			Calendar calendar = new Calendar();
+
 			dateAndTimes = dates[index].split("#");
 			times = dateAndTimes[1].split("-");
 

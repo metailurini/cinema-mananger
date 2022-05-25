@@ -5,52 +5,50 @@ const dates = (startDate, num) =>
       .slice(0, 10)
   );
 
-const chooseDay = () => {
-  let date = new Date();
-  date.setDate(date.getDate());
-  let weekdays = dates(date, 7);
-  let select = document.getElementById("select-day-father");
-
-  for (let weekday of weekdays) {
-    var option = document.createElement("option");
-    if (
-      weekday.substring(8) ==
-      parseInt(date.toDateString().substring(8, 10)) - 1
-    ) {
-      option.selected = true;
-    }
-    option.value = weekday;
-    option.innerHTML =
-      "Ngày " +
-      weekday.substring(8) +
-      " tháng " +
-      weekday.substring(5, 7) +
-      " năm " +
-      weekday.substring(0, 4);
-    select.appendChild(option);
+cals = getCookie("calendar-dates")
+  .split("-")
+  .map((i) => new Date(parseInt(i)));
+days = {};
+for (let i = 0; i < cals.length; i++) {
+  key = `${cals[i].getDate()}-${cals[i].getMonth()}-${cals[i].getFullYear()}`;
+  if (days[key] == undefined) {
+    days[key] = [];
   }
-};
+  days[key] = days[key].concat(cals[i]);
+}
 
-const chooseTime = () => {
-  let select = document.getElementById("select-time-father");
-  let arrayTime = [
-    "08:30 AM",
-    "10:45 AM",
-    "13:00 PM",
-    "15:00 PM",
-    "17:00 PM",
-    "20:00 PM",
-  ];
-  for (let time of arrayTime) {
-    var option = document.createElement("option");
-    if (arrayTime.indexOf(time) == "08:30 am") {
-      option.selected = true;
-    }
-    option.value = time;
-    option.innerHTML = time;
-    select.appendChild(option);
+function initDay() {
+  for (let day of Object.keys(days)) {
+    let selectDay = document.getElementById("select-day-father");
+    var optionDay = document.createElement("option");
+    optionDay.value = day;
+    optionDay.innerHTML = day;
+    selectDay.appendChild(optionDay);
   }
-};
+}
 
-chooseDay();
-chooseTime();
+function initTime(day, days) {
+  let selectTime = document.getElementById("select-time-father");
+  selectTime.innerHTML = "";
+  for (let time of days[day]) {
+    var optionTime = document.createElement("option");
+    optionTime.value = time;
+    optionTime.setAttribute("value", time);
+    optionTime.innerHTML = time.toString().substring(16, 21);
+    selectTime.appendChild(optionTime);
+  }
+}
+
+function onChangeDay() {
+  var day = document.getElementById("select-day-father").value;
+  console.log(day);
+  initTime(day, days);
+}
+
+function onChangeTime() {
+  var time = document.getElementById("select-time-father").value;
+  console.log(time);
+}
+
+initDay();
+initTime(Object.keys(days)[0], days);
