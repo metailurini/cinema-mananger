@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -19,6 +19,7 @@
 			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 			crossorigin="anonymous"
 		></script>
+    <script src="/scripts/utils.js" defer></script>
 		<script src="/scripts/film-ticketing-last-step.js" defer></script>
 		<link
 			rel="icon"
@@ -167,9 +168,9 @@
 									<p>Tên phim</p>
 									<p>Thời gian</p>
 									<p>Số vé</p>
-									<p>Số ghế</p>
+									<p >Số ghế</p>
 									<!-- <p>Mã giao dịch</p> -->
-									<p>Đơn giá</p>
+									<p >Đơn giá</p>
 									<p>Khuyến mãi</p>
 									<p>Thành tiền</p>
 								</div>
@@ -181,15 +182,15 @@
 										color: #fbca10;
 									"
 								>
-									<p>fjdksighfhdkd</p>
-									<p>Godzilla: King Of The Monster</p>
-									<p>7:30 am, Thứ 2 ngày 18/05/2022</p>
-									<p>02</p>
-									<p>E4, E5</p>
+									<p id="user-id"></p>
+									<p id="film-name-detail"></p>
+									<p id="date-ticket"></p>
+									<p id="counted-ticket">02</p>
+									<p id="seats">/p>
 									<!-- <p>gjfodjgjrnffj</p> -->
-									<p>100.000 VND</p>
+									<p id="film-price"></p>
 									<p>10%</p>
-									<p>90.000</p>
+									<p id="real-price"></p>
 								</div>
 							</div>
 						</div>
@@ -220,7 +221,7 @@
 							>
 								Vé xem phim
 							</p>
-							<h5>GODZILLA: KING OF THE MONSTER</h5>
+							<h5 id="film-name-ticket"></h5>
 						</div>
 						<!-- <div
 							style="

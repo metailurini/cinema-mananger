@@ -60,6 +60,7 @@
             src="https://genk.mediacdn.vn/139269124445442048/2021/4/3/screen-shot-2021-04-03-at-112351-am-16174239799661809991699.png"
             onerror="this.onerror=null;this.src='https://previews.123rf.com/images/tkacchuk/tkacchuk2004/tkacchuk200400020/144020615-icono-de-error-de-imagen-esquema-vectorial-editable-.jpg';"
             class="img-fluid"
+            th:attr="src=${film.Thumnail}"
             style="
               width: 80%;
               height: 320px;
@@ -73,7 +74,7 @@
         </div>
         <div class="col-md-8" style="width: 60%">
           <div class="card-body" style="margin-left: -20px; color: #fff">
-            <h5 class="card-title" style="font-weight: 600; font-size: 32px">
+            <h5 class="card-title" style="font-weight: 600; font-size: 32px" th:text="${film.Name}">
               GODZILLA: KING OF THE MONSTER
             </h5>
             <p class="card-text" style="font-weight: 500; font-size: 24px">
@@ -89,10 +90,10 @@
                   font-size: 24px;
                 "
               >
-                Thời lượng: 122 phút
+                Thời lượng: <span th:text="${film.Duration}"></span> phút
               </h5>
             </div>
-            <p class="card-text" style="font-weight: 400; font-size: 24px">
+            <p class="card-text" style="font-weight: 400; font-size: 24px" th:text="${film.Details}">
               Giới thiệu: Chúa tể Godzilla kể về Sự xuất hiện của Godzilla trong
               quá khứ khiến con người phát hiện ra những sinh vật cổ đại Titan
               khổng lồ vẫn còn tồn tại trên Trái Đất. Sau trận chiến đánh bại kẻ

@@ -67,7 +67,23 @@ public class FilmRepo extends Repository {
     }
 
     public Film GetByID(String id) throws SQLException {
-        String query = "SELECT * FROM %s WHERE film_id = ?";
+        String query = (" SELECT " +
+                " 	films.film_id, " +
+                " 	films.name, " +
+                " 	films.details, " +
+                " 	films.price, " +
+                " 	films.status, " +
+                " 	films.category, " +
+                " 	films.duration, " +
+                " 	films.created_at, " +
+                " 	films.updated_at, " +
+                " 	images.url " +
+                " from " +
+                " 	films " +
+                " LEFT JOIN images ON " +
+                " 	images.image_id = films.film_id AND " +
+                " 	images.image_type = 'films' " +
+                " WHERE film_id = ? ");
         Film user = null;
         ResultSet result = this.Query(String.format(query,Film.TableName()),
         (ParamSetter)(statement) -> {

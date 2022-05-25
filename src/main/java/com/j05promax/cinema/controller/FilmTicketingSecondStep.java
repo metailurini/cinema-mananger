@@ -14,6 +14,10 @@ public class FilmTicketingSecondStep {
         Context ctx = new Context();
         ctx.request = request;
         ctx.response = response;
+        ctx.SetUnicodeCookie("current-user", "", "/");
+
+        String[] unavaibleSeat = new String[]{"A1", "B1", "C1", "D1", "C5", "F7", "C7"};
+        ctx.SetUnicodeCookie("_arr_unvailable_seats", String.join(".", unavaibleSeat), "/");
 
         ctx = Midleware.Authenticate(ctx);
 		if (!Midleware.IsSignedIn(ctx)) {
