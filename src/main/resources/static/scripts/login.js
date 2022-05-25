@@ -32,7 +32,7 @@ function setCookie(name,value,days) {
 }
 
 
-if (decodeURI(getCookie('error')) != "") {
+if (decodeURI(getCookie('error')) != "" && decodeURI(getCookie('error')) != null) {
   $("#toastContext")[0].innerHTML = decodeURI(getCookie('error')).replaceAll('+', ' ');
   toastTrigger.click();
   setCookie('error', '', 0.1);

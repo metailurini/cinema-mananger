@@ -19,6 +19,14 @@ public class FilmTicketingLastStep {
 		if (!Midleware.IsSignedIn(ctx)) {
 			return "redirect:/auth/login";
         }
+
+
+
         return "film-ticketing-last-step";
+    }
+
+    @GetMapping("create-ticket")
+    public String bookTicket(Model model, HttpServletRequest request, HttpServletResponse response) {
+        return "redirect:/";
     }
 }
