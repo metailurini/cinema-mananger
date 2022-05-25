@@ -3,7 +3,9 @@ package com.j05promax.cinema.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.j05promax.cinema.repo.PostgreSQLRepo;
 import com.j05promax.cinema.util.common.Common;
+import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,18 +24,18 @@ public class CheckHealthController {
 		ctx.request = request;
 		ctx.response = response;
 
-		// PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
 		ctx = Midleware.Authenticate(ctx);
 		model.addAttribute("signedin", ctx.SignedIn);
 		// String datetime = "22-05-2022 11:30";
 		// DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		// Date date = new Date();
 
-		// try {
-		// date = formatter.parse(datetime);
-		// } catch (java.text.ParseException e) {
-		// new Log(e).Show();
-		// }
+		try {
+			System.out.println(repo.Calendar.GetAll("1E453380F788A2E5627B161F7AA977B6").size());
+		} catch (Exception e) {
+			new Log(e).Show();
+		}
 
 		Common cm = Common.getInstance();
 
