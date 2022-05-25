@@ -20,7 +20,6 @@
 			crossorigin="anonymous"
 		></script>
     <script src="/scripts/utils.js" defer></script>
-		<script src="/scripts/film-ticketing-last-step.js" defer></script>
 		<link
 			rel="icon"
 			type="image/x-icon"
@@ -110,14 +109,14 @@
 								<h5
 									class="card-title"
 									style="font-weight: 600; font-size: 20px"
+                  id="film-top-title"
 								>
-									GODZILLA: KING OF THE MONSTER
 								</h5>
 								<p
 									class="card-text"
 									style="font-weight: 400; font-size: 18px"
+                  id="day-time-title"
 								>
-									Thứ 2 ngày 18 tháng 5 năm 2022 07:30 am
 								</p>
 							</div>
 						</div>
@@ -167,7 +166,7 @@
 									<p>Mã khách hàng</p>
 									<p>Tên phim</p>
 									<p>Thời gian</p>
-									<p>Số vé</p>
+									<p>Số lượng vé</p>
 									<p >Số ghế</p>
 									<!-- <p>Mã giao dịch</p> -->
 									<p >Đơn giá</p>
@@ -184,13 +183,12 @@
 								>
 									<p id="user-id"></p>
 									<p id="film-name-detail"></p>
-									<p id="date-ticket"></p>
-									<p id="counted-ticket">02</p>
-									<p id="seats">/p>
-									<!-- <p>gjfodjgjrnffj</p> -->
-									<p id="film-price"></p>
+									<p id="date-detail"></p>
+									<p id="counted-detail">02</p>
+									<p id="seats-detail">/p>
+									<p id="film-price-detail"></p>
 									<p>10%</p>
-									<p id="real-price"></p>
+									<p id="real-price-detail"></p>
 								</div>
 							</div>
 						</div>
@@ -241,7 +239,7 @@
 							"
 						>
 							<p style="margin-right: 15px">Ngày:</p>
-							<p>Thứ 2, 18/05/2022</p>
+							<p id="day-ticket"></p>
 						</div>
 						<div
 							style="
@@ -252,13 +250,13 @@
 						>
 							<p style="margin-right: 15px">Giờ:</p>
 							<p
+							id="time-ticket"
 								style="
 									font-weight: 500;
 									font-size: 24px;
 									line-height: 28px;
 								"
 							>
-								7:30 AM
 							</p>
 						</div>
 						<div
@@ -269,15 +267,11 @@
 							"
 						>
 							<p style="margin-right: 15px">Số ghế:</p>
-							<p
-								style="
-									font-weight: 500;
-									font-size: 24px;
-									line-height: 28px;
-								"
+							<!-- <p
+							id="seat-ticket"
 							>
-								E4
-							</p>
+							</p> -->
+              <div id="seat-ticket-cover"></div>
 						</div>
 						<div
 							style="
@@ -287,7 +281,7 @@
 							"
 						>
 							<p style="margin-right: 15px">Đơn giá:</p>
-							<p>100.000 VND</p>
+							<p id="price-ticket"></p>
 						</div>
 						<div
 							style="
@@ -310,6 +304,7 @@
 						>
 							<p style="margin-right: 15px">Thành tiền:</p>
 							<p
+							id="total-price-ticket"
 								style="
 									font-weight: 500;
 									font-size: 24px;
@@ -405,4 +400,5 @@
 	<script>
 		AOS.init();
 	</script>
+  <script src="/scripts/film-ticketing-last-step.js" defer></script>
 </html>

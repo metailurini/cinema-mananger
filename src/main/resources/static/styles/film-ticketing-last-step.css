@@ -1,119 +1,125 @@
 html {
-	background-color: #000;
-	animation: transitionIn 0.75s !important;
+  background-color: #000;
+  animation: transitionIn 0.75s !important;
 }
 
 @keyframes transitionIn {
-	from {
-		opacity: 0.8;
-		transform: rotateX(-10deg);
-	}
-	to {
-		opacity: 1;
-		transform: rotateX(0);
-	}
+  from {
+    opacity: 0.8;
+    transform: rotateX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
 }
 .pgd {
-	font-size: 24px !important;
+  font-size: 24px !important;
 }
 body {
-	background-image: url("https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg");
-	background-repeat: no-repeat;
-	background-size: 100%;
-	font-family: "Roboto", sans-serif;
+  background-image: url("https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-family: "Roboto", sans-serif;
 }
 
 ::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-	background-color: #f5f5f5;
-	border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
-	width: 10px;
-	background-color: #f5f5f5;
-	border-radius: 10px;
+  width: 10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-	transition-duration: 0.4s;
-	border-radius: 10px;
-	background-color: #b3b3b3;
+  transition-duration: 0.4s;
+  border-radius: 10px;
+  background-color: #b3b3b3;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color: #cccccc;
+  background-color: #cccccc;
 }
 
 .custom-navbar-brand {
-	color: #fff;
-	padding-top: 0.3125rem;
-	padding-bottom: 0.3125rem;
-	margin-right: 1rem;
-	text-decoration: none;
-	white-space: nowrap;
-	font-size: 28px;
-	font-weight: 500;
-	transition: all 0.3s;
-	cursor: pointer;
+  color: #fff;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 28px;
+  font-weight: 500;
+  transition: all 0.3s;
+  cursor: pointer;
 }
 
 .custom-navbar-brand:hover {
-	color: #fbca10;
+  color: #fbca10;
 }
 
 .top-container {
-	width: 49%;
-	background: rgba(255, 255, 255, 0.3);
-	color: #fff;
-	border-radius: 10px;
-	padding: 20px;
+  width: 49%;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .progress .progress-bar {
-	border-radius: 50px;
-	background-color: #fbca10;
+  border-radius: 50px;
+  background-color: #fbca10;
 }
 
 .progress-bar.active {
-	animation: reverse progress-bar-stripes 0.4s linear infinite,
-		animate-positive 2s;
+  animation: reverse progress-bar-stripes 0.4s linear infinite,
+    animate-positive 2s;
 }
 @-webkit-keyframes animate-positive {
-	0% {
-		width: 0%;
-	}
+  0% {
+    width: 0%;
+  }
 }
 @keyframes animate-positive {
-	0% {
-		width: 0%;
-	}
+  0% {
+    width: 0%;
+  }
 }
 
 .btn-next {
-	margin-top: 50px;
-	display: inline-block;
-	padding: 0.5em 0em;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-size: 20px;
-	font-weight: 400;
-	color: #000;
-	text-align: center;
-	transition: all 0.3s;
-	border: 2px solid #fbca10;
-	border-radius: 10px;
-	width: 20vh;
-	background-color: #fbca10;
-	cursor: pointer;
-	margin-bottom: 20px;
+  margin-top: 50px;
+  display: inline-block;
+  padding: 0.5em 0em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  text-align: center;
+  transition: all 0.3s;
+  border: 2px solid #fbca10;
+  border-radius: 10px;
+  width: 20vh;
+  background-color: #fbca10;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
 .btn-next:hover {
-	color: #000;
-	background-color: #fbd43f;
-	transition: all 0.5s;
+  color: #000;
+  background-color: #fbd43f;
+  transition: all 0.5s;
 }
 p {
-	line-height: 40px;
+  line-height: 40px;
+}
+
+.seat-ticket {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
 }
