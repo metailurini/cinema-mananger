@@ -16,12 +16,21 @@ public class CalendarRepo extends Repository {
         super(conn);
     }
 
-    public ArrayList<Calendar> GetAll() throws SQLException {
+    public ArrayList<Calendar> GetAll(String filmID) throws SQLException {
         ArrayList<Calendar> calendars = new ArrayList<Calendar>();
-
         String query = "SELECT * FROM %s";
-        ResultSet result = this.Query(String.format(query, Calendar.TableName()), (ParamSetter) (statement) -> {
-        });
+
+        if (filmID != null && filmID != "") {
+            query += " where film_id = ?";
+        }
+
+        ResultSet result = this.Query(
+                String.format(query, Calendar.TableName()),
+                (ParamSetter) (statement) -> {
+                    if (filmID != null && filmID != "") {
+                        statement.setString(1, filmID);
+                    }
+                });
 
         while (result.next()) {
             calendars.add(new Calendar().FromResultSet(result));
