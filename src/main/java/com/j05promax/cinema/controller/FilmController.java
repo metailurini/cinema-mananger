@@ -68,21 +68,21 @@ public class FilmController {
 
 	// @GetMapping("/film/{id}")
 	// public String GetFilmByID(
-	// 		HttpServletRequest request,
-	// 		HttpServletResponse response,
+	// HttpServletRequest request,
+	// HttpServletResponse response,
 
-	// 		@PathVariable String id) {
+	// @PathVariable String id) {
 
-	// 	Context ctx = new Context();
-	// 	ctx.request = request;
-	// 	ctx.response = response;
+	// Context ctx = new Context();
+	// ctx.request = request;
+	// ctx.response = response;
 
-	// 	ctx = Midleware.Authenticate(ctx);
-	// 	if (!ctx.SignedIn) {
-	// 		return "redirect:/auth/login";
-	// 	}
+	// ctx = Midleware.Authenticate(ctx);
+	// if (!ctx.SignedIn) {
+	// return "redirect:/auth/login";
+	// }
 
-	// 	return "film";
+	// return "film";
 	// }
 
 	@GetMapping("add-film-info")
@@ -252,5 +252,21 @@ public class FilmController {
 		}
 
 		return "redirect:/film";
+	}
+
+	@PostMapping("booking-ticket")
+	public String storeFilmInfo(
+			HttpServletRequest request,
+			HttpServletResponse response) {
+
+		Context ctx = new Context();
+		ctx.request = request;
+		ctx.response = response;
+
+		ctx = Midleware.Authenticate(ctx);
+		if (!ctx.SignedIn)
+			return "redirect:/auth/login";
+
+		return "redirect:/";
 	}
 }

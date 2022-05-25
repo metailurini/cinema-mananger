@@ -182,3 +182,7 @@ $('#search-id').keypress(function (e) {
             searchUser();
        }
 });
+
+document.querySelector("#film-image").src = getCookie('film-image')
+document.querySelector("#film-name").innerText = decodeURI(getCookie('film-name'))
+document.querySelector("#ticket-time").innerText = new Date(parseInt(getCookie('ticket-time')))

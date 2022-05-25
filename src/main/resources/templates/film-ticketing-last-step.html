@@ -20,6 +20,7 @@
 			crossorigin="anonymous"
 		></script>
     <script src="/scripts/utils.js" defer></script>
+		<script src="/scripts/film-ticketing-last-step.js" defer></script>
 		<link
 			rel="icon"
 			type="image/x-icon"
@@ -91,6 +92,7 @@
 								src="https://genk.mediacdn.vn/139269124445442048/2021/4/3/screen-shot-2021-04-03-at-112351-am-16174239799661809991699.png"
 								onerror="this.onerror=null;this.src='https://previews.123rf.com/images/tkacchuk/tkacchuk2004/tkacchuk200400020/144020615-icono-de-error-de-imagen-esquema-vectorial-editable-.jpg';"
 								class="img-fluid"
+								id="film-image"
 								style="
 									height: 170px;
 									border-radius: 10px;
@@ -109,14 +111,16 @@
 								<h5
 									class="card-title"
 									style="font-weight: 600; font-size: 20px"
-                  id="film-top-title"
+									id="film-name"
 								>
+									GODZILLA: KING OF THE MONSTER
 								</h5>
 								<p
 									class="card-text"
 									style="font-weight: 400; font-size: 18px"
-                  id="day-time-title"
+									id="date-ticket-booking"
 								>
+									Thứ 2 ngày 18 tháng 5 năm 2022 07:30 am
 								</p>
 							</div>
 						</div>
@@ -166,7 +170,7 @@
 									<p>Mã khách hàng</p>
 									<p>Tên phim</p>
 									<p>Thời gian</p>
-									<p>Số lượng vé</p>
+									<p>Số vé</p>
 									<p >Số ghế</p>
 									<!-- <p>Mã giao dịch</p> -->
 									<p >Đơn giá</p>
@@ -183,12 +187,13 @@
 								>
 									<p id="user-id"></p>
 									<p id="film-name-detail"></p>
-									<p id="date-detail"></p>
-									<p id="counted-detail">02</p>
-									<p id="seats-detail">/p>
-									<p id="film-price-detail"></p>
+									<p id="date-ticket"></p>
+									<p id="counted-ticket">02</p>
+									<p id="seats">/p>
+									<!-- <p>gjfodjgjrnffj</p> -->
+									<p id="film-price"></p>
 									<p>10%</p>
-									<p id="real-price-detail"></p>
+									<p id="real-price"></p>
 								</div>
 							</div>
 						</div>
@@ -239,7 +244,7 @@
 							"
 						>
 							<p style="margin-right: 15px">Ngày:</p>
-							<p id="day-ticket"></p>
+							<p>Thứ 2, 18/05/2022</p>
 						</div>
 						<div
 							style="
@@ -250,13 +255,13 @@
 						>
 							<p style="margin-right: 15px">Giờ:</p>
 							<p
-							id="time-ticket"
 								style="
 									font-weight: 500;
 									font-size: 24px;
 									line-height: 28px;
 								"
 							>
+								7:30 AM
 							</p>
 						</div>
 						<div
@@ -267,11 +272,15 @@
 							"
 						>
 							<p style="margin-right: 15px">Số ghế:</p>
-							<!-- <p
-							id="seat-ticket"
+							<p
+								style="
+									font-weight: 500;
+									font-size: 24px;
+									line-height: 28px;
+								"
 							>
-							</p> -->
-              <div id="seat-ticket-cover"></div>
+								E4
+							</p>
 						</div>
 						<div
 							style="
@@ -281,7 +290,7 @@
 							"
 						>
 							<p style="margin-right: 15px">Đơn giá:</p>
-							<p id="price-ticket"></p>
+							<p>100.000 VND</p>
 						</div>
 						<div
 							style="
@@ -304,7 +313,6 @@
 						>
 							<p style="margin-right: 15px">Thành tiền:</p>
 							<p
-							id="total-price-ticket"
 								style="
 									font-weight: 500;
 									font-size: 24px;
@@ -369,7 +377,7 @@
                 font-size: 18px;
               ">
                   <p>Mã giao dịch:
-                  <p class="pgd" style=" color: #fbca10; font-size: 18px">ahiajdsjaisujd</p>
+                  <p class="pgd" id="transaction-id" style=" color: #fbca10; font-size: 18px">ahiajdsjaisujd</p>
                 </p>
                 </div>
             </div>
@@ -382,7 +390,9 @@
 							class="modal-footer"
 							style="justify-content: center; border: none"
 						>
-							<a class="btn-next" href="./film"> Hoàn tất </a>
+							<form action="/create-ticket" method="post">
+								<button type="submit" class="btn-next"> Hoàn tất </button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -392,6 +402,7 @@
 					class="btn-next"
 					data-bs-toggle="modal"
 					data-bs-target="#staticBackdrop"
+					onclick="transformData()"
 					>Xác nhận</a
 				>
 			</div>
@@ -400,5 +411,4 @@
 	<script>
 		AOS.init();
 	</script>
-  <script src="/scripts/film-ticketing-last-step.js" defer></script>
 </html>

@@ -1,7 +1,15 @@
 package com.j05promax.cinema.controller;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.j05promax.cinema.entity.Admin;
+import com.j05promax.cinema.repo.PostgreSQLRepo;
+import com.j05promax.cinema.util.log.Log;
+
 import org.springframework.ui.Model;
 
 import org.springframework.stereotype.Controller;
@@ -28,7 +36,26 @@ public class StaffController {
 		if (!Midleware.IsSignedIn(ctx)) {
 			return "redirect:/auth/login";
         }
+
+		PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
+		int counted = 0;
+		try {
+            counted = repo.Admin.CountAdmin();
+        } catch (SQLException e) {
+            new Log(e).Show();
+        }
+
+		ArrayList<Admin> admin = new ArrayList<>();
+		try{
+			admin = repo.Admin.GetAll();
+		}
+		catch(SQLException e){
+			new Log(e).Show();
+		}
+
 		model.addAttribute("staffName", ctx.UserEmail);
+		model.addAttribute("admin", admin);
+		model.addAttribute("countedAdmin", counted);
 
 		return "staff";
 	}

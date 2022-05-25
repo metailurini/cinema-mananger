@@ -29,6 +29,20 @@ public class AdminRepo extends Repository {
         return admins;
     }
 
+    public int CountAdmin() throws SQLException {
+        int count_admin = 0;
+        String query = "SELECT COUNT(*) as counted FROM %s";
+        ResultSet result = this.Query(
+            String.format(query, Admin.TableName()),
+            (ParamSetter)(statement) -> {}
+        );
+        if (result.next()) {
+            count_admin = result.getInt("counted");
+        }
+        this.Close();
+        return count_admin;
+    }
+
     public Admin GetByID(String id) {
         return new Admin();
     }
