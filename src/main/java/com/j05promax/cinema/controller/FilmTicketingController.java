@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.j05promax.cinema.entity.Calendar;
 import com.j05promax.cinema.entity.Film;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
+import com.j05promax.cinema.util.common.Common;
 import com.j05promax.cinema.util.log.Log;
 
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,7 @@ public class FilmTicketingController {
             return "redirect:/auth/login";
         }
 
+        Common cm = Common.getInstance();
         PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
         ArrayList<Calendar> calendars = null;
         Film film = new Film();
@@ -50,8 +52,14 @@ public class FilmTicketingController {
             dates.add(String.valueOf(cal.StartTime.getTime()));
         }
 
+        ctx.SetUnicodeCookie("film-name", film.Name, "/");
+        ctx.SetUnicodeCookie("film-price", String.valueOf(film.Price), "/");
+        ctx.SetUnicodeCookie("film-duration", String.valueOf(film.Duration), "/");
+        ctx.SetUnicodeCookie("transaction-id", cm.GetUID(), "/");
+
         ctx.SetUnicodeCookie("calendar-dates", String.join("-", dates), "/");
         model.addAttribute("staffName", ctx.UserEmail);
+        model.addAttribute("film", film);
         return "film-ticketing";
     }
 }

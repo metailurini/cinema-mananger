@@ -1,12 +1,11 @@
 const arrSeatsIndex = ["A", "B", "C", "D", "E", "F", "G", "H"];
 let arrTempSeats = JSON.parse(getCookie("_arr_seats"));
-setCookie("_arr_unvailable_seats", JSON.stringify(["A1", "B1", "C1", "D1"]), 1);
-let unvailableSeats = JSON.parse(getCookie("_arr_unvailable_seats"));
+let unvailableSeats = getCookie("_arr_unvailable_seats").split(".");
 
 console.log(arrTempSeats);
 console.log(unvailableSeats);
 
-if (getCookie('_arr_seats') == null) {
+if (getCookie("_arr_seats") == null) {
   setCookie("_arr_seats", JSON.stringify([]), 1);
 }
 
@@ -141,3 +140,45 @@ function deleteSeatChoosed(seatChoosed) {
 }
 
 initSeats();
+
+function searchUser() {
+  search = document.querySelector("#search-id").value;
+  fetch(`http://localhost:8080/api/search-customer?phone_or_name=${search}`, {
+    headers: {
+      accept:
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+      "accept-language":
+        "en-US,en;q=0.9,vi-VN;q=0.8,vi;q=0.7,fr-FR;q=0.6,fr;q=0.5",
+      "cache-control": "max-age=0",
+      "sec-ch-ua":
+        '" Not A;Brand";v="99", "Chromium";v="101", "Google Chrome";v="101"',
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": '"Windows"',
+      "sec-fetch-dest": "document",
+      "sec-fetch-mode": "navigate",
+      "sec-fetch-site": "none",
+      "sec-fetch-user": "?1",
+      "upgrade-insecure-requests": "1",
+    },
+    referrerPolicy: "strict-origin-when-cross-origin",
+    body: null,
+    method: "GET",
+    mode: "cors",
+    credentials: "include",
+  }).then((data) => {
+    data.text().then(text => {
+      dat = JSON.parse(text)
+      document.querySelector("#customer-phone").innerText = dat.phone_number || "...";
+      document.querySelector("#customer-name").innerText = dat.full_name || "...";
+      setCookie("current-user", dat.user_id || "", 12);
+    })
+  });
+}
+
+// stop enter to reload page
+$('#search-id').keypress(function (e) {                                       
+       if (e.which == 13) {
+            e.preventDefault();
+            searchUser();
+       }
+});

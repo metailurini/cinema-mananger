@@ -209,8 +209,6 @@
                   width: 75%;
                   display: inline-block;
                 "
-                action="/customer"
-                method="get"
               >
                 <div class="input-group mb-3">
                   <input
@@ -222,13 +220,13 @@
                     "
                     placeholder="Tìm kiếm"
                     aria-label="#"
+                    id="search-id"
                     name="phone_or_name"
                     aria-describedby="basic-addon2"
                     required
                   />
-                  <button
-                    type="submit"
-                    id="submit"
+                  <a
+                    onclick="searchUser()"
                     style="
                       background-color: #fbca10;
                       border: 1px solid #fbca10;
@@ -246,18 +244,18 @@
                       "
                       ;
                     ></i>
-                  </button>
+                  </a>
                 </div>
               </form>
             </div>
             <div>
               <p class="customer-info-title">Số điện thoại</p>
               <div class="customer-info-cover">
-                <p class="customer-info-text">0123456789</p>
+                <p class="customer-info-text" id="customer-phone">...</p>
               </div>
               <p class="customer-info-title">Họ và tên</p>
               <div class="customer-info-cover" style="margin-bottom: 15px">
-                <p class="customer-info-text">Nguyễn Ngọc Thanh Danh</p>
+                <p class="customer-info-text" id="customer-name">...</p>
               </div>
             </div>
           </div>

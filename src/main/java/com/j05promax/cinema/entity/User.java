@@ -17,7 +17,7 @@ public class User extends Entity {
     public String Status = "Hoạt động";
 
     public static String TableName() {
- 
+
         return "users";
     };
 
@@ -31,5 +31,14 @@ public class User extends Entity {
         UpdatedAt = result.getTimestamp("updated_at");
         Status = result.getString("status");
         return this;
+    }
+    /*
+    
+    */
+
+    public String toJson() {
+        return String.format(
+                "{ \"user_id\": \"%s\", \"full_name\": \"%s\", \"admin_id\": \"%s\", \"phone_number\": \"%s\", \"email\": \"%s\", \"status\": \"%s\" }",
+                UserID, FullName, AdminID, PhoneNumber, Email, Status);
     }
 }
