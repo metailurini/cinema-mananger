@@ -13,7 +13,9 @@ html {
 		transform: rotateX(0);
 	}
 }
-
+.pgd {
+	font-size: 24px !important;
+}
 body {
 	background-image: url("https://res.cloudinary.com/baodang359/image/upload/v1652623064/java-project/background_z3rmo6.jpg");
 	background-repeat: no-repeat;
