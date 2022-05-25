@@ -390,11 +390,9 @@
 							class="modal-footer"
 							style="justify-content: center; border: none"
 						>
-							<!-- <form action="" method="post"> -->
-							<!-- <form action="" method="get"> -->
-								<!-- <button type="submit" class="btn-next" href="/film"> Hoàn tất </button> -->
-								<a type="submit" class="btn-next" href="/film"> Hoàn tất </a>
-							<!-- </form> -->
+							<form action="/create-ticket" method="post">
+								<button type="submit" class="btn-next"> Hoàn tất </button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -404,6 +402,7 @@
 					class="btn-next"
 					data-bs-toggle="modal"
 					data-bs-target="#staticBackdrop"
+					onclick="transformData()"
 					>Xác nhận</a
 				>
 			</div>

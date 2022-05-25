@@ -25,3 +25,7 @@ document.querySelector("#film-image").src = getCookie("film-image")
 
 
 for (let i = 0; i < seats.length; i++) {}
+
+function transformData() {
+  setCookie('seats', JSON.parse(getCookie('_arr_seats')).join('.'))
+}
