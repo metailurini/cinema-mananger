@@ -5,7 +5,10 @@ let unvailableSeats = JSON.parse(getCookie("_arr_unvailable_seats"));
 
 console.log(arrTempSeats);
 console.log(unvailableSeats);
-// setCookie("_arr_seats", JSON.stringify([]), 1);
+
+if (getCookie('_arr_seats') == null) {
+  setCookie("_arr_seats", JSON.stringify([]), 1);
+}
 
 function setCookie(name, value, days) {
   var expires = "";

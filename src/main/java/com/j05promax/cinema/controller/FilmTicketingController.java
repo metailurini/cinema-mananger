@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.j05promax.cinema.entity.Calendar;
+import com.j05promax.cinema.entity.Film;
 import com.j05promax.cinema.repo.PostgreSQLRepo;
 import com.j05promax.cinema.util.log.Log;
 
@@ -35,9 +36,11 @@ public class FilmTicketingController {
 
         PostgreSQLRepo repo = PostgreSQLRepo.getInstance();
         ArrayList<Calendar> calendars = null;
+        Film film = new Film();
 
         try {
             calendars = repo.Calendar.GetAll(id);
+            film = repo.Film.GetByID(id);
         } catch (SQLException e) {
             new Log(e).Show();
         }

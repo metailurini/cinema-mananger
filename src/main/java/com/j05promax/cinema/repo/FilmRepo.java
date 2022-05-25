@@ -66,8 +66,19 @@ public class FilmRepo extends Repository {
         return count_film_active;
     }
 
-    public Film GetByID(String id) {
-        return new Film();
+    public Film GetByID(String id) throws SQLException {
+        String query = "SELECT * FROM %s WHERE film_id = ?";
+        Film user = null;
+        ResultSet result = this.Query(String.format(query,Film.TableName()),
+        (ParamSetter)(statement) -> {
+            statement.setString(1, id);
+        });
+        if(result.next()){
+            user = new Film().FromResultSet(result);
+        }
+
+        this.Close();
+        return user;
     }
 
     public boolean Create(Film film) {

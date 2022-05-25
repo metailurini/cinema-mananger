@@ -52,3 +52,8 @@ function onChangeTime() {
 
 initDay();
 initTime(Object.keys(days)[0], days);
+
+function getValue() {
+  setCookie('ticket-time', `${Date.parse(document.getElementById("select-time-father").value)}`, 10);
+  window.location.href = '/film-ticketing-second-step';
+}
