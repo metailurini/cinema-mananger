@@ -81,7 +81,7 @@
             "
             id="nbr"
           >
-            108
+            <td th:text="${countedAdmin}" />
           </h5>
         </div>
         <div
@@ -89,6 +89,7 @@
           style="max-height: 700px; padding-bottom: 30px"
           id="father"
         >
+        <tr th:each="admin: ${admin}">
           <div class="row cus-bottom-container" id="child">
             <div style="width: 31%">
               <img
@@ -110,24 +111,25 @@
                   margin-top: 10px;
                 "
               >
-                Nhân viên
+                <td th:text="${admin.UserGroup}" />
               </p>
-            </div>
-            <div style="width: 69%">
-              <div class="staff-detail-text-cover">
-                <h5 class="staff-detail-text">Email:</h5>
-                <h5>abcdefgh@gmail.com</h5>
               </div>
-              <div class="staff-detail-text-cover">
-                <h5 class="staff-detail-text">Ngày tạo:</h5>
-                <h5>19/02/2021</h5>
-              </div>
-              <div class="staff-detail-text-cover">
-                <h5 class="staff-detail-text" style="margin-top: 5px">
-                  Trạng thái:
-                </h5>
-                <h5 class="staff-active">Hoạt động</h5>
-              </div>
+              <div style="width: 69%">
+                <div class="staff-detail-text-cover">
+                  <h5 class="staff-detail-text">Email:</h5>
+                  <h5> <td th:text="${admin.Email}" /> </h5>
+                </div>
+                <div class="staff-detail-text-cover">
+                  <h5 class="staff-detail-text">Ngày tạo:</h5>
+                  <h5><td th:text="${admin.FormatCreatedAt}" /></h5>
+                </div>
+                <div class="staff-detail-text-cover">
+                  <h5 class="staff-detail-text" style="margin-top: 5px">
+                    Trạng thái:
+                  </h5>
+                  <h5 class="staff-active"><td th:text="${admin.Status}" /></h5>
+                </div>
+              
               <!-- Modal change status -->
               <!--  th:attr="id= 'delete' + ${films.FilmID}" -->
               <div
@@ -213,6 +215,7 @@
               >
             </div>
           </div>
+        </tr>
         </div>
       </div>
     </div>
