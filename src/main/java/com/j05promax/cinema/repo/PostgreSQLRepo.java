@@ -11,7 +11,6 @@ public class PostgreSQLRepo {
     public CalendarRepo Calendar;
     public EventRepo Event;
     public FilmRepo Film;
-    public PostRepo Post;
     public TicketRepo Ticket;
     public UserRepo User;
 
@@ -24,10 +23,8 @@ public class PostgreSQLRepo {
             Calendar = new CalendarRepo(postgreSQL);
             Event = new EventRepo(postgreSQL);
             Film = new FilmRepo(postgreSQL);
-            Post = new PostRepo(postgreSQL);
             Ticket = new TicketRepo(postgreSQL);
             User = new UserRepo(postgreSQL);
-		// } catch (SQLException e) {
 		} catch (Exception e) {
             new Log(e).Show();
 		}
